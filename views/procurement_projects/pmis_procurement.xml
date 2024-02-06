@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- PMIS Project form view-->
+<!--        <record id="view_pmis_project_form" model="ir.ui.view">-->
+<!--            <field name="name">pmis.procurement.category.form</field>-->
+<!--            <field name="model">pmis.procurement.category</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form>-->
+
+<!--                    <sheet>-->
+
+<!--                        <group>-->
+
+<!--                            <field name="name"/>-->
+<!--                            <field name="description"/>-->
+
+
+<!--                        </group>-->
+
+<!--                    </sheet>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash;PMIS Project Tree view&ndash;&gt;-->
+
+<!--        <record id="view_pmis_project_tree" model="ir.ui.view">-->
+<!--            <field name="name">pmis.procurement.category.tree</field>-->
+<!--            <field name="model">pmis.procurement.category</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree-->
+<!--                >-->
+<!--                    <field name="name"/>-->
+<!--                    <field name="description"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <!--        &lt;!&ndash;  PMIS Projec Action&ndash;&gt;-->
+        <record id="pmis_procurement_action" model="ir.actions.act_window">
+            <field name="name">PMIS Procurement Category Action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.procurement.category</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    create new procurement group
+                </p>
+            </field>
+        </record>
+
+        <!--    PMIS new Project Menu-->
+        <menuitem
+                id="pmis_procurement_menu"
+                name="Procurement Category"
+                action="pmis_procurement_action"
+                parent="pmis_project_menu"
+                sequence="0"/>
+
+
+    </data>
+</odoo>

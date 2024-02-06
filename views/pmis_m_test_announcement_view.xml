@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Views -->
+    <record id="view_pmis_test_announcement_form" model="ir.ui.view">
+        <field name="name">pmis.announcement.test.form</field>
+        <field name="model">pmis.announcement.test</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="job_title_id"/>
+                        <field name="category_job_id"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_pmis_test_announcement_tree" model="ir.ui.view">
+        <field name="name">pmis.announcement.test.tree</field>
+        <field name="model">pmis.announcement.test</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="job_title_id"/>
+                <field name="category_job_id"/>
+                <field name="note"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+
+    <record id="action_pmis_test_announcement" model="ir.actions.act_window">
+        <field name="name">Test Announcement</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.announcement.test</field>
+        <field name="view_mode">form,tree</field>
+<!--        <field name="view_id" ref="view_pmis_test_announcement_form"/>-->
+    </record>
+
+    <!-- Menu -->
+<!--    <menuitem-->
+<!--            id="menu_pmis_test_announcement"-->
+<!--            name="Test Announcements"-->
+<!--            parent="pmis_bidding_consult_root" sequence="10"-->
+<!--              action="action_pmis_test_announcement"/>-->
+</odoo>

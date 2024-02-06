@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <!--    purchase comparison form report-->
+
+    <record id="action_pmis_purchase_comparative_form_report" model="ir.actions.report">
+        <field name="name">Purchase Comparison Report</field>
+        <field name="model">pmis.quotation</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_procurement.purchase_comparative_form_report</field>
+        <field name="report_file">egp_procurement.purchase_comparative_form_report</field>
+        <field name="print_report_name">'comparative_form_report'</field>
+        <field name="binding_type">report</field>
+        <field name="binding_model_id" ref="model_pmis_quotation"/>
+        <field name="paperformat_id" ref="egp_procurement.paper_format_action_pmis_quotation"/>
+    </record>
+
+    <!--    purchase m3 form report-->
+
+    <record id="action_pmis_purchase_m3_report" model="ir.actions.report">
+        <field name="name">Purchase M3</field>
+        <field name="model">pmis.quotation</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_procurement.pmis_purchase_m3_report</field>
+        <field name="report_file">egp_procurement.pmis_purchase_m3_report</field>
+        <field name="print_report_name">'purchase_m3_document'</field>
+        <field name="binding_type">report</field>
+        <field name="binding_model_id" ref="model_pmis_quotation"/>
+        <field name="paperformat_id" ref="egp_procurement.pmis_vertical_paper_format"/>
+    </record>
+    <!--    purchase m2 report-->
+    <record id="action_pmis_purchase_m2_report" model="ir.actions.report">
+        <field name="name">Purchase M2</field>
+        <field name="model">pmis.purchase.kharidari</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_procurement.pmis_purchase_m2_report</field>
+        <field name="report_file">egp_procurement.pmis_purchase_m2_report</field>
+        <field name="print_report_name">'purchase_m2_document'</field>
+        <field name="binding_type">report</field>
+        <field name="binding_model_id" ref="model_pmis_purchase_kharidari"/>
+        <field name="paperformat_id" ref="egp_procurement.pmis_vertical_paper_format"/>
+    </record>
+
+
+</odoo>

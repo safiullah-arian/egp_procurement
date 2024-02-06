@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Tree view for Basic Evaluation -->
+    <record id="view_basic_evaluation_tree" model="ir.ui.view">
+        <field name="name">basic.evaluation.tree</field>
+        <field name="model">basic.evaluation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="received_offers_id"/>
+                <field name="vendor_id"/>
+                <field name="is_information_form_signed"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view for Basic Evaluation -->
+    <record id="view_basic_evaluation_form" model="ir.ui.view">
+        <field name="name">basic.evaluation.form</field>
+        <field name="model">basic.evaluation</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="available_offer_ids" invisible="1"/>
+                <group>
+                    <group>
+                        <field name="received_offers_id"/>
+                        <field name="basic_evaluation_id" invisible="0"/>
+                        <field name="vendor_id"/>
+                        <field name="is_information_form_signed"/>
+                        <field name="criteria"/>
+                        <field name="offer_state" invisible="1"/>
+
+                    </group>
+                </group>
+                <group>
+                    <field name="note" widget="text" options="{'style': 'height: 100px;'}"/>
+                </group>
+                <notebook>
+                    <page name="Check Box" string="Check Box">
+                        <field name="basic_evaluation_checkbox_ids">
+
+                        </field>
+                    </page>
+                    <page string="Vendor Agent" name="vendor agent">
+                        <field name="Agent_ids">
+                            <tree editable="bottom">
+                                <field name="role"/>
+                                <field name="name"/>
+                                <field name="position_title"/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                                <field name="vendors_id"
+                                       invisible="role != 'vendor_agent' or context.get('hide_vendor', False)"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="role"/>
+                                    <field name="name"/>
+                                    <field name="position_title"/>
+                                    <field name="phone"/>
+                                    <field name="email"/>
+                                    <field name="vendors_id"/>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+
+                    <page name="Offer Guarantee" string="Offer Guarantee">
+                        <field name="guarantee_ids"/>
+                    </page>
+                    <!--                            Vendor Transaction page Tree and Form-->
+                    <page name="transactions_page" string="Vendor Transaction"
+                          invisible="criteria != 'number_of_transactions'">
+                        <field name="vendor_transaction_ids">
+                            <tree editable="bottom">
+                                <field name="experience_years"/>
+                                <field name="number_of_transactions"/>
+                                <field name="transactions_amount"/>
+                                <field name="transaction_attachment"/>
+                            </tree>
+                            <form>
+                                <field name="experience_years"/>
+                                <field name="number_of_transactions"/>
+                                <field name="transactions_amount"/>
+                                <field name="transaction_attachment"/>
+                            </form>
+                        </field>
+                    </page>
+
+                    <!--                            Vendor Experience page Tree and Form-->
+                    <page string="Vendor Experience" name="Experience"
+                          invisible="criteria != 'experience_years'">
+                        <field name="vendor_experience_ids">
+                            <tree editable="bottom">
+                                <field name="project_name"/>
+                                <field name="reference_name"/>
+                                <field name="project_start_date"/>
+                                <field name="project_finish_date"/>
+                                <field name="project_amount"/>
+                                <field name="experience_attachment"/>
+                            </tree>
+                            <form>
+                                <field name="project_name"/>
+                                <field name="reference_name"/>
+                                <field name="project_start_date"/>
+                                <field name="project_finish_date"/>
+                                <field name="project_amount"/>
+                                <field name="experience_attachment"/>
+                            </form>
+                        </field>
+                    </page>
+                    <!--                            Vendor Assets page Tree and Form-->
+                    <page string="Vendor Assets" name="Assets"
+                          invisible="criteria != 'bank_asset'">
+                        <field name="vendor_assets_ids">
+                            <tree editable="bottom">
+                                <!--                                        editable="bottom"-->
+                                <field name="bank_id"/>
+                                <field name="amount"/>
+                                <field name="balance_date"/>
+                                <field name="attachment"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="bank_id"/>
+                                    <field name="amount"/>
+                                    <field name="balance_date"/>
+                                    <field name="attachment"/>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action for Basic Evaluation -->
+    <record id="action_basic_evaluation" model="ir.actions.act_window">
+        <field name="name">Basic Evaluation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">basic.evaluation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+</odoo>

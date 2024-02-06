@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <!--    plan  report-->
+
+    <record id="action_pmis_plan_template_report" model="ir.actions.report">
+        <field name="name">Print Plan</field>
+        <field name="model">pmis.plan.template</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_procurement.pmis_plan_template_report</field>
+        <field name="report_file">egp_procurement.pmis_plan_template_report</field>
+        <field name="print_report_name">'pmis_plan_template_report'</field>
+        <field name="binding_type">report</field>
+        <field name="binding_model_id" ref="model_pmis_plan_template"/>
+        <field name="paperformat_id" ref="egp_procurement.paper_format_action_pmis_quotation"/>
+    </record>
+    <template id="pmis_plan_template_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row" >
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+                                <img style="float:left;" src="egp_procurement/static/description/images/emirate.png"
+                                     height="130"
+                                     width="150"/>
+                            </div>
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+
+                                <h4>
+                                    اداره تدارکات ملی
+                                </h4>
+                                <h4>
+                                    ریاست تحلیل پروژه ها وانکشاف برنامه ها
+                                </h4>
+
+                                <h4>
+                                    امریت تحلیل وتوحید پلانها وپروژه ها
+                                </h4>
+                            </div>
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+                                <img src="egp_procurement/static/description/images/mcit.png" height="130"
+                                     style="float:right;"
+                                     width="150"/>
+                            </div>
+                        </div>
+                        <div class="row" style="text-align:right;">
+
+                            <div class="col-4">
+                                <span t-esc="doc.tadel_id.name"/>:
+                                شماره تعدیل
+                                <br></br>
+                                <span t-esc="doc.financial_year"/>:
+                                سال مالی
+                            </div>
+                            <div class="col-4">
+                            </div>
+                            <div class="col-4">
+                                <span t-esc="doc.procurement_directorate"/>:
+                                اداره/وزارت
+                                <br></br>
+                                <span t-esc="doc.category_id.name"/>:
+                                نوعیت تدارکات
+                            </div>
+                        </div>
+
+                        <br/>
+                        <table class="table table-condensed table-bordered page">
+                            <tr>
+                                <th>ملاحظات</th>
+                                <th>تاریخ تکمیل اسناد تخنیکی مورد ضرورت</th>
+                                <th>تاریخ تخمینی تکمیل پروژه</th>
+                                <th>میعاد پروژه</th>
+                                <th>تاریخ تخمینی امضاء قرارداد</th>
+                                <th>تاریخ تخمینی ارایه به دار الانشای کمیسیون</th>
+                                <th>تاریخ تخمینی نشر اطلاعیه تصمیم بر اعطای قرارداد</th>
+                                <th>تاریخ ارایه ګزارش ارزیابی</th>
+                                <th>تاریخ ختم ارزیابی آفرها</th>
+                                <th>تاریخ تخمینی بازګشایی آفرها</th>
+                                <th>تاریخ تخمینی اعلان تدارکات/پروژه</th>
+                                <th>تاریخ ارزیابی قبلی اهلیت داوطلبان در صورت که لازم</th>
+                                <th>تاریخ تخمینی منظوری آغاز پروسه تدارکات/پروژه</th>
+                                <th>قیمت تخمینی تدارکات /پروژه به (افغانی)</th>
+                                <th>مبلغ بودیجه منښور شده</th>
+                                <th>شماره قرارداد</th>
+                                <th>ترجیح تدارکات از منابع داخلی</th>
+                                <th>پروژه پلان شده جدید یا انتقالی سال های قبل</th>
+                                <th>کتګوری تدارکات</th>
+                                <th>نوع قرارداد</th>
+                                <th>شیوه دیګر</th>
+                                <th>روش یا شیوه تدارکات(در صورت استفاده از شیوه های دیګر دلایل آن را واضح کنید)</th>
+                                <th>نوع تدارکات</th>
+                                <th>شرح تدارکات(پروژه)</th>
+                                <th>تمویل کننده(دولت،دونر یار از بودیحه اداره)</th>
+                                <th>قریه</th>
+                                <th>ولسوالی</th>
+                                <th>ولایت</th>
+                                <th>عنوان/نام پروژه در بودیجه منظور شده(انګلیسی)</th>
+                                <th>عنوان/نام پروژه در بودیجه منظور شده(پشتو)</th>
+                                <th>عنوان/نام پروژه در بودیجه منظور شده(دری)</th>
+                                <th>کود بودیجه</th>
+                                <th>نودیحه اختیاری یا غیر اختیاری</th>
+                                <th>نوع بودیحه(عادی،انکشافی)</th>
+                                <th>اداره تدارکاتی</th>
+                                <th>سکتور</th>
+                                <th>شماره</th>
+                            </tr>
+
+
+                            <t t-set="index" t-value="0"/>
+                            <t t-foreach="doc.project_plan_ids" t-as="project">
+                                <tr style="text-align:center;">
+
+                                    <td>
+                                        <span t-esc="project.project_id.directorates_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_technical_documents_date"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_end_date"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_duration"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.contract_sign_date"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_commission_date"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_award_date"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_reporting_date"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_offer_evaluation_last_date"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_offer_opening_date"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_announcement_date"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_eligibility_evaluation_date"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.procurement_process_start_date"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_id.estimated_cost"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.budget_amount"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_id.project_number"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.planned_project_type"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.category_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.contract_type"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.procurement_rawish_other"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.procurement_rawish"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.category_id.name"/>
+                                        <span t-esc="project.procurement_rawish"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_description"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.donor_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.village"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.district"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.province"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_id.name_pa"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_id.name_dr"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.project_id.budget_code"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.budget_type_is_optional"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.budget_type"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.procurement_directorate"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="project.sector"/>
+                                    </td>
+                                    <td>
+                                        <t t-set="index" t-value="index+1"/>
+                                        <t t-esc="index"/>
+                                    </td>
+
+                                </tr>
+                            </t>
+
+
+                        </table>
+                        <div style="text-align: right">
+                            <p>
+                                نوت: منظور از اسناد تخنیکی، تکمیل(فورمه های شماره ۱،۲،۳ اسنادمورد ضرورت پلان) می
+                                باشد که
+                                بدون آنها پروسه آعاز شده نمی تواند ودر صورت عدم تکمیل اسناد مذکور، پروژه از لست پلان
+                                تدارکاتی حذف خواهد شد
+                            </p>
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-3" style="text-align: right">
+                                <p>منظور کننده</p>
+                                <p>نام</p>
+                                <p>وظیفه</p>
+                                <p>امضاء</p>
+                            </div>
+                            <div class="col-3" style="text-align: right">
+                                <p>تصدیق کننده</p>
+                                <p>نام</p>
+                                <p>وظیفه</p>
+                                <p>امضاء</p>
+                            </div>
+                            <div class="col-3" style="text-align: right">
+                                <p>تایید کننده</p>
+                                <p>نام</p>
+                                <p>وظیفه</p>
+                                <p>امضاء</p>
+                            </div>
+                            <div class="col-3" style="text-align: right">
+                                <p>ترتیب کننده</p>
+                                <p>نام</p>
+                                <p>وظیفه</p>
+                                <p>امضاء</p>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- PMIS offer form view -->
+        <record id="view_pmis_offer_form" model="ir.ui.view">
+            <field name="name">pmis.offer.form</field>
+            <field name="model">pmis.offer</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="available_offer_ids" invisible="1"/>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="details_offer_id"/>
+                                <!--                                <field name="offers_evaluation_project_id"/>-->
+                                <field name="offers_evaluation_id" widget="selection"/>
+                                <field name="company"/>
+                                <field name="offer_lang"/>
+                                <field name="offer_currency"/>
+                            </group>
+                            <group>
+                                <field name="offer_total_price"/>
+                                <field name="offer_discount"/>
+                                <field name="offer_state" invisible="1"/>
+                                <field name="ref" readonly="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Financial Evaluations" name="financial_evaluations_page">
+                                <field name="financial_evaluation_ids">
+                                    <tree>
+                                        <field name="opening_day_amount"/>
+                                        <field name="calculation_errors"/>
+                                        <field name="professional_sum"/>
+                                        <field name="revised_offer_price"/>
+                                        <field name="discount_percentage"/>
+                                        <field name="discount_amount"/>
+                                        <field name="assessed_price"/>
+                                        <field name="internal_preference_amount"/>
+                                        <field name="offer_grading"/>
+                                        <field name="note"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="opening_day_amount"/>
+                                            <field name="calculation_errors"/>
+                                            <field name="professional_sum"/>
+                                            <field name="revised_offer_price"/>
+                                            <field name="discount_percentage"/>
+                                            <field name="discount_amount"/>
+                                            <field name="assessed_price"/>
+                                            <field name="internal_preference_amount"/>
+                                            <field name="offer_grading"/>
+                                            <field name="note"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Technical Evaluations" name="technical_evaluations_page">
+                                <field name="technical_evaluation_ids">
+                                    <tree>
+                                        <field name="criteria"/>
+                                        <field name="amount"/>
+                                        <field name="offer_amount"/>
+                                        <field name="completed_criteria"/>
+                                        <field name="nature_of_documents"/>
+                                        <field name="explanation_of_evaluation_board"/>
+                                        <field name="note"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="criteria"/>
+                                            <field name="amount"/>
+                                            <field name="offer_amount"/>
+                                            <field name="completed_criteria"/>
+                                            <field name="nature_of_documents"/>
+                                            <field name="explanation_of_evaluation_board"/>
+                                            <field name="note"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+
+                            <page string="Exchange Rate" name="vendors_page"
+                                 invisible="offer_currency not in ('EUR', 'USD')">
+                                <field name="vendor_ids">
+                                    <tree>
+                                        <field name="offer_amount"/>
+                                        <field name="shartnama_amount"/>
+                                        <field name="exchange_rate"/>
+                                        <field name="note"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="offer_amount"/>
+                                            <field name="shartnama_amount"/>
+                                            <field name="exchange_rate"/>
+                                            <field name="note"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Internal Preferences" name="internal_preference_page">
+                                <field name="internal_preference_ids">
+                                    <tree editable="bottom">
+                                        <field name="number"/>
+                                        <field name="agent_name"/>
+                                        <field name="assessed_price"/>
+                                        <field name="product_name"/>
+                                        <field name="product_price"/>
+                                        <field name="preference_percentage"/>
+                                        <!--                                        <field name="preference_value"/>-->
+                                        <!--                                        <field name="price_after_preferences"/>-->
+                                        <field name="note"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="number"/>
+                                            <field name="agent_name"/>
+                                            <field name="assessed_price"/>
+                                            <field name="product_name"/>
+                                            <field name="product_price"/>
+                                            <field name="preference_percentage"/>
+                                            <!--                                            <field name="preference_value"/>-->
+                                            <!--                                            <field name="price_after_preferences"/>-->
+                                            <field name="note"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+
+
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+
+                </form>
+            </field>
+        </record>
+        <!-- PMIS offer tree view -->
+        <record id="view_pmis_offer_tree" model="ir.ui.view">
+            <field name="name">pmis.offer.tree</field>
+            <field name="model">pmis.offer</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="details_offer_id"/>
+                    <!--                    <field name="offers_evaluation_id"/>-->
+                    <field name="company"/>
+                    <field name="offer_lang"/>
+                    <field name="offer_currency"/>
+                    <field name="offer_total_price"/>
+                    <field name="offer_discount"/>
+                    <field name="ref"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action to open PMIS Offer -->
+        <!--        <record id="action_pmis_offer_evaluation" model="ir.actions.act_window">-->
+        <!--            <field name="name">PMIS Offer Action</field>-->
+        <!--            <field name="type">ir.actions.act_window</field>-->
+        <!--            <field name="res_model">pmis.offer</field>-->
+        <!--            <field name="view_mode">tree,form</field>-->
+        <!--            <field name="context">{'search_default_filter_child':1}</field>-->
+        <!--        </record>-->
+
+
+        <!--        <menuitem-->
+        <!--                id="menu_pmis_offer_evaluation"-->
+        <!--                name="Offers Evaluation"-->
+        <!--                parent="pmis_bidding_root"-->
+        <!--                action="action_pmis_offer_evaluation"-->
+        <!--                sequence="5"/>-->
+    </data>
+</odoo>

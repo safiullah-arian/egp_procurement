@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Form view -->
+    <record id="view_pmis_contractagreement_form" model="ir.ui.view">
+        <field name="name">pmis.contractagreement.form</field>
+        <field name="model">pmis.contractagreement</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="contract_agree_date"/>
+                            <field name="department_name"/>
+                            <field name="department_representative"/>
+                            <field name="department_representative_job"/>
+
+                        </group>
+                        <group>
+                            <field name="contract_start_date"/>
+                            <field name="contract_expiry_date"/>
+                            <field name="supplier_representative_name"/>
+                            <field name="supplier_representative_job"/>
+
+                        </group>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view -->
+    <record id="view_pmis_contractagreement_tree" model="ir.ui.view">
+        <field name="name">pmis.contractagreement.tree</field>
+        <field name="model">pmis.contractagreement</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="contract_agree_date"/>
+                <field name="contract_start_date"/>
+                <field name="contract_expiry_date"/>
+                <field name="department_name"/>
+                <field name="department_representative"/>
+                <field name="department_representative_job"/>
+                <field name="supplier_representative_name"/>
+                <field name="supplier_representative_job"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Action -->
+    <record id="action_pmis_contractagreement" model="ir.actions.act_window">
+        <field name="name">Contract Agreement</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.contractagreement</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+</odoo>
+

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--         PMIS Project form view-->
+        <record id="view_pmis_purchase_kharidari_form" model="ir.ui.view">
+            <field name="name">pmis.purchase.kharidari.form</field>
+            <field name="model">pmis.purchase.kharidari</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="purchase_project_type"/>
+                                <field name="purchas_project_20000" widget="selection"
+                                       invisible="purchase_project_type != 'below20000'"/>
+                                <field name="purchas_project_20000_index" invisible="1"/>
+                                <field name="quotation_project_id" widget="selection"
+                                       invisible="purchase_project_type == 'below20000'"/>
+
+                                <field name="purchase_payment_type"/>
+
+                                <field name="purchase_payment_cash"
+                                       invisible="purchase_payment_type not in 'purchase_payment_cash'"/>
+
+                                <field name="purchase_payment_cash_id" invisible="1"/>
+                                <field name="purchas_project_m3_number"
+                                       invisible="purchase_project_type == 'below20000'"/>
+                                <field name="purchas_project_m2_number"
+                                       invisible="purchase_project_type not in 'below20000'"/>
+                            </group>
+                            <group>
+                                <field name="invoice_number"/>
+
+
+                                <field name="purchase_vendor_id"
+                                       invisible="'purchase_project_type' not in 'below20000'"/>
+                                <field name="vendor_id"
+                                       invisible="purchase_project_type == 'below20000'"/>
+                                <field name="quotation_id" invisible="1"/>
+                                <field name="date"/>
+                                <field name="purchase_project_id" invisible="1"/>
+                                <field name="purchase_amount"/>
+                            </group>
+
+
+                        </group>
+                        <notebook>
+                            <page string="Products price" name="page_products">
+                                <field name="product_price_ids">
+                                    <tree editable="bottom">
+                                        <field name="product_description_id"/>
+                                        <field name="unit"/>
+                                        <field name="description"/>
+                                        <field name="qty"/>
+                                        <field name="price"/>
+                                        <field name="sub_total"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="product_description_id"/>
+                                            <field name="unit"/>
+                                            <field name="description"/>
+                                            <field name="qty"/>
+                                            <field name="price"/>
+                                            <field name="sub_total"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Products Tashrih" name="page_tashrih">
+                                <field name="product_tashrih_ids">
+                                    <tree editable="bottom">
+
+                                        <field name="product_description_id"/>
+                                        <field name="description"/>
+                                        <field name="qty"/>
+                                        <field name="is_valid"/>
+                                        <field name="note"/>
+
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="product_description_id"/>
+                                            <field name="description"/>
+                                            <field name="qty"/>
+                                            <field name="is_valid"/>
+                                            <field name="note"/>
+
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+
+                            <page name="document_page" string="Documents">
+                                <field name="documents_ids">
+                                    <tree editable="bottom">
+                                        <field name="number"/>
+                                        <field name="subject"/>
+                                        <field name="type_id"/>
+                                        <field name="directorates_id"/>
+                                        <field name="note"/>
+                                        <field name="attachment"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="number"/>
+                                            <field name="subject"/>
+                                            <field name="type_id"/>
+                                            <field name="directorates_id"/>
+                                            <field name="note"/>
+                                            <field name="attachment"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page name="vendor_agent" string="Buying Staff/Vendor Agents">
+                                <field name="agent_ids">
+                                    <tree editable="bottom">
+                                        <field name="role"/>
+                                        <field name="name"/>
+                                        <field name="position_title"/>
+                                        <field name="phone"/>
+                                        <field name="email"/>
+                                        <field name="department_id"
+                                               invisible="role not in ('purchase_manager', 'offer_opening_manager')"
+                                        />
+                                        <field name="vendors_id"
+                                               invisible="role not in 'vendor_agent' or context.get('hide_vendor', False)"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="role"/>
+                                            <field name="name"/>
+                                            <field name="position_title"/>
+                                            <field name="phone"/>
+                                            <field name="email"/>
+                                            <field name="department_id"/>
+                                            <field name="vendors_id"/>
+                                        </group>
+                                    </form>
+
+                                </field>
+                            </page>
+
+                        </notebook>
+                    </sheet>
+
+
+                </form>
+            </field>
+        </record>
+
+        <!--PMIS purchase Tree view-->
+
+        <record id="view_pmis_purchase_kharidari_tree" model="ir.ui.view">
+            <field name="name">pmis.purchase.kharidari.tree</field>
+            <field name="model">pmis.purchase.kharidari</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="purchase_project_type"/>
+                    <field name="purchas_project_20000" widget="selection"
+                           invisible="purchase_project_type not in 'below20000'"/>
+                    <field name="purchas_project_20000_index"
+                           invisible="purchase_project_type == 'below20000'"/>
+                    <field name="quotation_project_id" widget="selection"/>
+                    <field name="invoice_number"/>
+                    <field name="purchas_project_m3_number"/>
+                    <field name="purchas_project_m2_number"/>
+                    <field name="purchase_payment_type"/>
+                    <field name="purchase_vendor_id"
+                           invisible="purchase_project_type not in 'below20000'"/>
+                    <field name="vendor_id" invisible="purchase_project_type == 'below20000'"/>
+                    <field name="quotation_id" invisible="1"/>
+                    <field name="date"/>
+                    <field name="purchase_project_id" invisible="1"/>
+                    <field name="purchase_amount"/>
+                </tree>
+            </field>
+        </record>
+        <record id="pmis_purchase_kharidari_action" model="ir.actions.act_window">
+            <field name="name">Purchase</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.purchase.kharidari</field>
+
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    create new purchase Kharidari
+                </p>
+            </field>
+        </record>
+        <menuitem
+                id="pmis_purchase_kharidari_menu"
+                name="Purchase"
+                action="pmis_purchase_kharidari_action"
+                parent="pmis_purchoon_purchase_root"
+                sequence="4"/>
+    </data>
+
+</odoo>

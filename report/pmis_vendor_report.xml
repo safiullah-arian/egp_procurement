@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_pmis_vendor_report" model="ir.actions.report">
+        <field name="name">Vendor Report</field>
+        <field name="model">pmis.vendor.pdf.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_procurement.vendor_report_template</field>
+        <field name="report_file">egp_procurement.vendor_report_template</field>
+        <field name="print_report_name">'cash_report'</field>
+        <field name="binding_type">report</field>
+        <field name="binding_model_id" ref="model_pmis_vendor_pdf_report"/>
+        <field name="paperformat_id" ref="egp_procurement.paper_format_action_pmis_quotation"/>
+    </record>
+
+    <template id="vendor_report_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <!--                        report header-->
+                    <div class="row">
+
+                        <div class="oe_structure col-4 text-center text-nowrap ">
+                            <img style="float:left;" src="egp_procurement/static/description/images/emirate.png"
+                                 height="130"
+                                 width="150"/>
+                        </div>
+
+                        <div class="oe_structure col-4 text-center text-nowrap ">
+
+                            <p style="margin-top:40px;">وزارت مخابرات وتکنالوژی</p>
+
+                            <p>ریاست تدارکات</p>
+                            <p>
+                                <span t-esc="datas['vendor_type']"/>
+                                ګرارش از شرکت ها
+                            </p>
+
+                        </div>
+
+                        <div class="oe_structure col-4 text-center text-nowrap ">
+                            <img src="egp_procurement/static/description/images/mcit.png" height="130"
+                                 style="float:right;"
+                                 width="150"/>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align:right;">
+                        <div class="col-6">
+                            <span t-esc="datas['report_up_to']"/>:
+                            تاریخ ختم
+
+                        </div>
+                        <div class="col-6">
+                            <span t-esc="datas['report_from']"/>:
+                            تاریخ شروع
+
+
+                        </div>
+
+                    </div>
+                    <br/>
+                    <table class="table table-sm o_main_table table-bordered">
+                        <tr>
+                            <th>حالت</th>
+                            <th>تاریخ ختم اعتبار جوازنامه</th>
+                            <th>تاریخ شروع اعتبار جواز نامه</th>
+                            <th>شماره جوازنامه</th>
+                            <th>نوعیت جوازنامه</th>
+                            <th>شماره ثبت</th>
+                            <th>ادرس شرکت</th>
+                            <th>نام شرکت</th>
+                            <th>شماره</th>
+                        </tr>
+
+
+                        <t t-set="index" t-value="0"/>
+                        <t t-foreach="docs" t-as="doc">
+                            <tr style="text-align:right;">
+
+                                <td>
+                                    <span t-esc="doc.status"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.license_finish_date"/>
+                                </td>
+
+                                <td>
+                                    <span t-esc="doc.license_start_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.license_number"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.license_type"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.reg_number"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.country_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.name"/>
+                                </td>
+                                <td>
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+            </t>
+        </t>
+
+    </template>
+
+</odoo>

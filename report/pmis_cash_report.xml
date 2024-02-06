@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="action_pmis_cash_report" model="ir.actions.report">
+        <field name="name">Cash Report</field>
+        <field name="model">pmis.cash.pdf.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_procurement.cash_report_template</field>
+        <field name="report_file">egp_procurement.cash_report_template</field>
+        <field name="print_report_name">'cash_report'</field>
+        <field name="binding_type">report</field>
+        <field name="binding_model_id" ref="model_pmis_cash_pdf_report"/>
+        <field name="paperformat_id" ref="egp_procurement.paper_format_action_pmis_quotation"/>
+    </record>
+
+    <template id="cash_report_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+
+                    <div class="row">
+
+                        <div class="oe_structure col-4 text-center text-nowrap ">
+                            <img style="float:left;" src="egp_procurement/static/description/images/emirate.png"
+                                 height="130"
+                                 width="150"/>
+                        </div>
+
+                        <div class="oe_structure col-4 text-center text-nowrap ">
+
+                            <p style="margin-top:40px;">وزارت مخابرات وتکنالوژی</p>
+                            <p>معینیت مالی واداری</p>
+                            <p>ریاست تدارکات</p>
+                            <p>کتاب ثبت خریداری نقدی</p>
+
+                        </div>
+
+                        <div class="oe_structure col-4 text-center text-nowrap ">
+                            <img src="egp_procurement/static/description/images/mcit.png" height="130"
+                                 style="float:right;"
+                                 width="150"/>
+                        </div>
+                    </div>
+
+
+                    <div class="row" style="text-align:center;">
+                        <div class="col-6">
+                            <span t-esc="datas['cash_reception_date']"/>
+                            :تاریخ شروع
+
+                        </div>
+                        <div class="col-6">
+                            <span t-esc="datas['cash_reception_by_name']"/>
+                            دریافت کننده مبلغ:
+
+                        </div>
+
+                    </div>
+                    <div class="row" style="text-align:center;">
+                        <div class="col-6">
+                            تاریخ ختم:
+                            <span t-esc="datas['cash_reception_report_up_to_date']"/>
+                        </div>
+                        <div class="col-6">
+                            <span t-esc="datas['cash_reception_by_role']"/>
+                            :عنوان بست دریافت کننده
+
+                        </div>
+
+                        <br></br>
+                        مبلغ دریافت شده
+                        <span t-esc="datas['amount']"/>
+                    </div>
+                    <table class="table table-sm o_main_table table-bordered">
+                        <tr>
+                            <th>ریاست نیازمند</th>
+                            <th>مبلغ باقیمانده</th>
+                            <th colspan="2">مصرف (دیبیت)</th>
+                            <th>در آمد(کریدیت)</th>
+                            <th>شماره (م۲/م۳)</th>
+                            <th>نوعیت خریداری</th>
+                            <th>نوعیت تدارکات</th>
+                            <th>تفصیل خریداری</th>
+                            <th>تاریخ</th>
+                            <th>شماره</th>
+                        </tr>
+                        <tr>
+                            <td colspan="8" style="text-align:center;">
+                                افغانی
+                                <span t-esc="datas['amount']"/>
+                            </td>
+                            <td>معتمد ریاست مالی (ارایه کننده مبلغ)
+                                <span t-esc="datas['cash_reception_from_name']"/>
+                            </td>
+                            <td>
+                                <span t-esc="datas['cash_reception_date']"/>
+                            </td>
+                            <td>1</td>
+
+
+                        </tr>
+                        <t t-set="available_balance" t-value="datas['amount']"/>
+                        <t t-set="index" t-value="1"/>
+                        <t t-set="total_available_amount" t-value="0"/>
+                        <t t-set="total_expenses" t-value="0"/>
+                        <t t-foreach="docs" t-as="doc">
+                            <tr style="text-align:right;">
+                                <td>
+                                    <span t-esc="doc.purchas_project_20000.requested_by.name"/>
+                                    <span t-esc="doc.quotation_project_id.purchase_project_id.requested_by.name"/>
+                                </td>
+                                <td>
+                                    <span t-set='available_balance'
+                                          t-value="available_balance - doc.purchase_amount"/>
+                                    <span t-esc="available_balance"/>
+                                    <t t-set="total_available_amount"
+                                       t-value="total_available_amount + available_balance"/>
+
+                                </td>
+                                <td colspan="2">
+                                    <span t-esc="doc.purchase_amount"/>
+                                    <t t-set="total_expenses" t-value="total_expenses + doc.purchase_amount"/>
+                                </td>
+                                <td>
+                                    <span t-esc="available_balance"/>
+                                </td>
+                                <td>
+                                    <span t-if="doc.purchas_project_m2_number != 0"
+                                          t-esc="doc.purchas_project_m2_number"/>
+                                    <span t-if="doc.purchas_project_m3_number != 0"
+                                          t-esc="doc.purchas_project_m3_number"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.purchase_project_type"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.purchas_project_20000.category_id.name"/>
+                                    <span t-esc="doc.quotation_project_id.purchase_project_id.category_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.purchas_project_20000.request_explanation"/>
+                                    <span t-esc="doc.quotation_project_id.purchase_project_id.request_explanation"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.date"/>
+                                </td>
+                                <td>
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <tr>
+                            <td rowspan="2"></td>
+                            <th>مبلغ باقیمانده</th>
+                            <th>مبلغ برګشت شده به معتمد مالی</th>
+                            <th>مصارف حقیقی</th>
+                            <th>مبلغ دریافت شده</th>
+                            <th colspan="6" rowspan="2" style="text-align:center;">مجموعه</th>
+
+
+                        </tr>
+
+                        <tr style="text-align:center;">
+                            <td>
+                                <t t-esc="datas['amount'] - (total_expenses + datas['refund_cash'])"/>
+                            </td>
+                            <td>
+                                <t t-esc="datas['refund_cash']"/>
+                            </td>
+                            <td>
+                                <t t-esc="total_expenses"/>
+                            </td>
+                            <td>
+                                <t t-esc="datas['amount']"/>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </t>
+        </t>
+
+    </template>
+
+</odoo>

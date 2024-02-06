@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree View for PmisFirstShortlist -->
+    <record id="view_pmis_first_shortlist_tree" model="ir.ui.view">
+        <field name="name">pmis.first.shortlist.tree</field>
+        <field name="model">pmis.first.shortlist</field>
+        <field name="arch" type="xml">
+            <tree string="First Shortlist">
+                <field name="shortlist_project_id"/>
+                <field name="procurement_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for PmisFirstShortlist -->
+    <record id="view_pmis_first_shortlist_form" model="ir.ui.view">
+        <field name="name">pmis.first.shortlist.form</field>
+        <field name="model">pmis.first.shortlist</field>
+        <field name="arch" type="xml">
+            <form string="First Shortlist">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="shortlist_project_id"/>
+                            <field name="procurement_type"/>
+                        </group>
+                        <group>
+                            <!--                            <field name="shortlist_application_offer_ids"/>-->
+                            <field name="project_name" invisible="1"/>
+<!--                            <field name="shortlist_application_ids"/>-->
+                            <!--                            widget="many2many_tags"-->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="Shortlist" string="Shortlist">
+                            <field name="shortlist_application_offer_ids">
+                                <tree editable="bottom">
+                                    <field name="first_shortlist_id" invisible="1"/>
+                                    <field name="candidate_id"/>
+                                    <field name="candidate_name" invisible="1"/>
+                                    <field name="experience"/>
+                                    <field name="proposal_text"/>
+                                    <field name="available_offer_ids" invisible="1"/>
+                                </tree>
+                                <form>
+                                    <group>
+
+                                        <field name="available_offer_ids"  invisible="1"/>
+                                        <field name="first_shortlist_id"  invisible="1"/>
+                                        <field name="candidate_id" />
+                                        <field name="candidate_name" invisible="1"/>
+                                        <field name="experience"/>
+                                        <field name="proposal_text"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+     <record id="view_pmis_first_shortlist_search" model="ir.ui.view">
+        <field name="name">pmis.first.shortlist.search</field>
+        <field name="model">pmis.first.shortlist</field>
+        <field name="arch" type="xml">
+            <search string="Search First Shortlist">
+                <field name="shortlist_project_id" string="Project"/>
+                <field name="procurement_type" string="Procurement Type"/>
+            </search>
+        </field>
+</record>
+
+    <!-- Action for PmisFirstShortlist -->
+    <record id="action_pmis_first_shortlist" model="ir.actions.act_window">
+        <field name="name">First Shortlist</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.first.shortlist</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_pmis_first_shortlist_tree"/>
+        <field name="search_view_id" ref="view_pmis_first_shortlist_search"/>
+    </record>
+
+    <!-- Menu for PmisFirstShortlist -->
+    <menuitem
+            id="menu_pmis_first_shortlist"
+            name="First Shortlist"
+            parent="pmis_bidding_consult_root"
+            action="action_pmis_first_shortlist"
+            groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract,egp_procurement.pmis_Consultative_expert"
+            sequence="3"/>
+
+
+</odoo>

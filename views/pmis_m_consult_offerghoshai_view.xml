@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View for PmisConsultativeOfferGhoshaiProject -->
+    <record id="view_pmis_consultative_offerghoshai_project_form" model="ir.ui.view">
+        <field name="name">pmis.consultative.offerghoshai.project.form</field>
+        <field name="model">pmis.consultative.offerghoshai.project</field>
+        <field name="arch" type="xml">
+            <form string="Consultative Offer Ghoshai Project">
+                <sheet>
+                    <group>
+                        <field name="offer_shortlist_project_id"/>
+                        <field name="project_name" invisible="1"/>
+
+
+                    </group>
+                    <notebook>
+                        <page string="Offer Ghoshai Details">
+                            <field name="offerghoshai_details_ids"/>
+                        </page>
+                        <page string="Board Members" name="Board Members">
+                            <field name="offerghoshai_agent_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="position_title"/>
+                                    <field name="phone"/>
+                                    <field name="email"/>
+                                    <field name="department_id"/>
+
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="name"/>
+                                        <field name="position_title"/>
+                                        <field name="phone"/>
+                                        <field name="email"/>
+                                        <field name="department_id"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for PmisConsultativeOfferGhoshaiProject -->
+    <record id="view_pmis_consultative_offerghoshai_project_tree" model="ir.ui.view">
+        <field name="name">pmis.consultative.offerghoshai.project.tree</field>
+        <field name="model">pmis.consultative.offerghoshai.project</field>
+        <field name="arch" type="xml">
+            <tree string="Consultative Offer Ghoshai Project">
+                <field name="offer_shortlist_project_id"/>
+
+            </tree>
+        </field>
+    </record>
+    <record id="view_pmis_consultative_offerghoshai_project_search" model="ir.ui.view">
+        <field name="name">pmis.consultative.offerghoshai.project.search</field>
+        <field name="model">pmis.consultative.offerghoshai.project</field>
+        <field name="arch" type="xml">
+            <search string="Search Consultative OfferGhoshai Projects">
+                <field name="offer_shortlist_project_id" string="Project Name"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action for PmisConsultativeOfferGhoshaiProject -->
+    <record id="action_pmis_consultative_offerghoshai_project" model="ir.actions.act_window">
+        <field name="name">Consultative Offer Ghoshai Project</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.consultative.offerghoshai.project</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_pmis_consultative_offerghoshai_project_tree"/>
+        <field name="search_view_id" ref="view_pmis_consultative_offerghoshai_project_search"/>
+    </record>
+
+    <!-- Menu for PmisConsultativeOfferGhoshaiProject -->
+    <menuitem
+            id="menu_pmis_consultative_offerghoshai_project"
+            name="Offer Ghoshai Project"
+            parent="pmis_bidding_consult_root"
+            action="action_pmis_consultative_offerghoshai_project"
+            sequence="5"/>
+</odoo>

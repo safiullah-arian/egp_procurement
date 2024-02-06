@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View for Project Announcement -->
+    <record id="view_project_announcement_form" model="ir.ui.view">
+        <field name="name">project.announcement.form</field>
+        <field name="model">project.announcement</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="planned_project_id"/>
+                            <field name="need_announcements"/>
+                            <field name="project_name" invisible="1"/>
+                            <!--                            <field name="project_procurement_type_id" />-->
+
+
+                            <field name="pro_announcement_date"
+                                   invisible="need_announcements != 'need announcement'"/>
+                            <field name="pro_announcement_end_date"
+                                    invisible="need_announcements != 'need announcement'"/>
+                        </group>
+                        <group>
+                            <field name="announcement_source"
+                                   invisible="need_announcements != 'need announcement'"/>
+                            <field name="submission_address" widget="text"/>
+                            <field name="note" widget="text"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for Project Announcement -->
+    <record id="view_project_announcement_tree" model="ir.ui.view">
+        <field name="name">project.announcement.tree</field>
+        <field name="model">project.announcement</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="planned_project_id"/>
+                <field name="pro_announcement_date"/>
+                <field name="pro_announcement_end_date"/>
+                <field name="announcement_source"/>
+                <field name="submission_address"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_project_announcement_search" model="ir.ui.view">
+        <field name="name">project.announcement.search</field>
+        <field name="model">project.announcement</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- Enable Global Search -->
+                <field name="planned_project_id" position="attributes">
+                    <attribute name="string">Project</attribute>
+                    <attribute name="filter_domain">['|', ('planned_project_id', 'ilike', self),
+                        ('pro_announcement_date', 'ilike', self)]
+                    </attribute>
+                </field>
+
+                <field name="pro_announcement_date" string="Announcement Date"/>
+                <field name="need_announcements" string="Announcement Needed"/>
+                <filter string="Announcement Needed" name="filter_announcement_needed"
+                        context="{'group_by':'need_announcements'}"/>
+            </search>
+        </field>
+
+    </record>
+
+    <!-- Action for Project Announcement -->
+    <record id="action_project_announcement" model="ir.actions.act_window">
+        <field name="name">Project Announcements</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.announcement</field>
+        <field name="context">{'default_planned_project_id.project_id.category_id': (1,3)}</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_project_announcement_tree"/>
+        <field name="search_view_id" ref="view_project_announcement_search"/>
+    </record>
+
+
+    <!-- Menu Item for Project Announcement -->
+    <menuitem
+            id="project_menu_announcement"
+            name="Project Announcements"
+            action="action_project_announcement"
+            parent="pmis_bidding_root"
+            sequence="1"/>
+
+</odoo>

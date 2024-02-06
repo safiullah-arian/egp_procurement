@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <record model="ir.module.category" id="module_category_pmis">
+        <field name="name">Procurement Management System</field>
+        <field name="description">Category for Procurement Management System</field>
+        <field name="sequence">5</field>
+    </record>
+
+    <!--  Admin group-->
+    <record model="res.groups" id="pmis_admin">
+        <field name="name">PMIS admin</field>
+        <field name="category_id" ref="module_category_pmis"/>
+    </record>
+    <record id="pmis_see_product1" model="ir.rule">
+        <field name="name">PMIS Product Rule1</field>
+        <field name="model_id" ref="model_pmis_project"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('egp_procurement.pmis_admin'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+    <record id="pmis_all_announced_projects_rule" model="ir.rule">
+        <field name="name">PMIS All Announced Consultative Projects</field>
+        <field name="model_id" ref="model_project_announcement"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('egp_procurement.pmis_admin'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+<!--     <record id="pmis_all_announced_projects_rule" model="ir.rule">-->
+<!--        <field name="name">PMIS All Announced Consultative Projects</field>-->
+<!--        <field name="model_id" ref="model_project_announcement"/>-->
+<!--        <field name="domain_force">[('planned_project_id.project_id.category_id', '=', 1)]</field>-->
+<!--        <field name="groups" eval="[(4, ref('egp_procurement.pmis_admin'))]"/>-->
+<!--        <field name="perm_read" eval="1"/>-->
+<!--        <field name="perm_write" eval="1"/>-->
+<!--        <field name="perm_create" eval="0"/>-->
+<!--        <field name="perm_unlink" eval="0"/>-->
+<!--    </record>-->
+
+    <!-- Procurement head group   -->
+    <record model="res.groups" id="pmis_head">
+        <field name="name">PMIS head</field>
+        <field name="category_id" ref="module_category_pmis"/>
+    </record>
+    <!--Plan And Contract head-->
+    <record model="res.groups" id="Head_of_Plan_and_Contract">
+        <field name="name">pmis_Head of Plan and Contract</field>
+        <field name="category_id" ref="module_category_pmis"/>
+    </record>
+
+
+    <!--    Purchase Manager-->
+    <record model="res.groups" id="pmis_purchase_managers_less_20000">
+        <field name="name">PMIS Purchase Managers(1-2)</field>
+        <field name="category_id" ref="module_category_pmis"/>
+    </record>
+
+    <!--    pmis purches less_200000-->
+    <record id="pmis_see_purches1" model="ir.rule">
+        <field name="name">PMIS Purches1 Rule</field>
+        <field name="model_id" ref="model_pmis_purchase_project"/>
+        <field name="domain_force">[('purchase_type', '=', 'below20000')]</field>
+        <field name="groups" eval="[(4, ref('pmis_purchase_managers_less_20000'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="pmis_see_purches4" model="ir.rule">
+        <field name="name">PMIS Purches4 Rule</field>
+        <field name="model_id" ref="model_pmis_purchase_kharidari"/>
+        <field name="domain_force">[('purchase_project_type', '=', 'below20000')]</field>
+        <field name="groups" eval="[(4, ref('pmis_purchase_managers_less_20000'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!--    purchase manager <5000000-->
+
+    <record model="res.groups" id="pmis_purchase_managers_less_5000000">
+        <field name="name">PMIS Purchase Managers(5-5)</field>
+        <field name="category_id" ref="module_category_pmis"/>
+    </record>
+    <record id="pmis_see_purches2" model="ir.rule">
+        <field name="name">PMIS Purches2 Rule</field>
+        <field name="model_id" ref="model_pmis_purchase_project"/>
+        <field name="domain_force">[('purchase_type', 'in',
+            ('upto250000','upto500000'))]
+        </field>
+        <field name="groups" eval="[(4, ref('pmis_purchase_managers_less_5000000'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="pmis_see_purches3" model="ir.rule">
+        <field name="name">PMIS Purches3 Rule</field>
+        <field name="model_id" ref="model_pmis_purchase_kharidari"/>
+        <field name="domain_force">[('purchase_project_type', 'in',
+            ('upto250000','upto500000')]</field>
+        <field name="groups" eval="[(4, ref('pmis_purchase_managers_less_5000000'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!--consultative procurement expert-->
+    <record model="res.groups" id="pmis_Consultative_expert">
+        <field name="name">pmis_Consultative_expert</field>
+        <field name="category_id" ref="module_category_pmis"/>
+    </record>
+    <!--('category_id','=',2) '|',   ('create_uid', '=', user.id)-->
+
+    <record id="pmis_consultative_project_rule" model="ir.rule">
+        <field name="name">PMIS Create Consultative Project Rule</field>
+        <field name="model_id" ref="model_pmis_project"/>
+        <field name="domain_force">[('category_id','=',2)]</field>
+        <field name="groups" eval="[(4, ref('pmis_Consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="pmis_see_project_own_consultative_report" model="ir.rule">
+        <field name="name">PMIS Consultative Project Report Rule</field>
+        <field name="model_id" ref="model_pmis_project_pdf_report"/>
+        <field name="domain_force">[('create_uid', '=', user.id),('category_id','=',2)]</field>
+        <field name="groups" eval="[(4, ref('pmis_Consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="pmis_own_consultative_plan_template_report" model="ir.rule">
+        <field name="name">PMIS Consultative Plan Report Rule</field>
+        <field name="model_id" ref="model_pmis_plan_pdf_report"/>
+        <field name="domain_force">[('create_uid', '=', user.id),('category_id','=',2)]</field>
+        <field name="groups" eval="[(4, ref('pmis_Consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="pmis_own_consultative_announced_projects_rule" model="ir.rule">
+        <field name="name">PMIS Announced Consultative Projects</field>
+        <field name="model_id" ref="model_project_announcement"/>
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('pmis_Consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="pmis_own_consultative_announced_projects_rule" model="ir.rule">
+        <field name="name">PMIS Announced Consultative Projects</field>
+        <field name="model_id" ref="model_project_announcement"/>
+        <field name="domain_force">['|',('create_uid', '=',
+            user.id),('planned_project_id.project_id.category_id','=',2)]
+        </field>
+        <field name="groups" eval="[(4, ref('pmis_Consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="pmis_own_consultative_pmis_offer_submission_project_rule" model="ir.rule">
+        <field name="name">PMIS Offer Submission Consultative Projects Rule</field>
+        <field name="model_id" ref="model_pmis_offer_submission_project"/>
+        <field name="domain_force">['|',('create_uid', '=',
+            user.id),('announced_project_id.planned_project_id.project_id.category_id','=',2)]
+        </field>
+        <field name="groups" eval="[(4, ref('pmis_Consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+
+    <!--product Rule    -->
+    <record model="res.groups" id="Products_Non_consultative_expert">
+        <field name="name">pmis_Products and Non consultative expert</field>
+        <field name="category_id" ref="module_category_pmis"/>
+    </record>
+    <record id="pmis_own_products_pmis_offer_submission_project_rule" model="ir.rule">
+        <field name="name">PMIS Offer Submission Products Projects</field>
+        <field name="model_id" ref="model_pmis_offer_submission_project"/>
+        <field name="domain_force">['|',('create_uid', '=',
+            user.id),('announced_project_id.planned_project_id.project_id.category_id','=',1)]
+        </field>
+        <field name="groups" eval="[(4, ref('Products_Non_consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="pmis_own_products_pmis_offers_details_rule" model="ir.rule">
+        <field name="name">PMIS Offer Details Products project rule</field>
+        <field name="model_id" ref="model_pmis_offers_details"/>
+        <field name="domain_force">['|',('create_uid',
+            '=',user.id),('offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.category_id','=',1)]
+        </field>
+        <field name="groups" eval="[(4, ref('Products_Non_consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="pmis_own_products_pmis_offerghoshai_rule" model="ir.rule">
+        <field name="name">PMIS Offer Ghshai products Projects</field>
+        <field name="model_id" ref="model_pmis_offerghoshai"/>
+        <field name="domain_force">['|',('create_uid',
+            '=',user.id),('offer_submission_project_id.announced_project_id.planned_project_id.project_id.category_id','=',1)]
+        </field>
+        <field name="groups" eval="[(4, ref('Products_Non_consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+
+    <record id="pmis_own_products_pmis_offers_evaluation_rule" model="ir.rule">
+        <field name="name">PMIS Offer Evaulation Products Projects</field>
+        <field name="model_id" ref="model_pmis_offers_evaluation"/>
+        <field name="domain_force">['|',('create_uid',
+            '=',user.id),('offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.category_id','=',1)]
+        </field>
+        <field name="groups" eval="[(4, ref('Products_Non_consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="pmis_own_products_bidding_winner_rule" model="ir.rule">
+        <field name="name">PMIS Offer Winner Products Projects</field>
+        <field name="model_id" ref="model_bidding_winner"/>
+        <field name="domain_force">['|',('create_uid',
+            '=',user.id),('evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.category_id','=',1)]
+        </field>
+        <field name="groups" eval="[(4, ref('Products_Non_consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+
+    <record id="pmis_see_product" model="ir.rule">
+        <field name="name">PMIS Product Rule</field>
+        <field name="model_id" ref="model_pmis_project"/>
+        <field name="domain_force">[('category_id','=',1)]</field>
+        <field name="groups" eval="[(4, ref('Products_Non_consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="pmis_see_project_own_report" model="ir.rule">
+        <field name="name">PMIS Project Report Rule</field>
+        <field name="model_id" ref="model_pmis_project_pdf_report"/>
+        <field name="domain_force">[('create_uid', '=', user.id),('category_id','=',1)]</field>
+        <field name="groups" eval="[(4, ref('Products_Non_consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="pmis_own_products_announced_projects_rule" model="ir.rule">
+        <field name="name">PMIS Announced Products Projects</field>
+        <field name="model_id" ref="model_project_announcement"/>
+        <field name="domain_force">['|',('create_uid', '=',
+            user.id),('planned_project_id.project_id.category_id','=',1)]
+        </field>
+        <field name="groups" eval="[(4, ref('Products_Non_consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="pmis_own_plan_template_report" model="ir.rule">
+        <field name="name">PMIS Plan Report Rule</field>
+        <field name="model_id" ref="model_pmis_plan_pdf_report"/>
+        <field name="domain_force">[('create_uid', '=', user.id),('category_id','=',1)]</field>
+        <field name="groups" eval="[(4, ref('Products_Non_consultative_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+
+    <!--    procurement constrcution expert-->
+    <record model="res.groups" id="pmis_archi">
+        <field name="name">pmis_Architectonic_expert</field>
+        <field name="category_id" ref="module_category_pmis"/>
+    </record>
+    <!--'|',('create_uid', '=', user.id),-->
+    <record id="pmis_see_archi" model="ir.rule">
+        <field name="name">PMIS Construction Rule</field>
+        <field name="model_id" ref="model_pmis_project"/>
+        <field name="domain_force">[('category_id','=',3)]</field>
+        <field name="groups" eval="[(4, ref('pmis_archi'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="pmis_see_project_own_construction_report" model="ir.rule">
+        <field name="name">PMIS Construction Project Report Rule</field>
+        <field name="model_id" ref="model_pmis_project_pdf_report"/>
+        <field name="domain_force">[('create_uid', '=', user.id),('category_id','=',3)]</field>
+        <field name="groups" eval="[(4, ref('pmis_archi'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="pmis_own_plan_construction_template_report" model="ir.rule">
+        <field name="name">PMIS Construction Plan Report Rule</field>
+        <field name="model_id" ref="model_pmis_plan_pdf_report"/>
+        <field name="domain_force">[('create_uid', '=', user.id),('category_id','=',3)]</field>
+        <field name="groups" eval="[(4, ref('pmis_archi'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="pmis_own_construction_announced_projects_rule" model="ir.rule">
+        <field name="name">PMIS Announced Construction Projects</field>
+        <field name="model_id" ref="model_project_announcement"/>
+        <field name="domain_force">['|',('create_uid', '=',
+            user.id),('planned_project_id.project_id.category_id','=',3)]
+        </field>
+        <field name="groups" eval="[(4, ref('pmis_archi'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="pmis_own_construction_pmis_offer_submission_project_rule" model="ir.rule">
+        <field name="name">PMIS Offer Submission Construction Projects</field>
+        <field name="model_id" ref="model_pmis_offer_submission_project"/>
+        <field name="domain_force">['|',('create_uid', '=',
+            user.id),('announced_project_id.planned_project_id.project_id.category_id','=',3)]
+        </field>
+        <field name="groups" eval="[(4, ref('pmis_archi'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="pmis_own_construction_pmis_offerghoshai_rule" model="ir.rule">
+        <field name="name">PMIS Offer Ghshai Construction Projects</field>
+        <field name="model_id" ref="model_pmis_offerghoshai"/>
+        <field name="domain_force">['|',('create_uid',
+            '=',user.id),('offer_submission_project_id.announced_project_id.planned_project_id.project_id.category_id','=',3)]
+        </field>
+        <field name="groups" eval="[(4, ref('pmis_archi'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="pmis_own_construction_pmis_offers_details_rule" model="ir.rule">
+        <field name="name">PMIS Offer Details Construction Projects</field>
+        <field name="model_id" ref="model_pmis_offers_details"/>
+        <field name="domain_force">['|',('create_uid',
+            '=',user.id),('offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.category_id','=',3)]
+        </field>
+        <field name="groups" eval="[(4, ref('pmis_archi'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="pmis_own_construction_pmis_offers_evaluation_rule" model="ir.rule">
+        <field name="name">PMIS Offer Evaulation Construction Projects</field>
+        <field name="model_id" ref="model_pmis_offers_evaluation"/>
+        <field name="domain_force">['|',('create_uid',
+            '=',user.id),('offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.category_id','=',3)]
+        </field>
+        <field name="groups" eval="[(4, ref('pmis_archi'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="pmis_own_construction_bidding_winner_rule" model="ir.rule">
+        <field name="name">PMIS Offer Winner Construction Projects</field>
+        <field name="model_id" ref="model_bidding_winner"/>
+        <field name="domain_force">['|',('create_uid',
+            '=',user.id),('evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.category_id','=',3)]
+        </field>
+        <field name="groups" eval="[(4, ref('pmis_archi'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+
+    <record model="res.groups" id="pmis_Plan_product_expert">
+        <field name="name">pmis plan and product expert</field>
+        <field name="category_id" ref="module_category_pmis"/>
+    </record>
+
+    <record model="res.groups" id="pmis_plan_consltative_expert">
+        <field name="name">pmis plan consltative expert</field>
+        <field name="category_id" ref="module_category_pmis"/>
+
+    </record>
+
+    <record model="res.groups" id="pmis_plan_archi_expert">
+        <field name="name">plan and constraction expert</field>
+        <field name="category_id" ref="module_category_pmis"/>
+
+    </record>
+    <!--    contract user rules-->
+    <!--    <record id="pmis_see_only_archi" model="ir.rule">-->
+    <!--        <field name="name">PMIS Construction Plan Rule</field>-->
+    <!--        <field name="model_id" ref="model_project_announcement"/>-->
+    <!--        <field name="domain_force">[('create_uid', '=', user.id),('planned_project_id.project_id.category_id','=',2)]-->
+    <!--        </field>-->
+    <!--        <field name="groups" eval="[(4, ref('egp_procurement.pmis_plan_archi_expert'))]"/>-->
+    <!--        <field name="perm_read" eval="1"/>-->
+    <!--        <field name="perm_write" eval="1"/>-->
+    <!--        <field name="perm_create" eval="1"/>-->
+    <!--        <field name="perm_unlink" eval="0"/>-->
+    <!--    </record>-->
+    <!--    ('create_uid', '=', user.id),-->
+    <record id="pmis_see_only_archi" model="ir.rule">
+        <field name="name">PMIS Construction Plan Rule</field>
+        <field name="model_id" ref="model_pmis_contract_management"/>
+        <field name="domain_force">
+            [('winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.category_id','=',3)]
+        </field>
+        <field name="groups" eval="[(4, ref('egp_procurement.pmis_plan_archi_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="pmis_see_only_archi_delivery_description" model="ir.rule">
+        <field name="name">PMIS Construction Delivery Rule</field>
+        <field name="model_id" ref="model_pmis_delivery_description"/>
+        <field name="domain_force">
+            [('contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.category_id','=',3)]
+        </field>
+        <field name="groups" eval="[(4, ref('egp_procurement.pmis_plan_archi_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="pmis_see_only_construction_payment" model="ir.rule">
+        <field name="name">PMIS Construction Payment Rule</field>
+        <field name="model_id" ref="model_pmis_payment"/>
+        <field name="domain_force">
+            [('delivery_project_id.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.category_id','=',3)]
+        </field>
+        <field name="groups" eval="[(4, ref('egp_procurement.pmis_plan_archi_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!--    <record id="pmis_see_consltative_project" model="ir.rule">-->
+    <!--        <field name="name">PMIS See Conslatative Project Rule</field>-->
+    <!--        <field name="model_id" ref="model_project_announcement"/>-->
+    <!--        <field name="domain_force">[('create_uid', '=',-->
+    <!--            user.id),(('planned_project_id.project_id.category_id','=',2))]-->
+    <!--        </field>-->
+    <!--        <field name="groups" eval="[(4, ref('egp_procurement.pmis_plan_consltative_expert))]"/>-->
+    <!--        <field name="perm_read" eval="1"/>-->
+    <!--        <field name="perm_write" eval="1"/>-->
+    <!--        <field name="perm_create" eval="1"/>-->
+    <!--        <field name="perm_unlink" eval="0"/>-->
+    <!--    </record>-->
+
+    <!--    <record id="pmis_see_product_project" model="ir.rule">-->
+    <!--        <field name="name">PMIS see product Rule</field>-->
+    <!--        <field name="model_id" ref="model_project_announcement"/>-->
+    <!--        <field name="domain_force">[('create_uid', '=',-->
+    <!--            user.id),(('planned_project_id.project_id.category_id','=',2))]-->
+    <!--        </field>-->
+    <!--        <field name="groups" eval="[(4, ref('egp_procurement.pmis_Plan_product_expert'))]"/>-->
+    <!--        <field name="perm_read" eval="1"/>-->
+    <!--        <field name="perm_write" eval="1"/>-->
+    <!--        <field name="perm_create" eval="1"/>-->
+    <!--        <field name="perm_unlink" eval="0"/>-->
+    <!--    </record>-->
+
+    <record id="pmis_contract_products_contract_rule" model="ir.rule">
+        <field name="name">PMIS Contract Product  Rule</field>
+        <field name="model_id" ref="model_pmis_contract_management"/>
+        <field name="domain_force">
+            [('winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.category_id','=',1)]
+        </field>
+        <field name="groups" eval="[(4, ref('egp_procurement.pmis_plan_archi_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="pmis_contract_products_delivery_rule" model="ir.rule">
+        <field name="name">PMIS Products Delivery Rule</field>
+        <field name="model_id" ref="model_pmis_delivery_description"/>
+        <field name="domain_force">
+            [('contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.category_id','=',1)]
+        </field>
+        <field name="groups" eval="[(4, ref('egp_procurement.pmis_plan_archi_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+    <record id="pmis_contract_products_payment_rule" model="ir.rule">
+        <field name="name">PMIS Products Payment Rule</field>
+        <field name="model_id" ref="model_pmis_payment"/>
+        <field name="domain_force">
+            [('delivery_project_id.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.category_id','=',1)]
+        </field>
+        <field name="groups" eval="[(4, ref('egp_procurement.pmis_plan_archi_expert'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+</odoo>

@@ -1,0 +1,1666 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* my_pmis
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-11 07:14+0000\n"
+"PO-Revision-Date: 2023-11-11 07:14+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: my_pmis
+#. odoo-python
+#: code:addons/my_pmis/models/pmis_project.py:0
+#, python-format
+msgid " %s (copy)"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__contract_type__supply_chain
+msgid " Erection and  Supply, Design for Contract"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__number
+msgid " Number"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__name_dr
+msgid " نام پروژه"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_purchase__purchase_type__below20000
+msgid "1 < 20000"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_purchase__purchase_type__upto50000
+msgid "20000 < 50000"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project__budget_code__0
+msgid "220"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project__budget_code__1
+msgid "222"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project__budget_code__2
+msgid "225"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_purchase__purchase_type__upto500000
+msgid "50000 < 500000"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__access_token
+msgid "Access Token"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__message_needaction
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__message_needaction
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__message_needaction
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__message_needaction
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__activity_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__activity_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__activity_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__activity_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__activity_exception_decoration
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__activity_exception_decoration
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__activity_exception_decoration
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__activity_exception_decoration
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__activity_state
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__activity_state
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__activity_state
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__activity_state
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__activity_type_icon
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__activity_type_icon
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__activity_type_icon
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__activity_type_icon
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_form
+msgid "Add your comments here!"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_bank__address
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__address
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_bank_form
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_vendors_form
+msgid "Address"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_purchase__currency__afg
+msgid "Afg"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__allowed_vendor
+msgid "Allowance"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_vendors__allowed_vendor__allowed
+msgid "Allowed"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_assets__amount
+msgid "Amount"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project__state__announce
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__project_state__announce
+msgid "Announced"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__project_announcement_date
+msgid "Announcement Date"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__vendor_assets
+msgid "Asset Required ?"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__attachment
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_assets__attachment
+msgid "Attachment"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__message_attachment_count
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__message_attachment_count
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__message_attachment_count
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__message_attachment_count
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__local_url
+msgid "Attachment URL"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__attachment_id
+msgid "Attachments"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project__state__contract
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__project_state__contract
+msgid "Award"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__project_award_date
+msgid "Award Date"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_assets__balance_date
+msgid "Balance Date"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.actions.act_window,name:my_pmis.pmis_bank_action
+#: model:ir.model,name:my_pmis.model_pmis_bank
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_agent__bank_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_assets__bank_id
+msgid "Bank"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__budget_code
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_search
+msgid "Budget Code"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__budget_type
+msgid "Budget Type"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_purchase_form
+msgid "Buying Staff"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project__state__cancel
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__project_state__cancel
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_form
+msgid "Cancel"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__checksum
+msgid "Checksum/SHA1"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_bank__city
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__city
+msgid "City"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__comments
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__note
+#: model:ir.model.fields,help:my_pmis.field_pmis_products_price__description
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_form
+msgid "Comments"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__project_com_date
+msgid "Commission Date"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__company_id
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_conultative_hiring__hiring_type__company
+msgid "Company"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_types__vendor_type
+msgid "Company Type"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_services__note
+msgid "Considerations"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.actions.act_window,name:my_pmis.pmis_plan_template_action_architecture
+#: model:ir.ui.menu,name:my_pmis.pmis_plan_template_architecture
+msgid "Construction Plan"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_form
+msgid "Construction Services"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_construction_services
+msgid "Construction service "
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.actions.act_window,name:my_pmis.pmis_plan_template_action_consultative
+msgid "Consultative Plan"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.ui.menu,name:my_pmis.pmis_plan_template_consultative
+msgid "Consultative Services Plan"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__contract_type__percentage
+msgid "Contract Base Percentage"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__contract_no
+msgid "Contract Number"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__contract_sign_date
+msgid "Contract Sign Date"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__contract_type__sum_lum
+msgid "Contract Sum Lum"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__contract_type
+msgid "Contract Type"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__contract_type__unit_price
+msgid "Contract Unit Price"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__contract_type__build_design
+msgid "Contracts Build & Design"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_services__unit_price
+msgid "Cost/Unit"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_bank__country_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__country_id
+msgid "Country"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.actions.act_window,help:my_pmis.pmis_bank_action
+msgid "Create new Bank"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.actions.act_window,help:my_pmis.pmis_vendors_jvm_action
+msgid "Create new JVM"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.actions.act_window,help:my_pmis.pmis_products_action
+#: model_terms:ir.actions.act_window,help:my_pmis.pmis_vendors_action
+msgid "Create new Vendors"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.actions.act_window,help:my_pmis.pmis_plan_template_action_consultative
+#: model_terms:ir.actions.act_window,help:my_pmis.pmis_plan_template_action_product
+msgid "Create now..."
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_bank__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_services__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_conultative_hiring__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_country__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_directorates__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_document_type__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_tadel__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_procurement_category__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products_price__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_donor__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_agent__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_assets__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_experience__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_transactions__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_jvm__create_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_types__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_bank__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_services__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_conultative_hiring__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_country__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_directorates__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_document_type__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_tadel__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_procurement_category__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products_price__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_donor__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_agent__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_assets__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_experience__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_transactions__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_jvm__create_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_types__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_construction_services__unit_measure__m3
+msgid "Cubic meter"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__currency
+msgid "Currency"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__db_datas
+msgid "Database Data"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__date_recieved
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__purchase_date
+msgid "Date"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_search
+msgid "Departments"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_services__work_description
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__note
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_procurement_category__description
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products_price__description
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__description
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__project_description
+msgid "Description"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__budget_type__developing
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__planned_project_type__transferred
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__procurement_method__developing
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__sector__developing
+msgid "Developing"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_directorates__name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__directorates_id
+msgid "Directorate"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_bank__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_services__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_conultative_hiring__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_country__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_directorates__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_document_type__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_tadel__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_procurement_category__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products_price__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_donor__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_agent__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_assets__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_experience__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_transactions__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_jvm__display_name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_types__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__directorates_id
+msgid "Document Sender"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__type_id
+msgid "Document Type"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_document_type
+msgid "Document Type "
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__documents_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__documents_ids
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_form
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_purchase_form
+msgid "Documents"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__donor_id
+msgid "Donor"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project__state__draft
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__project_state__draft
+msgid "Draft"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__project_duration
+msgid "Duration"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__project_eligibility_evaluation_date
+msgid "Eligibility Evaluation"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_agent__email
+msgid "Email"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__project_end_date
+msgid "End Date"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__estimated_cost
+msgid "Estimated Cost"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__vendor_experience
+msgid "Experience Required ?"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__datas
+msgid "File Content (base64)"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__raw
+msgid "File Content (raw)"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__file_size
+msgid "File Size"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__financial_year
+msgid "Financial Year"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_experience__project_finish_date
+msgid "Finish Date"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__message_follower_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__message_follower_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__message_follower_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__message_follower_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__message_partner_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__message_partner_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__message_partner_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__message_partner_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,help:my_pmis.field_pmis_construction_section__activity_type_icon
+#: model:ir.model.fields,help:my_pmis.field_pmis_plan_template__activity_type_icon
+#: model:ir.model.fields,help:my_pmis.field_pmis_project__activity_type_icon
+#: model:ir.model.fields,help:my_pmis.field_pmis_project_plan__activity_type_icon
+#: model:ir.model.fields,help:my_pmis.field_pmis_purchase__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__contract_type__framework
+msgid "Framework"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_form
+msgid "Go to Plan"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.actions.act_window,name:my_pmis.pmis_plan_template_action_product
+msgid "Goods Plan"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_search
+msgid "Group By"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_jvm__name
+msgid "Group Name"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__has_message
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__has_message
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__has_message
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__has_message
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__hiring_ids
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_form
+msgid "Hiring"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_conultative_hiring__hiring_type
+msgid "Hiring Type"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_bank__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_services__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_conultative_hiring__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_country__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_directorates__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_document_type__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_tadel__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_procurement_category__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products_price__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_donor__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_agent__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_assets__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_experience__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_transactions__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_jvm__id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_types__id
+msgid "ID"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__activity_exception_icon
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__activity_exception_icon
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__activity_exception_icon
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__activity_exception_icon
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,help:my_pmis.field_pmis_construction_section__activity_exception_icon
+#: model:ir.model.fields,help:my_pmis.field_pmis_plan_template__activity_exception_icon
+#: model:ir.model.fields,help:my_pmis.field_pmis_project__activity_exception_icon
+#: model:ir.model.fields,help:my_pmis.field_pmis_project_plan__activity_exception_icon
+#: model:ir.model.fields,help:my_pmis.field_pmis_purchase__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,help:my_pmis.field_pmis_construction_section__message_needaction
+#: model:ir.model.fields,help:my_pmis.field_pmis_plan_template__message_needaction
+#: model:ir.model.fields,help:my_pmis.field_pmis_project__message_needaction
+#: model:ir.model.fields,help:my_pmis.field_pmis_project_plan__message_needaction
+#: model:ir.model.fields,help:my_pmis.field_pmis_purchase__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,help:my_pmis.field_pmis_construction_section__message_has_error
+#: model:ir.model.fields,help:my_pmis.field_pmis_plan_template__message_has_error
+#: model:ir.model.fields,help:my_pmis.field_pmis_project__message_has_error
+#: model:ir.model.fields,help:my_pmis.field_pmis_project_plan__message_has_error
+#: model:ir.model.fields,help:my_pmis.field_pmis_purchase__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__image_height
+msgid "Image Height"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__image_src
+msgid "Image Src"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__image_width
+msgid "Image Width"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__index_content
+msgid "Indexed Content"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_conultative_hiring__hiring_type__individual
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_vendors_types__vendor_type__individual
+msgid "Individual"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.ui.menu,name:my_pmis.pmis_vendors_menu
+msgid "Individual Vendors"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__inner_resource_preferred
+msgid "Inner Resource Preferred"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__message_is_follower
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__message_is_follower
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__message_is_follower
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__message_is_follower
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__public
+msgid "Is public document"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.actions.act_window,name:my_pmis.pmis_vendors_jvm_action
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_vendors_types__vendor_type__company
+#: model:ir.ui.menu,name:my_pmis.pmis_vendors_jvm_menu
+msgid "JVM"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_vendors_jvm
+msgid "JVM (Joint Vendor Machine"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_products__unit__kg
+msgid "Kilo Geram"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_bank____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_services____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_conultative_hiring____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_country____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_directorates____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_document_type____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_tadel____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_procurement_category____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products_price____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_donor____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_agent____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_assets____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_experience____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_transactions____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_jvm____last_update
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_types____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_bank__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_services__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_conultative_hiring__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_country__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_directorates__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_document_type__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_tadel__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_procurement_category__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products_price__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_donor__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_agent__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_assets__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_experience__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_transactions__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_jvm__write_uid
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_types__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_bank__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_services__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_conultative_hiring__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_country__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_directorates__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_document_type__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_tadel__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_procurement_category__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products_price__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_donor__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_agent__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_assets__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_experience__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_transactions__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_jvm__write_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_types__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__procurement_directorate
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__procurement_directorate__mcit
+msgid "MCIT"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__message_main_attachment_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__message_main_attachment_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__message_main_attachment_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__message_main_attachment_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__message_has_error
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__message_has_error
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__message_has_error
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__message_has_error
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__message_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__message_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__message_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__message_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_construction_services__unit_measure__m
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_products__unit__m
+msgid "Meter"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__mimetype
+msgid "Mime Type"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__my_activity_date_deadline
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__my_activity_date_deadline
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__my_activity_date_deadline
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__my_activity_date_deadline
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_bank__name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_country__name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_tadel__name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products__name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_donor__name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_agent__name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__name
+msgid "Name"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__planned_project_type__new
+msgid "New"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__activity_date_deadline
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__activity_date_deadline
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__activity_date_deadline
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__activity_date_deadline
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__activity_summary
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__activity_summary
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__activity_summary
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__activity_summary
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__activity_type_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__activity_type_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__activity_type_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__activity_type_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__inner_resource_preferred__0
+msgid "No"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__budget_type__normal
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__procurement_method__normal
+msgid "Normal"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_vendors__allowed_vendor__illegal
+msgid "Not Allowed"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_conultative_hiring__note
+msgid "Note"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_products__unit__n
+msgid "Number"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__message_needaction_counter
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__message_needaction_counter
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__message_needaction_counter
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__message_needaction_counter
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_transactions__number_of_transactions
+msgid "Number of Contracts"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_conultative_hiring__number_employees
+msgid "Number of Employees"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_transactions__experience_years
+msgid "Number of Years"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__message_has_error_counter
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__message_has_error_counter
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__message_has_error_counter
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__message_has_error_counter
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,help:my_pmis.field_pmis_construction_section__message_needaction_counter
+#: model:ir.model.fields,help:my_pmis.field_pmis_plan_template__message_needaction_counter
+#: model:ir.model.fields,help:my_pmis.field_pmis_project__message_needaction_counter
+#: model:ir.model.fields,help:my_pmis.field_pmis_project_plan__message_needaction_counter
+#: model:ir.model.fields,help:my_pmis.field_pmis_purchase__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,help:my_pmis.field_pmis_construction_section__message_has_error_counter
+#: model:ir.model.fields,help:my_pmis.field_pmis_plan_template__message_has_error_counter
+#: model:ir.model.fields,help:my_pmis.field_pmis_project__message_has_error_counter
+#: model:ir.model.fields,help:my_pmis.field_pmis_project_plan__message_has_error_counter
+#: model:ir.model.fields,help:my_pmis.field_pmis_purchase__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__project_offer_evaluation_last_date
+msgid "Offer Evaluation"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__project_offer_opening_date
+msgid "Offer Opening"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project__state__offer-testing
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__project_state__offer-testing
+msgid "Offer Testing"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project__state__offer-opening
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__project_state__offer-opening
+msgid "Opening Offers"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__original_id
+msgid "Original (unoptimized, unresized) attachment"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__contract_type__other
+msgid "Other"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.ui.menu,name:my_pmis.pmis_root_menu
+msgid "PMIS"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.actions.act_window,name:my_pmis.pmis_construction_project
+msgid "PMIS Construction Project"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_country
+msgid "PMIS Country"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_directorates
+#: model:ir.model,name:my_pmis.model_pmis_documents
+msgid "PMIS Directorates"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.actions.act_window,name:my_pmis.pmis_plan_action
+msgid "PMIS Plan Action"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.actions.act_window,name:my_pmis.pmis_vendors_action
+#: model:ir.model,name:my_pmis.model_pmis_vendors
+msgid "PMIS Vendors"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project__state__payment
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__project_state__payment
+msgid "Payment"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_agent__phone
+msgid "Phone"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_plan_template
+#: model:ir.model,name:my_pmis.model_pmis_project_plan
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__project_plan_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__plan_template_id
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project__state__plan
+#: model:ir.ui.menu,name:my_pmis.pmis_plan_menu
+msgid "Plan"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_plan_tadel
+msgid "Plan Tadel"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.actions.act_window,help:my_pmis.pmis_plan_action
+msgid "Plan a project now..."
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__contract_type__industrial
+msgid "Plant Industrial For Contract Turnke"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_agent__position_title
+msgid "Position"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_conultative_hiring__position_name
+msgid "Position Name"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__contract_type__pos_payment
+msgid "Post Payment"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products_price__price
+msgid "Price"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_construction_section
+#: model:ir.model,name:my_pmis.model_pmis_procurement_category
+msgid "Procurement Category"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__procurement_directorate
+msgid "Procurement Directorate"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_procurement_category__name
+msgid "Procurement Group"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__procurement_method
+msgid "Procurement Method"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__category_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__category_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__category_id
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_search
+msgid "Procurement Type"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_conultative_hiring
+msgid "Product Consultative service Hiring "
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_products
+msgid "Product Model "
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.actions.act_window,name:my_pmis.pmis_products_action
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products_price__product_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__products_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__products_price_ids
+#: model:ir.ui.menu,name:my_pmis.pmis_products_menu
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_form
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_purchase_form
+msgid "Products"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.ui.menu,name:my_pmis.pmis_plan_template_product
+msgid "Products And Non Consultative Plan"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_products_price
+msgid "Products Price "
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.actions.act_window,name:my_pmis.pmis_project_action
+#: model:ir.model,name:my_pmis.model_pmis_project
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__project_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_conultative_hiring__project_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__project_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products_price__project_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__project_id
+#: model:ir.ui.menu,name:my_pmis.pmis_project_menu
+#: model:ir.ui.menu,name:my_pmis.pmis_project_menu_new
+msgid "Project"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__budget_amount
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_experience__project_amount
+msgid "Project Amount"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_project_donor
+msgid "Project Donor"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__name
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_experience__project_name
+msgid "Project Name"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__project_number
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_form
+msgid "Project Number"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__project_plan_ids
+msgid "Project Plan"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_search
+msgid "Project Status"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__planned_project_type
+msgid "Project Type"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_tadel__plan_template_ids
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_plan_template_form
+msgid "Projects"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.actions.act_window,name:my_pmis.pmis_purchase_action
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__purchase_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_agent__purchase_id
+#: model:ir.ui.menu,name:my_pmis.pmis_purchase_menu
+msgid "Purchase"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_purchase
+msgid "Purchases"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products_price__qty
+msgid "Quantity"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_experience__reference_name
+msgid "Reference"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__reg_number
+msgid "Register Number"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.ui.menu,name:my_pmis.pmis_report_menu
+msgid "Reporting"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__project_reporting_date
+msgid "Reporting Date"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__request_ref
+msgid "Request Reference"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_project_form
+msgid "Reset to Draft"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__sector__0
+msgid "Resource"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__res_field
+msgid "Resource Field"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__res_id
+msgid "Resource ID"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__res_model
+msgid "Resource Model"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__res_name
+msgid "Resource Name"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__activity_user_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__activity_user_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__activity_user_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__activity_user_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_services__section_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__section_ids
+msgid "Section"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__name
+msgid "Section Name"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__sector
+msgid "Sector"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_section__services_ids
+msgid "Services"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__project_start_date
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_experience__project_start_date
+msgid "Start Date"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__state
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__project_state
+msgid "States"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,help:my_pmis.field_pmis_construction_section__activity_state
+#: model:ir.model.fields,help:my_pmis.field_pmis_plan_template__activity_state
+#: model:ir.model.fields,help:my_pmis.field_pmis_project__activity_state
+#: model:ir.model.fields,help:my_pmis.field_pmis_project_plan__activity_state
+#: model:ir.model.fields,help:my_pmis.field_pmis_purchase__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__store_fname
+msgid "Stored Filename"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_bank__street
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__street
+msgid "Street"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__subject
+msgid "Subject"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__tin_finish_date
+msgid "TIN Finish Date"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__tin_number
+msgid "TIN Number"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__tin_start_date
+msgid "TIN Start Date"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_plan_template__tadel_id
+msgid "Tadel"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project_plan__project_technical_documents_date
+msgid "Technical Documents Completion Date"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.constraint,message:my_pmis.constraint_pmis_project_unique_keys
+msgid "This field must be unique"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_transactions__transactions_amount
+msgid "Total Amount"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__vendor_transaction
+msgid "Transaction Required ?"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__type
+msgid "Type"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_document_type__name
+msgid "Type Name"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,help:my_pmis.field_pmis_construction_section__activity_exception_decoration
+#: model:ir.model.fields,help:my_pmis.field_pmis_plan_template__activity_exception_decoration
+#: model:ir.model.fields,help:my_pmis.field_pmis_project__activity_exception_decoration
+#: model:ir.model.fields,help:my_pmis.field_pmis_project_plan__activity_exception_decoration
+#: model:ir.model.fields,help:my_pmis.field_pmis_purchase__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_purchase__currency__usd-dollar
+msgid "USD"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products__unit
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products_price__unit
+msgid "Unit"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_services__unit_measure
+msgid "Unit/Measure"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__url
+msgid "Url"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_documents__vendor_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__vendors_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_agent__vendors_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_assets__vendors_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_transactions__vendors_id
+msgid "Vendor"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__vendors_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_types__jvm_vendor_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_types__vendor_id
+msgid "Vendor "
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_vendor_agent
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_bank__agent_ids
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__agent_ids
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_vendors_form
+msgid "Vendor Agent"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__agent_ids
+msgid "Vendor Agents"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_vendor_assets
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__assets_ids
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_vendors_form
+msgid "Vendor Assets"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_vendor_experience
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__experience_ids
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_vendors_form
+msgid "Vendor Experience"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendor_experience__vendors_id
+msgid "Vendor ID"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_vendor_transactions
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_vendors_form
+msgid "Vendor Transaction"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__transactions_ids
+msgid "Vendor Transactions"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model,name:my_pmis.model_pmis_vendors_types
+msgid "Vendor Types"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_bank_form
+msgid "Vendor agent"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors_jvm__vendor_ids
+#: model:ir.ui.menu,name:my_pmis.pmis_vendor_root_menu
+msgid "Vendors"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_construction_services__work_amount
+msgid "Work Amount"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_conultative_hiring__candidiate_experience
+msgid "Work Experience"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields.selection,name:my_pmis.selection__pmis_project_plan__inner_resource_preferred__1
+msgid "Yes"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,help:my_pmis.field_pmis_project__type
+msgid ""
+"You can either upload a file from your computer or copy/paste an internet "
+"link to your file."
+msgstr ""
+
+#. module: my_pmis
+#. odoo-python
+#: code:addons/my_pmis/models/pmis_project.py:0
+#, python-format
+msgid "You cant delete this project unless you delete the project from plan."
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_bank_form
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_vendors_form
+msgid "city"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_bank_form
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_vendors_form
+msgid "country"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.actions.act_window,help:my_pmis.pmis_construction_project
+#: model_terms:ir.actions.act_window,help:my_pmis.pmis_project_action
+msgid "create new project"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.actions.act_window,help:my_pmis.pmis_purchase_action
+msgid "create new purchase"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_products_price__purchase_id
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_vendors__purchase_id
+msgid "purchase "
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_purchase__purchase_type
+msgid "purchase type"
+msgstr ""
+
+#. module: my_pmis
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_bank_form
+#: model_terms:ir.ui.view,arch_db:my_pmis.view_pmis_vendors_form
+msgid "street"
+msgstr ""
+
+#. module: my_pmis
+#: model:ir.model.fields,field_description:my_pmis.field_pmis_project__name_pa
+msgid "د پروژی نوم"
+msgstr ""

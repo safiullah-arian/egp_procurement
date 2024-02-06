@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    portrait report format-->
+    <record id="pmis_vertical_paper_format" model="report.paperformat">
+        <field name="name">PMIS Vertical Paper Format</field>
+        <field name="orientation">Portrait</field>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="margin_top">5</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="margin_bottom">5</field>
+        <field name="header_spacing">20</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <!--        landscap report-->
+    <record id="paper_format_action_pmis_quotation" model="report.paperformat">
+        <field name="name">Purchase Quotation Page Custom format</field>
+        <field name="orientation">Landscape</field>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="margin_top">5</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="margin_bottom">5</field>
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
+    </record>
+
+
+    <template id="purchase_comparative_form_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+
+
+                <t t-call="web.external_layout">
+
+                    <div class="page">
+                        <!--                        report header-->
+                        <div class="row">
+
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+                                <img style="float:left;" src="egp_procurement/static/description/images/emirate.png"
+                                     height="130"
+                                     width="150"/>
+                            </div>
+
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+
+                                <p style="margin-top:40px;">وزارت مخابرات وتکنالوژی</p>
+                                <p>معینیت مالی واداری</p>
+                                <p>ریاست تدارکات</p>
+                                <p>جدول مقایسوی نرخ ها در خریداری پرچون</p>
+
+                            </div>
+
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+                                <img src="egp_procurement/static/description/images/mcit.png" height="130"
+                                     style="float:right;"
+                                     width="150"/>
+                            </div>
+                        </div>
+
+                        <table class="table table-bordered page">
+                            <tr>
+
+                                <t t-foreach="doc.quotation_lines" t-as="quotation">
+                                    <th colspan="2">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th colspan="2">
+                                                    <t t-esc="quotation.vendor_id.name"/>
+                                                </th>
+                                            </tr>
+                                            <tr colspan="2">
+                                                <th colspan="2">قیمت</th>
+                                            </tr>
+                                            <tr>
+                                                <th>مجموعه</th>
+                                                <th>قیات</th>
+
+                                            </tr>
+                                        </table>
+                                    </th>
+                                </t>
+                                <th>واحد</th>
+                                <th>مقدار</th>
+                                <th>مشخصات</th>
+                                <th>نام جنس</th>
+                                <th>شماره</th>
+
+
+                            </tr>
+                            <t t-set="index" t-value="0"/>
+                            <t t-foreach="doc.purchase_project_id.product_ids" t-as="product">
+                                <tr>
+                                    <t t-foreach="doc.quotation_lines" t-as="quotation">
+                                        <t t-foreach="quotation.product_price_ids" t-as="vendor_price">
+                                            <t t-if="vendor_price.product_description_id.id == product.id">
+                                                <td>
+                                                    <t t-esc="vendor_price.price"/>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="vendor_price.sub_total"/>
+                                                </td>
+                                            </t>
+                                        </t>
+                                    </t>
+                                    <td>
+                                        <t t-esc="product.product_id.unit"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="product.qty"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="product.description"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="product.product_id.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-set="index" t-value="index+1"/>
+                                        <t t-esc="index"/>
+                                    </td>
+                                </tr>
+                            </t>
+                            <tr>
+                                <t t-foreach="doc.quotation_lines" t-as="quotation">
+                                    <td colspan="2" class="text-center">
+                                        <t t-esc="quotation.quotation_amount"/>
+                                    </td>
+                                </t>
+                                <td colspan="5">قیمت مجموعی
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <t t-foreach="doc.quotation_lines" t-as="quotation">
+                                    <td colspan="2" class="text-center">
+                                        <t t-if="doc.cheap_quotation_amount == quotation.quotation_amount">
+                                            ارزانترین
+                                        </t>
+                                    </td>
+                                </t>
+                                <td colspan="5">
+                                    نرخ ياینترین
+                                </td>
+
+                            </tr>
+                        </table>
+                        <!--                            Hiat Kharidari-->
+                        <div style="text-align:center">
+                            <h4>هیئت خریداری</h4>
+                        </div>
+                        <table class="table table-bordered page">
+                            <tr style="text-align:center">
+                                <th>امضاء</th>
+                                <th>ریاست مربوطه</th>
+                                <th>ادرس الکترونیکی</th>
+                                <th>شماره تلفن</th>
+                                <th>عنوان وظیفه</th>
+                                <th>مکمل نوم</th>
+                                <th>شماره</th>
+
+                            </tr>
+                        </table>
+                        <t t-set="index" t-value="0"/>
+                        <t t-foreach="doc.agent_ids" t-as="agent">
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <t t-esc="agent.department_id.name"/>
+                                </td>
+                                <td>
+                                    <t t-esc="agent.email"/>
+                                </td>
+                                <td>
+                                    <t t-esc="agent.phone"/>
+                                </td>
+                                <td>
+                                    <t t-esc="agent.position_title"/>
+                                </td>
+                                <td>
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <div style="text-align:center;">
+
+                            <p>
+                                قرار هیئت خریداری- از ستون که قیمت نازلترین میباشد فورم (م۳) را تهیه ګردد
+
+                            </p>
+                            <p>
+                                ملاحظه شد آمر صلاحیت دار اداره
+                            </p>
+
+
+                        </div>
+
+
+                        <div class="row" style="margin-top:100px;">
+                            <div class="col-4" style="text-align:center">
+                                <p>امضاء</p>
+                                <p>ریاست تدارکات</p>
+                            </div>
+                            <div class="col-4" style="text-align:center">
+                                <p>امضاء</p>
+                                <p>آمریت تدارکات</p>
+                            </div>
+                            <div class="col-4" style="text-align:center">
+                                <p>امضاء</p>
+                                <p>کارشناس تدارکات</p>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </t>
+
+            </t>
+
+        </t>
+    </template>
+    <!--    purchas m3 docuement-->
+
+
+    <template id="pmis_purchase_m3_report">
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+
+
+                    <div class="page">
+                        <!--                        report header-->
+                        <div class="row">
+
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+                                <img style="float:left;" src="egp_procurement/static/description/images/emirate.png"
+                                     height="130"
+                                     width="150"/>
+                            </div>
+
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+
+                                <p style="margin-top:40px;">وزارت مخابرات وتکنالوژی</p>
+                                <p>ریاست تدارکات</p>
+                                <p>سند امر خریداری (م۳)</p>
+
+                            </div>
+
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+                                <img src="egp_procurement/static/description/images/mcit.png" height="130"
+                                     style="float:right;"
+                                     width="150"/>
+                            </div>
+                        </div>
+
+                        <table class="table table-condensed table-bordered page">
+                            <tr>
+                                <th colspan="3">امر خریداری</th>
+                                <th colspan="5" rowspan="3">
+
+                                    سند امر خریداری فورم (م۳): (
+                                    <b>
+                                        <span>
+                                            <t t-esc="doc.purchase_project_id.request_explanation"/>
+                                        </span>
+                                    </b>
+                                    )
+
+                                </th>
+
+
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <t t-esc="doc.purchase_project_id.application_number"/>
+                                </td>
+                                <th>2- شماره درخواست خریداری</th>
+
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                </td>
+
+                                <th>3- تاریخ صدور</th>
+
+                            </tr>
+                            <tr style="text-align:center;">
+                                <th>مجموع</th>
+                                <th>فیات</th>
+                                <th>تعداد</th>
+                                <th>واحد</th>
+                                <th colspan="2">تشریحات</th>
+                                <th>نام جنس</th>
+                                <th>شماره</th>
+                            </tr>
+                            <tr style="text-align:center;">
+                                <td>10</td>
+                                <td>9</td>
+                                <td>8</td>
+                                <td colspan="3">7</td>
+                                <td>6</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td colspan="8">
+                                    <p style="text-align:justify;">
+                                        از اثر حکم ثبت شماره (
+                                        <b>
+                                            <t t-esc="doc.purchase_project_id.maqam_hukm_number"/>
+                                        </b>
+                                        )،مورخ (
+                                        <b>
+                                            <t t-esc="doc.purchase_project_id.maqam_hukm_date"/>
+                                        </b>
+                                        ) و درخواست شماره (
+                                        <b>
+                                            <t t-esc="doc.purchase_project_id.application_number"/>
+                                        </b>
+                                        )،مورخ(
+                                        <b>
+                                            <t t-esc="doc.purchase_project_id.application_date"/>
+                                        </b>
+                                        ) ریاست محترم (
+                                        <i>
+                                            <t t-esc="doc.purchase_project_id.requested_by.name"/>
+                                        </i>
+                                        ) در مورد نیازمندی مندرج درخواست (
+                                        <b>
+                                            <t t-esc="doc.purchase_project_id.request_explanation"/>
+                                        </b>
+                                        )توسط هیئت محترم خریداری از بازار نرخګیری ګردیده وبه شرح ذیل تحریر میګردد
+                                        <br></br>
+                                        <br></br>
+
+                                        سند امر خریداری (فورم م۳) هذا ترتیب، بعد از اخذ موافقه وجوه مالی، تصمیم آمر عطاء
+                                        اداره، وبعد از ویزه وکنترول حیث قرارداد را دارد که شرکت نظر به نرخ ارایه شده
+                                        خویش در بدل وجوه مالی اداره، نیازمندی اداره را اکمال می نمایند
+
+                                        <br></br>
+                                        <br></br>
+
+
+                                    </p>
+                                    <p style="text-align:center">
+                                        <span>
+                                            آمر عطاء اداره
+                                            <br></br>
+                                            امضاء
+                                            <br></br>
+                                            تاریخ
+
+                                        </span>
+                                    </p>
+                                    <br></br>
+
+                                </td>
+
+                            </tr>
+                            <t t-set="index" t-value="0"/>
+                            <t t-foreach="doc.purchase_project_id.product_ids" t-as="product">
+                                <tr style="text-align:center;">
+
+                                    <td>
+                                        <t t-foreach="doc.quotation_lines[doc.cheap_quotation_index].product_price_ids"
+                                           t-as="vendor_price">
+                                            <t t-if="vendor_price.product_description_id.id == product.id">
+                                                <t t-esc="vendor_price.sub_total"/>
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-foreach="doc.quotation_lines[doc.cheap_quotation_index].product_price_ids"
+                                           t-as="vendor_price">
+                                            <t t-if="vendor_price.product_description_id.id == product.id">
+                                                <t t-esc="vendor_price.price"/>
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-esc="product.qty"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="product.product_id.unit"/>
+                                    </td>
+                                    <td colspan="2">
+                                        <t t-esc="product.description"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="product.product_id.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-set="index" t-value="index+1"/>
+                                        <t t-esc="index"/>
+                                    </td>
+                                </tr>
+                            </t>
+                            <tr>
+
+                                <td colspan="4">
+                                    مجموع قیمت ارایه شده
+                                    <t t-esc="doc.cheap_quotation_amount"/>
+                                </td>
+                                <td colspan="4">
+                                    منظوری، دارد وجوه مالی از طرف آمر محاسبه ریاست مالی تصدیق شد
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td colspan="2">
+                                    مبلغ پیشکی
+                                </td>
+                                <td></td>
+                                <td>
+                                    تاریخ
+                                </td>
+                                <td></td>
+                                <td>
+                                    امضاء
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td colspan="2">14:باقی مبلغ که بهد از عرضه مکمل اشیا تادیه میشود</td>
+                                <td colspan="2"></td>
+                                <td colspan="2">مامور</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td>ماموریت آمر صادر کننده</td>
+                                <td></td>
+                                <td>15: امضا آمر صادر کننده</td>
+                                <td colspan="2">
+                                    <b>
+                                        <t t-esc="doc.purchase_project_id.requested_by.name"/>
+                                    </b>
+                                </td>
+                                <td>16: اداره فرمایش دهنده</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">18:فرمایش را قبول ومبلغ پیشکی فوق الذکر تسلیم شد</td>
+                                <td colspan="2"></td>
+                                <td colspan="2">17: اداره تسلیم شونده</td>
+
+
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td colspan="2">امضا تهیه کننده وتاریخ</td>
+                                <td colspan="2"></td>
+                                <td colspan="2">تاریخ اشیا مطلوبه</td>
+
+                            </tr>
+
+
+                            <tr style="text-align:center">
+                                <td colspan="8">
+                                    محاسبه
+                                </td>
+
+                            </tr>
+                            <tr style="text-align:center">
+
+                                <td colspan="4">
+                                    امر تادیات
+                                </td>
+
+                                <td colspan="4">
+                                    تخصیصات
+                                </td>
+
+
+                            </tr>
+                            <tr style="text-align:center">
+                                <td>
+                                    تاریخ
+                                </td>
+                                <td>
+                                    نمبر
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    دیګر حسابات
+                                </td>
+                                <td>
+                                    نمبر خصوصی
+                                </td>
+                                <td>
+                                    عنوان
+                                </td>
+                                <td>
+                                    علامه
+                                </td>
+                            </tr>
+                            <tr style="text-align:center">
+                                <td>
+                                    27
+                                </td>
+                                <td>
+                                    26
+                                </td>
+                                <td>
+                                    25
+                                </td>
+                                <td>
+                                    24
+                                </td>
+                                <td>
+                                    23
+                                </td>
+                                <td>
+                                    22
+                                </td>
+                                <td>
+                                    21
+                                </td>
+                                <td>
+                                    20
+                                </td>
+                            </tr>
+                            <tr style="text-align:center; height:30px">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+
+                            <tr style="text-align:center">
+                                <td colspan="8">
+                                    28:ثبت راپور رسیدات
+                                </td>
+
+                            </tr>
+                            <tr style="text-align:center">
+                                <td>
+                                    تحویلی
+                                </td>
+                                <td>
+                                    نمبر
+                                </td>
+                                <td>
+                                    تاریخ
+                                </td>
+                                <td>
+                                    تحویلی
+                                </td>
+                                <td>
+                                    نمبر
+                                </td>
+
+                                <td>
+                                    تاریخ
+                                </td>
+                                <td>
+                                    تحویلی
+                                </td>
+                                <td>
+                                    نمبر
+                                </td>
+
+                            </tr>
+                            <tr style="text-align:center; height:30px">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+
+            </t>
+
+        </t>
+    </template>
+
+
+    <!--    purchase m2 doucument-->
+    <template id="pmis_purchase_m2_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <!--                        report header-->
+                        <div class="row">
+
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+                                <img style="float:left;" src="egp_procurement/static/description/images/emirate.png"
+                                     height="130"
+                                     width="150"/>
+                            </div>
+
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+
+                                <p style="margin-top:40px;">وزارت مخابرات وتکنالوژي معلوماتی</p>
+                                <p>ریاست تدارکات</p>
+                                <p>سند (م۲)</p>
+
+                            </div>
+
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+                                <img src="egp_procurement/static/description/images/mcit.png" height="130"
+                                     style="float:right;"
+                                     width="150"/>
+                            </div>
+                        </div>
+                        <table class="table table-condensed table-bordered page">
+
+                            <tr style="text-align:rigt">
+                                <th colspan="8">
+                                    سند فورم امر خریداری(م۲)
+                                </th>
+                            </tr>
+                            <tr style="text-align:right">
+                                <th colspan="8">
+                                    بخش الف
+                                </th>
+                            </tr>
+                            <tr style="text-align:center;">
+
+                                <th colspan="2">5- شماره سند (م۷۵)</th>
+                                <th colspan="2">1-شماره امر خریداری</th>
+                                <th colspan="2">4-واحد پشنهاد کننده وشماره پشنهاد خریداری</th>
+                                <th>3- تاریخ صدور</th>
+                                <th>2- وزارت/ارګان</th>
+
+
+                            </tr>
+                            <tr style="height: 40px;">
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr style="text-align:right;">
+                                <th>12- مجموع</th>
+                                <th>11- فیات</th>
+                                <th colspan="2">10-تشریح</th>
+                                <th>9- واحد</th>
+                                <th>8- مقدار</th>
+                                <th>7- کود تصنیف</th>
+                                <th>6- شماره</th>
+                            </tr>
+                            <tr>
+                                <td colspan="8">
+                                    <p style="text-align:center;">
+                                        از اثر پشنهاد شماره (
+                                        <b>
+                                            <t t-esc="doc.purchas_project_20000.maqam_hukm_number"/>
+                                        </b>
+                                        ), مورخ (
+                                        <b>
+                                            <t t-esc="doc.purchas_project_20000.maqam_hukm_date"/>
+                                        </b>
+                                        ) و درخواست نمبر (
+                                        <b>
+                                            <t t-esc="doc.purchas_project_20000.application_number"/>
+                                        </b>
+                                        ), مورخ(
+                                        <b>
+                                            <t t-esc="doc.purchas_project_20000.application_date"/>
+                                        </b>
+                                        ) ریاست محترم (
+                                        <i>
+                                            <t t-esc="doc.purchas_project_20000.requested_by.name"/>
+                                        </i>
+                                        )اجناس فوق الذکر در درخواست(
+                                        <b>
+                                            <t t-esc="doc.purchas_project_20000.request_explanation"/>
+                                        </b>
+                                        )توسط هیئت خریداری از تحویلی خزانه دار تهیه ګردیده، اصل بل طل مراحل شده ضم فورم
+                                        هذا میباشد
+                                        <br></br>
+                                        <span style="text-align:center">
+                                            امضاء وملاحظه شد آمر اعطاء اداره
+                                        </span>
+                                        <br></br>
+                                        <br></br>
+                                    </p>
+                                </td>
+                            </tr>
+                            <t t-set="index" t-value="0"/>
+                            <t t-set="total" t-value="0.0"/>
+                            <t t-foreach="doc.product_price_ids" t-as="product">
+                                <tr style="text-align:center;">
+                                    <td>
+                                        <t t-esc="product.sub_total"/>
+                                        <t t-set="total" t-value="total + product.sub_total"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="product.price"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="product.description"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="product.product_description_id.product_id.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="product.product_description_id.unit"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="product.qty"/>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <t t-set="index" t-value="index+1"/>
+                                        <t t-esc="index"/>
+                                    </td>
+
+                                </tr>
+                            </t>
+                            <tr>
+                                <td colspan="3">
+                                    14- مجموع قیمت
+                                </td>
+                                <td colspan="2">
+                                    <t t-esc="total"/>
+                                </td>
+                                <td colspan="3">
+                                    13 - تسلیم ګردیده( امضاء وتاریخ)
+                                </td>
+
+
+                            </tr>
+                            <tr style="text-align:right;">
+                                <td colspan="2">
+                                </td>
+                                <td colspan="4">
+                                    15- پیشکی دریافت شده از مسول وجه سردستی
+                                </td>
+                                <td colspan="2" rowspan="3">
+                                </td>
+
+
+                            </tr>
+                            <tr style="text-align:right;">
+                                <td colspan="2">
+                                </td>
+                                <td colspan="4">
+                                    16- میزان باز پرداخت شده به مسول وجه سردستی
+                                </td>
+
+                            </tr>
+                            <tr style="text-align:right;">
+                                <td colspan="2">
+                                </td>
+                                <td colspan="4">
+                                    17- مبلغ دریافت شده اضافی از وجه سردستی
+                                </td>
+
+                            </tr>
+                            <tr style="text-align:right;">
+                                <td colspan="6">
+                                </td>
+                                <td colspan="2">
+                                    18- ملاحظات
+                                </td>
+
+                            </tr>
+                            <tr style="text-align:right;">
+                                <td colspan="8">
+                                    بخش ب: مرور منظوری
+                                </td>
+                            </tr>
+                            <tr style="text-align:center;">
+                                <th colspan="2">
+                                    22- دریافت کننده بعد از خریداری امضا وتاریخ
+                                </th>
+                                <th colspan="2">
+                                    21- مرجع با صلاحیت امضاء وتاریخ
+                                </th>
+                                <th colspan="2">
+                                    20- مرجع با صلاحیت
+                                </th>
+                                <th colspan="2">
+                                    19- دریافت کننده: امضاء وتاریخ
+                                </th>
+
+
+                            </tr>
+                            <tr style="height: 40px;">
+                                <td colspan="2">
+                                </td>
+                                <td colspan="2">
+                                </td>
+                                <td colspan="2">
+                                </td>
+                                <td colspan="2">
+                                </td>
+                            </tr>
+                            <tr style="text-align:right">
+                                <td colspan="8">
+                                    بخش ج : (این بخش توسط کنترولر مالی خانه پری می ګردد)
+                                </td>
+                            </tr>
+                            <tr style="text-align:center;">
+
+                                <th colspan="4">
+                                    24- ملاحظات
+                                </th>
+                                <th colspan="4">
+                                    23-کنترولر مالی (امضاء وتاریخ)
+                                </th>
+
+                            </tr>
+                            <tr style="height: 40px;">
+                                <td colspan="4">
+                                </td>
+                                <td colspan="4">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
+

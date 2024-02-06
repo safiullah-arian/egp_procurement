@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <record id="view_pmis_vendor_block_form" model="ir.ui.view">
+        <field name="name">pmis.vendors.block.form</field>
+        <field name="model">pmis.vendors.block</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name='vendor_id' widget="selection"/>
+                        <field name='date'/>
+                        <field name='reason'/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- PMIS vendors tree view-->
+    <record id="view_pmis_vendor_block_tree" model="ir.ui.view">
+        <field name="name">pmis.vendors.block.tree</field>
+        <field name="model">pmis.vendors.block</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name='vendor_id'/>
+                <field name='date'/>
+                <field name='reason'/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_pmis_vendor_block" model="ir.actions.act_window">
+        <field name="name">Block Vendor</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.vendors.block</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="pmis_vendor_block"
+              name="Block Vendors"
+              parent="pmis_vendor_root_menu"
+              action="action_pmis_vendor_block"
+              groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract"
+              sequence="2"/>
+
+</odoo>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- PMIS country form view-->
+        <record id="view_pmis_country_form" model="ir.ui.view">
+            <field name="name">pmis.country.form</field>
+            <field name="model">pmis.country</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page name="province" string="Provinces">
+                                <field name="province_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- PMIS country tree view-->
+        <record id="view_pmis_country_tree" model="ir.ui.view">
+            <field name="name">pmis.country.tree</field>
+            <field name="model">pmis.country</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="province_ids"/>
+                </tree>
+            </field>
+        </record>
+        <!--      PMIS country action -->
+        <record id="pmis_country_action" model="ir.actions.act_window">
+            <field name="name">PMIS Country</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.country</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create new country
+                </p>
+            </field>
+        </record>
+
+
+        <!-- PMIS Province form view-->
+        <record id="view_pmis_province_form" model="ir.ui.view">
+            <field name="name">pmis.country.province.form</field>
+            <field name="model">pmis.country.province</field>
+            <field name="arch" type="xml">
+
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <label for="district_ids" string="Districts"/>
+                        </group>
+
+
+                        <notebook>
+                            <page name="districts" string="Districts">
+                                <field name="district_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+
+            </field>
+        </record>
+        <!-- PMIS Province tree view-->
+        <record id="view_pmis_province_tree" model="ir.ui.view">
+            <field name="name">pmis.country.province.form</field>
+            <field name="model">pmis.country.province</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="district_ids"/>
+                </tree>
+            </field>
+        </record>
+        <!--      PMIS Province action -->
+        <record id="pmis_province_action" model="ir.actions.act_window">
+            <field name="name">PMIS Province</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.country.province</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create new Province
+                </p>
+            </field>
+        </record>
+
+
+        <!-- PMIS district form view-->
+        <record id="view_pmis_district_form" model="ir.ui.view">
+            <field name="name">pmis.district.form</field>
+            <field name="model">pmis.districts</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- PMIS district tree view-->
+        <record id="view_pmis_district_tree" model="ir.ui.view">
+            <field name="name">pmis.districts.tree</field>
+            <field name="model">pmis.districts</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <!--      PMIS district action -->
+        <record id="pmis_district_action" model="ir.actions.act_window">
+            <field name="name">PMIS districts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.districts</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create new district
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem
+                id="pmis_country_menu"
+                name="Countries"
+                action="pmis_country_action"
+                parent="pmis_vendor_root_menu"
+                groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract"
+                sequence="5"/>
+
+
+    </data>
+</odoo>

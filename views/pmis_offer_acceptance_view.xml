@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <!-- Form view -->
+        <record id="view_pmis_offeracceptance_form" model="ir.ui.view">
+            <field name="name">pmis.offeracceptance.form</field>
+            <field name="model">pmis.offeracceptance</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ref" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="offer_acceptance_no"/>
+                                <field name="offer_acceptance_date"/>
+                                <field name="contact_price"/>
+                            </group>
+                            <group>
+
+                                <field name="contact_time"/>
+                                <field name="contact_place"/>
+                                <field name="notes"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <!-- chatter for the patient and to do tracking -->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view -->
+        <record id="view_pmis_offeracceptance_tree" model="ir.ui.view">
+            <field name="name">pmis.offeracceptance.tree</field>
+            <field name="model">pmis.offeracceptance</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="offer_acceptance_no"/>
+                    <field name="offer_acceptance_date"/>
+                    <field name="contact_price"/>
+                    <field name="contact_time"/>
+                    <field name="contact_place"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--        Search view-->
+        <record id="view_pmis_offer_acceptance_search" model="ir.ui.view">
+            <field name="name">pmis.offeracceptance.search</field>
+            <field name="model">pmis.offeracceptance</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="offer_acceptance_no"
+                           filter_domain="['|', ('name','ilike','self'),('ref','ilike','self')]"/>
+                </search>
+            </field>
+        </record>
+        <!-- Action for the additional view -->
+        <record id="action_pmis_offeracceptance" model="ir.actions.act_window">
+            <field name="name">Offer Acceptance Letter</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.offeracceptance</field>
+            <field name="view_mode">tree,form</field>
+            <!--            <field name="context">{'search_default_filter_child': 1}</field>-->
+            <!--        <field name="search_view_id" ref="view_pmis_offer_acceptance_search"/>-->
+        </record>
+
+        <!-- Menu item for the additional view -->
+
+<!--        <menuitem-->
+<!--                id="menu_offer_acceptance"-->
+<!--                name="Acceptance"-->
+<!--                action="action_pmis_offeracceptance"-->
+<!--                parent="pmis_bidding_root"-->
+<!--                sequence="12"/>-->
+
+
+    </data>
+</odoo>

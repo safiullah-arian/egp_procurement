@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View for PmisConsultInterview -->
+    <record id="view_pmis_consult_interview_form" model="ir.ui.view">
+        <field name="name">pmis.consult.interview.form</field>
+        <field name="model">pmis.consult.interview</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="available_offer_ids" invisible="1"/>
+                <sheet>
+
+                    <group>
+                        <field name="consult_interview_id"/>
+                        <field name="candidate_id"/>
+                        <field name="candidate_name" invisible="1"/>
+
+<!--                        <field name="candidate_total_marks"/>-->
+                        <field name="interview_date"/>
+                        <field name="interview_notes"/>
+                        <field name="is_selected"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for PmisConsultInterview -->
+    <record id="view_pmis_consult_interview_tree" model="ir.ui.view">
+        <field name="name">pmis.consult.interview.tree</field>
+        <field name="model">pmis.consult.interview</field>
+        <field name="arch" type="xml">
+            <tree string="Interviews">
+
+                <field name="consult_interview_id"/>
+                <field name="candidate_id"/>
+<!--                <field name="candidate_total_marks"/>-->
+                <field name="interview_date"/>
+                <field name="is_selected"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for PmisConsultInterview -->
+    <record id="action_pmis_consult_interview" model="ir.actions.act_window">
+        <field name="name">Consult Interviews</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.consult.interview</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_pmis_consult_interview_tree"/>
+    </record>
+
+    <!-- Menu for PmisConsultInterview -->
+<!--    <menuitem-->
+<!--            id="menu_pmis_consult_interview"-->
+<!--            name="Interviews"-->
+<!--            parent="pmis_bidding_consult_root"-->
+<!--            action="action_pmis_consult_interview"-->
+<!--            sequence="8"/>-->
+</odoo>

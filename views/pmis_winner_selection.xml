@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_pmis_bidding_winner_selection_form" model="ir.ui.view">
+        <field name="name">pmis.bidding.winner.selection.form</field>
+        <field name="model">pmis.winner.selection</field>
+        <field name="arch" type="xml">
+            <form string="Bidding Winner Selection">
+                <sheet>
+                    <group>
+
+                        <group>
+                            <field name="evaluated_winner_id"/>
+                            <field name="project_number" readonly="1"/>
+                            <field name="project_name_id"/>
+                        </group>
+                        <group>
+                            <field name="winning_offer_list_id" widget="selection"/>
+                             <field name="offer_state"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="Bidding List" string="Bidding List">
+                            <tree>
+                                <field name="winning_offer_list_id" widget="selection"/>
+                            </tree>
+                        </page>
+                        <!--                        <page name="Offer's List" string="Offer's List">-->
+                        <!--                            <field name="winning_offer_list_ids"/>-->
+                        <!--                        </page>-->
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_pmis_bidding_winner_selection_tree" model="ir.ui.view">
+        <field name="name">pmis.bidding.winner.selection.tree</field>
+        <field name="model">pmis.winner.selection</field>
+        <field name="arch" type="xml">
+            <tree string="Bidding Winner Selection">
+
+                <field name="evaluated_winner_id"/>
+                <field name="project_number"/>
+
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Action -->
+    <record id="action_pmis_bidding_winner_selection" model="ir.actions.act_window">
+        <field name="name">Bidding Winner Selection</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.winner.selection</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_pmis_bidding_winner_selection_tree"/>
+    </record>
+
+    <!-- Menu -->
+    <!--    <menuitem-->
+    <!--            id="menu_pmis_bidding_winner_selection"-->
+    <!--            name="Bidding Winner Selection"-->
+    <!--            parent="pmis_bidding_root"-->
+    <!--            action="action_pmis_bidding_winner_selection"-->
+    <!--            sequence="100"/>-->
+
+</odoo>

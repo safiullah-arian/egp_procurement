@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+
+        <!-- Form View -->
+        <record id="view_pmis_first_shortlist_application_form" model="ir.ui.view">
+            <field name="name">pmis.first.shortlist.application.form</field>
+            <field name="model">pmis.first.shortlist.application</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="available_offer_ids" invisible="1"/>
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="first_shortlist_id"/>
+                                <field name="candidate_id"/>
+                                <field name="experience" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="proposal_text"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View -->
+        <record id="view_pmis_first_shortlist_application_tree" model="ir.ui.view">
+            <field name="name">pmis.first.shortlist.application.tree</field>
+            <field name="model">pmis.first.shortlist.application</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="candidate_id"/>
+                    <field name="experience"/>
+                    <field name="proposal_text"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_pmis_first_shortlist_application" model="ir.actions.act_window">
+            <field name="name">First Shortlist Applications</field>
+            <field name="res_model">pmis.first.shortlist.application</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <!--            <field name="view_id" ref="module_name.view_pmis_first_shortlist_application_tree"/>-->
+            <!--            <field name="search_view_id" ref="module_name.view_pmis_first_shortlist_application_tree"/>-->
+        </record>
+
+        <!-- Menu Action -->
+<!--        <menuitem id="menu_pmis_first_shortlist_application_action"-->
+<!--                  name="Applications"-->
+<!--                  action="action_pmis_first_shortlist_application"-->
+<!--                  parent="pmis_bidding_consult_root"-->
+<!--                  sequence="40"/>-->
+    </data>
+</odoo>

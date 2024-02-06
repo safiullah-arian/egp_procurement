@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_pmis_purchoon_purchase_report" model="ir.actions.report">
+        <field name="name">Cash Purchoon Purchase Report</field>
+        <field name="model">pmis.purchase.pdf.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_procurement.purchoon_purchase_report_template</field>
+        <field name="report_file">egp_procurement.purchoon_purchase_report_template</field>
+        <field name="print_report_name">'cash_report'</field>
+        <field name="binding_type">report</field>
+        <field name="binding_model_id" ref="model_pmis_purchase_pdf_report"/>
+        <field name="paperformat_id" ref="egp_procurement.paper_format_action_pmis_quotation"/>
+    </record>
+
+    <template id="purchoon_purchase_report_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="row">
+
+                        <div class="oe_structure col-4 text-center text-nowrap ">
+                            <img style="float:left;" src="egp_procurement/static/description/images/emirate.png"
+                                 height="130"
+                                 width="150"/>
+                        </div>
+
+                        <div class="oe_structure col-4 text-center text-nowrap ">
+
+                            <p style="margin-top:40px;">وزارت مخابرات وتکنالوژی</p>
+
+                            <p>ریاست تدارکات</p>
+                            <p>امریت تدارکات</p>
+                            <p>ګزارش خریداری پرچون</p>
+
+                        </div>
+
+                        <div class="oe_structure col-4 text-center text-nowrap ">
+                            <img src="egp_procurement/static/description/images/mcit.png" height="130"
+                                 style="float:right;"
+                                 width="150"/>
+                        </div>
+                    </div>
+
+                    <div class="row"  style="text-align:right;">
+                        <div class="col-6">
+
+                            <span t-esc="datas['report_from']"/>:
+                            تاریخ شروع
+                        </div>
+                        <div class="col-6">
+                            <span t-esc="datas['purchase_type']"/>:
+                            نوعیت خریداری
+
+                        </div>
+
+
+                    </div>
+                    <div class="row"  style="text-align:right;">
+                        <div class="col-6">
+
+                            <span t-esc="datas['report_up_to']"/>:
+                            تاریخ ختم
+                        </div>
+                        <div class="col-6" >
+
+                            <span t-esc="datas['purchase_payment_type']"/>:
+                            نوعیت پرداخت
+                        </div>
+
+
+                    </div>
+                    <br></br>
+                    <table class="table table-sm o_main_table table-bordered">
+                        <tr>
+                            <th>مبلغ</th>
+                            <th>شرکت</th>
+                            <th>نوعیت پرداخت</th>
+                            <th>شعبه نیازمند</th>
+                            <th>شماره (م۲/م۳)</th>
+                            <th>شماره بل</th>
+                            <th>نوعیت خریداری</th>
+                            <th>نوعیت تدارکات</th>
+                            <th>تقصیلات خریداری</th>
+                            <th>تاریخ خریداری</th>
+                            <th>شماره</th>
+                        </tr>
+
+                        <t t-set="index" t-value="1"/>
+                        <t t-set="total_expenses" t-value="0.0"/>
+                        <t t-foreach="docs" t-as="doc">
+                            <tr style="text-align:right;">
+                                <td>
+                                    <span t-esc="doc.purchase_amount"/>
+                                    <t t-set="total_expenses" t-value="total_expenses + doc.purchase_amount"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.purchase_vendor_id.name"/>
+                                    <span t-esc="doc.vendor_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.get_purchase_payment_type_label()"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.purchas_project_20000.requested_by.name"/>
+                                    <span t-esc="doc.quotation_project_id.purchase_project_id.requested_by.name"/>
+                                </td>
+                                <td>
+                                    <span t-if="doc.purchas_project_m2_number != 0"
+                                          t-esc="doc.purchas_project_m2_number"/>
+                                    <span t-if="doc.purchas_project_m3_number != 0"
+                                          t-esc="doc.purchas_project_m3_number"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.invoice_number"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.get_project_type_label()"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.purchas_project_20000.category_id.name"/>
+                                    <span t-esc="doc.quotation_project_id.purchase_project_id.category_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.purchas_project_20000.request_explanation"/>
+                                    <span t-esc="doc.quotation_project_id.purchase_project_id.request_explanation"/>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.date"/>
+                                </td>
+                                <td>
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+                            </tr>
+                        </t>
+
+                    </table>
+                </div>
+            </t>
+        </t>
+
+    </template>
+
+</odoo>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--  PMIS Projec Action-->
+        <record id="pmis_projects_action" model="ir.actions.act_window">
+            <field name="name">Project</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.project</field>
+            <field name="view_mode">tree,form</field>
+            <!--            <field name="context">{'search_default_group_by_category_id':1, 'search_default_filter_product':1 }</field>-->
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    create new project
+                </p>
+            </field>
+        </record>
+        <!-- PMIS Project form view-->
+        <record id="view_pmis_project_form" model="ir.ui.view">
+            <field name="name">pmis.project.form</field>
+            <field name="model">pmis.project</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <dev class="oe_title">
+                            <h3>
+                                <label for="project_number" string='Project Number' class="oe_edit_only"/>
+                                <field name="project_number" default_focus="1"/>
+                            </h3>
+                        </dev>
+                        <group name="main">
+                            <group>
+                                <field name="name"/>
+                                <field name="name_pa"/>
+                                <field name="name_dr"/>
+                                <field name="directorates_id"/>
+
+                            </group>
+                            <group>
+                                <field name="category_id"/>
+                                <field name="budget_code"/>
+                                <field name="date_recieved"/>
+                                <field name="estimated_cost"/>
+                                <field name="note"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="product_page" string="Products" invisible="category_id != 1">
+                                <field name="products_ids">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="unit"/>
+                                        <field name="qty"/>
+                                        <field name="description"/>
+
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="product_id"/>
+                                            <field name="unit"/>
+                                            <field name="qty"/>
+                                            <field name="description"/>
+
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page name="hiring" string="Hiring" invisible="category_id != 2">
+                                <field name="hiring_ids">
+                                    <tree editable="bottom">
+                                        <field name="hiring_type"/>
+                                        <field name="position_name"/>
+                                        <field name="candidiate_experience"/>
+                                        <field name="number_employees"/>
+                                        <field name="note"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="hiring_type"/>
+                                            <field name="position_name"/>
+                                            <field name="candidiate_experience"/>
+                                            <field name="number_employees"/>
+                                            <field name="note"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page name="construction" string="Construction Services"
+                                 invisible="category_id != 3">
+                                <field name="section_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="services_ids"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="services_ids" editable="bottom"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page name="document_page" string="Documents">
+                                <field name="documents_ids">
+                                    <tree>
+                                        <field name="number"/>
+                                        <field name="subject"/>
+                                        <field name="type_id"/>
+                                        <field name="directorates_id"/>
+                                        <field name="note"/>
+                                        <field name="attachment"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="number"/>
+                                            <field name="subject"/>
+                                            <field name="type_id"/>
+                                            <field name="directorates_id"/>
+                                            <field name="note"/>
+                                            <field name="attachment"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page name="comments" string="Comments">
+                                <field name="comments" placeholder="Add your comments here!"
+                                       options="{'resizable':true}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--                PMIS Project Tree view-->
+
+        <record id="pmis_projects_tree_view" model="ir.ui.view">
+            <field name="name">pmis.project.tree</field>
+            <field name="model">pmis.project</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="project_number"/>
+                    <field name="name"/>
+                    <field name="name_pa"/>
+                    <field name="name_dr"/>
+                    <field name="directorates_id"/>
+                    <field name="category_id"/>
+                    <field name="budget_code"/>
+                    <field name="date_recieved"/>
+                    <field name="estimated_cost"/>
+                    <field name="note"/>
+                    <field name="state" optional="show" widget="badge"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!--        PMIS Project Search view-->
+
+                <record id="view_pmis_project_search" model="ir.ui.view">
+                    <field name="name">pmis.project.search</field>
+                    <field name="model">pmis.project</field>
+                    <field name="arch" type="xml">
+                        <search>
+
+                            <field name="name"
+                                   filter_domain="['|',('project_number','ilike',self),('name','ilike',self)]"/>
+                            <separator/>
+
+                            <filter
+                                    name="filter_product"
+                                    string="Product Projects "
+                                    domain="[('category_id.name' ,'=', 'Products And Non Consultative')]"/>
+
+                            <group expand="1" string="Group By">
+                                <filter
+                                        name="group_by_category_id"
+                                        string="Procurement Type"
+                                        context="{'group_by':'category_id'}"
+                                />
+                            </group>
+                            <separator/>
+                            <group expand="1" string="Group By">
+                                <filter
+                                        name="budget_code"
+                                        string="Budget Code"
+                                        context="{'group_by':'budget_code'}"
+                                />
+                            </group>
+
+                            <separator/>
+                            <group expand="1" string="Group By">
+                                <filter
+                                        name="directorates_id"
+                                        string="Departments"
+                                        context="{'group_by':'directorates_id'}"
+                                />
+                            </group>
+
+                            <group expand="1" string="Group By">
+                                <filter
+                                        name="state"
+                                        string="Project Status"
+                                        context="{'group_by':'state'}"
+                                />
+                            </group>
+                        </search>
+                    </field>
+                </record>
+
+
+        <!--    PMIS new Project Menu-->
+        <menuitem
+                id="pmis_project_menu_new"
+                name="Project"
+                action="pmis_projects_action"
+                parent="pmis_project_menu"
+                sequence="0"/>
+
+
+    </data>
+</odoo>

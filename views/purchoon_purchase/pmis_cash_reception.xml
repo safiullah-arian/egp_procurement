@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--         PMIS Project form view-->
+        <record id="view_pmis_cash_reception_form" model="ir.ui.view">
+            <field name="name">pmis.cash.reception.form</field>
+            <field name="model">pmis.cash.reception</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="director"/>
+                            <field name="amount"/>
+                            <field name="remaining_cash" readonly="1"/>
+                            <field name="expenses" readonly="1"/>
+                            <field name="refund_cash" readonly="1"/>
+                            <field name="date"/>
+                            <field name="recived_from"/>
+                            <field name="attachment"/>
+                        </group>
+
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+
+                </form>
+            </field>
+        </record>
+
+        <!--PMIS purchase Tree view-->
+        <record id="view_pmis_cash_reception_tree" model="ir.ui.view">
+            <field name="name">pmis.cash.reception.tree</field>
+            <field name="model">pmis.cash.reception</field>
+            <field name="arch" type="xml">
+                <tree>
+
+                    <field name="director"/>
+                    <field name="amount"/>
+                    <field name="remaining_cash"/>
+                    <field name="expenses"/>
+                    <field name="refund_cash" readonly="1"/>
+                    <field name="date"/>
+                    <field name="recived_from"/>
+                    <field name="attachment"/>
+                </tree>
+            </field>
+        </record>
+        <record id="pmis_cash_reception_action" model="ir.actions.act_window">
+            <field name="name">Cash Reception</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.cash.reception</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    create new Cash Reception
+                </p>
+            </field>
+        </record>
+        <menuitem
+                id="pmis_cash_reception_menu"
+                name="Cash Reception"
+                action="pmis_cash_reception_action"
+                parent="pmis_accounting_root"
+                groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract,egp_procurement.pmis_purchase_managers_less_20000,egp_procurement.pmis_purchase_managers_less_5000000"
+                sequence="1"/>
+    </data>
+
+</odoo>

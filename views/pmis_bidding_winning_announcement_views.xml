@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View Definition -->
+        <record id="view_pmis_bidding_winning_announcement_form" model="ir.ui.view">
+            <field name="name">pmis.bidding.winning.announcement.form</field>
+            <field name="model">pmis.bidding.winning.announcement</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="available_offer_ids" invisible="1"/>
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="evaluation_Project_id"/>
+                                <field name="evaluation_offer_id"/>
+                                 <field name="attachment" widget="binary" filename="attachment"/>
+                            </group>
+                            <group>
+                                <field name="evaluat_project_id"/>
+                                <field name="winner_announc_start_date"/>
+                                <field name="winner_announc_end_date"/>
+                                <field name="is_complaints"/>
+                                <field name="project_name" invisible="1"/>
+                                <field name="offer_state" invisible="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="Complaints" string="Complaints"
+                               invisible="is_complaints == False">
+                                <field name="complaint_winner_ids">
+                                    <tree editable="bottom">
+                                        <field name="complaint_no"/>
+                                        <field name="vendor"/>
+                                        <field name="date"/>
+                                        <field name="details"/>
+                                        <field name="attachments"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="complaint_no"/>
+                                            <field name="vendor"/>
+                                            <field name="date"/>
+                                            <field name="details"/>
+                                            <field name="attachments"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page name="compalint bord" string="Compalint Bord"
+                                 invisible="is_complaints == False">
+                                <field name="complaint_processing_agents_ids">
+                                    <tree editable="bottom">
+
+                                        <field name="name"/>
+                                        <field name="position_title"/>
+                                        <field name="phone"/>
+                                        <field name="email" optional="hide"/>
+                                        <field name="department_id"
+
+                                        />
+
+                                    </tree>
+                                    <form>
+                                        <group>
+
+                                            <field name="name"/>
+                                            <field name="position_title"/>
+                                            <field name="phone"/>
+                                            <field name="email"/>
+                                            <field name="department_id"/>
+
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View Definition -->
+        <record id="view_pmis_bidding_winning_announcement_tree" model="ir.ui.view">
+            <field name="name">pmis.bidding.winning.announcement.tree</field>
+            <field name="model">pmis.bidding.winning.announcement</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="evaluation_Project_id"/>
+                    <field name="evaluation_offer_id"/>
+                    <field name="winner_announc_start_date"/>
+                    <field name="winner_announc_end_date"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+
+
+    <record id="action_pmis_bidding_winning_announcement" model="ir.actions.act_window">
+        <field name="name">Bidding Winning Announcement</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.bidding.winning.announcement</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem
+            id="menu_bidding_winning_announcement"
+            name="Winner Announcement and Complaints"
+            parent="pmis_bidding_root"
+            action="action_pmis_bidding_winning_announcement"
+            sequence="6"/>
+</odoo>

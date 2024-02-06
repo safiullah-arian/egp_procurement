@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View for PmisConsultEvaluation -->
+    <record id="view_pmis_consult_evaluation_form" model="ir.ui.view">
+        <field name="name">pmis.consult.evaluation.form</field>
+        <field name="model">pmis.consult.evaluation</field>
+        <field name="arch" type="xml">
+            <form string="Consult Evaluation">
+                <field name="available_offer_ids" invisible="1"/>
+                <sheet>
+                    <group>
+                        <field name="offerghoshai_candidate_id" readonly="1"/>
+                        <field name="consult_offerghoshai_id"/>
+                        <field name="total_marks"/>
+                        <field name="candidate_name" invisible="1"/>
+
+                    </group>
+                    <notebook>
+                        <page string="Financial Evaluation">
+                            <field name="financial_evaluation_ids">
+                                <tree >
+                                    <field name="consult_evaluation_id"/>
+                                    <field name="financial_marks"/>
+                                    <field name="financial_doc"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="financial_marks"/>
+                                        <field name="financial_doc"/>
+                                    </group>
+
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Technical Evaluation">
+                            <field name="technical_evaluation_ids">
+                                <tree >
+                                    <field name="consult_evaluation_id"/>
+                                    <field name="evaluation_marks"/>
+                                    <field name="evaluation_doc"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="evaluation_marks"/>
+                                        <field name="evaluation_doc"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for PmisConsultEvaluation -->
+    <record id="view_pmis_consult_evaluation_tree" model="ir.ui.view">
+        <field name="name">pmis.consult.evaluation.tree</field>
+        <field name="model">pmis.consult.evaluation</field>
+        <field name="arch" type="xml">
+            <tree string="Consult Evaluations">
+
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for PmisConsultEvaluation -->
+    <record id="action_pmis_consult_evaluation" model="ir.actions.act_window">
+        <field name="name">Consult Evaluations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.consult.evaluation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu for PmisConsultEvaluation -->
+<!--    <menuitem-->
+<!--            id="menu_pmis_consult_evaluation"-->
+<!--            name="Consult Evaluations"-->
+<!--            parent="pmis_bidding_consult_root"-->
+<!--            action="action_pmis_consult_evaluation"-->
+<!--            sequence="7"/>-->
+</odoo>

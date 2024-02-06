@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View for PmisConsultEvaluationProject -->
+    <record id="view_pmis_consult_evaluation_project_form" model="ir.ui.view">
+        <field name="name">pmis.consult.evaluation.project.form</field>
+        <field name="model">pmis.consult.evaluation.project</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="offerghoshai_project_id"/>
+                        <field name="project_name" invisible="1"/>
+
+                    </group>
+                    <notebook>
+                        <page string="Evaluation Board">
+                            <field name="evaluation_consult_panel_ids">
+                                <tree editable="bottom">
+
+                                    <field name="name"/>
+                                    <field name="position_title"/>
+                                    <field name="phone"/>
+                                    <field name="email"/>
+                                    <field name="department_id"
+
+                                    />
+                                </tree>
+                                <form>
+                                    <group>
+
+                                        <field name="name"/>
+                                        <field name="position_title"/>
+                                        <field name="phone"/>
+                                        <field name="email"/>
+                                        <field name="department_id"/>
+
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Evaluation Candidates">
+                            <field name="evaluation_condidate_ids">
+                                <tree>
+                                    <field name="offerghoshai_candidate_id" invisible="1"/>
+                                    <field name="consult_offerghoshai_id"/>
+                                    <field name="total_marks"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for PmisConsultEvaluationProject -->
+    <record id="view_pmis_consult_evaluation_project_tree" model="ir.ui.view">
+        <field name="name">pmis.consult.evaluation.project.tree</field>
+        <field name="model">pmis.consult.evaluation.project</field>
+        <field name="arch" type="xml">
+            <tree string="Evaluation Projects">
+                <field name="offerghoshai_project_id"/>
+                <field name="evaluation_condidate_ids"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_pmis_consult_evaluation_project_search" model="ir.ui.view">
+        <field name="name">pmis.consult.evaluation.project.search</field>
+        <field name="model">pmis.consult.evaluation.project</field>
+        <field name="arch" type="xml">
+            <search string="Search Consult Evaluation Projects">
+                <field name="offerghoshai_project_id" string="Evaluation Project"/>
+                <filter name="evaluation_condidate_ids" string="Evaluation Candidates"
+                        domain="[('evaluation_condidate_ids', '!=', False)]"/>
+                <filter name="evaluation_consult_panel_ids" string="Consult Evaluation Panel"
+                        domain="[('evaluation_consult_panel_ids', '!=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action for PmisConsultEvaluationProject -->
+    <record id="action_pmis_consult_evaluation_project" model="ir.actions.act_window">
+        <field name="name">Consult Evaluation Projects</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.consult.evaluation.project</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_pmis_consult_evaluation_project_tree"/>
+        <field name="search_view_id" ref="view_pmis_consult_evaluation_project_search"/>
+    </record>
+
+    <!-- Menu for PmisConsultEvaluationProject -->
+    <menuitem
+            id="menu_pmis_consult_evaluation_project"
+            name="Evaluation Projects"
+            parent="pmis_bidding_consult_root"
+            action="action_pmis_consult_evaluation_project"
+            groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract,egp_procurement.pmis_Consultative_expert"
+            sequence="7"/>
+</odoo>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Form view -->
+    <record id="view_m7_form" model="ir.ui.view">
+        <field name="name">m7.form</field>
+        <field name="model">pmis.m_seven</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="No"/>
+                            <field name="date"/>
+                            <field name="office"/>
+                            <field name="address"/>
+                        </group>
+                        <group>
+                            <field name="company"/>
+                            <field name="order_no"/>
+                            <field name="total_price"/>
+                            <field name="trustee"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view -->
+    <record id="view_m7_tree" model="ir.ui.view">
+        <field name="name">m7.tree</field>
+        <field name="model">pmis.m_seven</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="No"/>
+                <field name="date"/>
+                <field name="office"/>
+                <field name="address"/>
+                <field name="company"/>
+                <field name="order_no"/>
+                <field name="total_price"/>
+                <field name="trustee"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_m7" model="ir.actions.act_window">
+        <field name="name">M7</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.m_seven</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu -->
+<!--    <menuitem-->
+<!--            id="menu_m7"-->
+<!--            name="M7"-->
+<!--            parent="pmis_contractt_management_root"-->
+<!--            action="action_m7"-->
+<!--            sequence="6"/>-->
+
+</odoo>

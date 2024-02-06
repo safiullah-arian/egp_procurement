@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product" model="pmis.procurement.category">
+            <field name="name">Products And Non Consultative</field>
+        <field name="description">Products And Non Consultative</field>
+    </record>
+
+    <record id="consultative" model="pmis.procurement.category">
+        <field name="name">Consultative</field>
+        <field name="description">Consultative</field>
+    </record>
+    <record id="construction" model="pmis.procurement.category">
+        <field name="name">Construction</field>
+        <field name="description">Construction</field>
+    </record>
+
+
+</odoo>
+

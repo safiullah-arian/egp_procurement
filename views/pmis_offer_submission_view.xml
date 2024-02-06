@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    Form veiw-->
+    <record id="view_offer_submission_project_form" model="ir.ui.view">
+        <field name="name">offer.submission.project.form</field>
+        <field name="model">pmis.offer_submission_project</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="announced_project_id" widget="selection"/>
+                        <field name="project_number"/>
+                        <!--                        <field name="project_procurement_type_id"/>-->
+                        <field name="project_name" invisible="1"/>
+                        <field name="category_id"/>
+                    </group>
+
+                    <notebook>
+                        <page name="Offers" string="Offers">
+                            <field name="offers_submission_ids">
+                                <tree>
+                                    <!--                                    <field name="project_name"/>-->
+                                    <field name="project_id"/>
+                                    <field name="vendor_id"/>
+                                    <field name="offer_submission_no"/>
+                                    <field name="offer_submission_date"/>
+                                    <field name="receiving_office"/>
+                                    <field name="offer_submission_address"/>
+                                    <field name="state"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <!--                                        <field name="project_name"/>-->
+                                        <field name="project_id"/>
+                                        <field name="vendor_id"/>
+                                        <field name="offer_submission_no"/>
+                                        <field name="offer_submission_date"/>
+                                        <field name="receiving_office"/>
+                                        <field name="offer_submission_address"/>
+                                        <field name="note"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!--    tree view-->
+    <record id="view_offer_submission_project_tree" model="ir.ui.view">
+        <field name="name">offer.submission.project.tree</field>
+        <field name="model">pmis.offer_submission_project</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Define fields to be displayed in the tree view -->
+                <field name="announced_project_id"/>
+                <field name="project_number"/>
+                <!-- Other fields if needed -->
+            </tree>
+        </field>
+    </record>
+<!--    search view-->
+     <record id="view_pmis_offer_submission_project_search" model="ir.ui.view">
+        <field name="name">pmis.offer_submission.project.search</field>
+        <field name="model">pmis.offer_submission_project</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- Enable Global Search -->
+                <field name="announced_project_id" string="Project"
+                       filter_domain="['|', ('announced_project_id', 'ilike', self), ('project_number', 'ilike', self)]"/>
+                <field name="category_id" string="Category" filter_domain="[('category_id', 'ilike', self)]"/>
+
+                <!-- Create a Filter for 'category_id' field -->
+                <filter string="Group by Category" name="filter_category_id" context="{'group_by':'category_id'}"
+                        domain="[]"/>
+
+            </search>
+        </field>
+    </record>
+    <!--    Action-->
+    <record id="action_offer_submission_project" model="ir.actions.act_window">
+        <field name="name">Offer Submission Project</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.offer_submission_project</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="egp_procurement.view_pmis_offer_submission_project_search"/>
+    </record>
+
+
+
+    <!--    Menu-->
+    <menuitem id="menu_offer_submission_project"
+              name="Offer's Receiving"
+              action="action_offer_submission_project"
+              parent="pmis_bidding_root"
+              sequence="2"/>
+
+</odoo>

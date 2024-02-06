@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <!--         PMIS Purchoon Purchase Report Wizard form view-->
+        <record id="view_pmis_purchoon_purchase_report_form" model="ir.ui.view">
+            <field name="name">pmis.purchase.pdf.report.form</field>
+            <field name="model">pmis.purchase.pdf.report</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="purchase_type"/>
+                            <field name="purchase_payment_type"/>
+                            <field name="report_from"/>
+                            <field name="report_up_to"/>
+                        </group>
+                    </sheet>
+
+                    <footer>
+                        <button name="action_print_report" string="Print Report" class="btn btn-primary" type="object"/>
+                        <button string="Cancel" class="btn btn-danger" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="pmis_purchoon_purchase_report_action" model="ir.actions.act_window">
+            <field name="name">Purchase Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.purchase.pdf.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+                id="pmis_purchoon_purchase_report_menu"
+                name="Purchase Report"
+                action="pmis_purchoon_purchase_report_action"
+                parent="pmis_purchoon_purchase_root"
+                groups="egp_procurement.pmis_admin,egp_procurement.pmis_purchase_managers_less_20000,egp_procurement.pmis_purchase_managers_less_5000000,egp_procurement.pmis_head"
+
+                sequence="12"/>
+
+    </data>
+
+</odoo>

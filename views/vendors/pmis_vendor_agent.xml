@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- PMIS vendor agent form view-->
+        <record id="view_pmis_vendor_agent_form" model="ir.ui.view">
+            <field name="name">pmis.vendors.form</field>
+            <field name="model">pmis.vendor.agent</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="position_title"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="role"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- PMIS vendor agent tree view-->
+        <record id="view_pmis_vendor_agent_tree" model="ir.ui.view">
+            <field name="name">pmis.vendor.agent.tree</field>
+            <field name="model">pmis.vendor.agent</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="position_title"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="role"/>
+
+                </tree>
+            </field>
+        </record>
+        <!--      PMIS vendor agent action -->
+        <record id="pmis_vendor_agent_action" model="ir.actions.act_window">
+            <field name="name">PMIS Agent</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.vendor.agent</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create new Agent
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

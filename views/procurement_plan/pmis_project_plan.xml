@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--         PMIS Project form view-->
+        <record id="view_pmis_project_plan_form" model="ir.ui.view">
+            <field name="name">pmis.project.plan.form</field>
+            <field name="model">pmis.project.plan</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="avialable_district_ids" invisible="1"/>
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="project_id" default_focus="1"
+                                       context="{'project_id':'project_id'}"
+                                       domain="[('category_id','=',category_id),('state','=','draft')]"/>
+
+
+                                <field name="project_name_en"/>
+                                <field name="sector"/>
+                                <field name="procurement_directorate"/>
+                                <field name="budget_type"/>
+                                <field name="budget_type_is_optional"/>
+                                <field name="province"/>
+                                <field name="district"/>
+                                <field name="village"/>
+                                <field name="donor_id"/>
+                                <field name="project_description"/>
+                                <field name="category_id" invisible="0"/>
+                                <field name="procurement_rawish"/>
+                                <field name="procurement_rawish_other"
+                                       invisible="procurement_rawish in ('ncb', 'icb')"
+                                />
+                                <field name="contract_type"/>
+                                <field name="planned_project_type"/>
+                                <field name="inner_resource_preferred"/>
+
+                            </group>
+
+
+                            <group>
+                                <field name="contract_number"/>
+                                <field name="budget_amount"/>
+                                <field name="procurement_process_start_date"/>
+                                <field name="project_eligibility_evaluation_date"/>
+                                <field name="project_announcement_date"/>
+                                <field name="project_offer_opening_date"/>
+                                <field name="project_offer_evaluation_last_date"/>
+                                <field name="project_reporting_date"/>
+                                <field name="project_award_date"/>
+                                <field name="project_commission_date"/>
+                                <field name="contract_sign_date"/>
+                                <field name="project_duration"/>
+                                <field name="project_end_date"/>
+                                <field name="project_technical_documents_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--PMIS Project Tree view-->
+
+        <record id="view_pmis_project_plan_tree" model="ir.ui.view">
+            <field name="name">pmis.project.plan.tree</field>
+            <field name="model">pmis.project.plan</field>
+            <field name="arch" type="xml">
+                <!--               -->
+                <tree
+
+                        sample="1"
+                        multi_edit="1"
+                >
+
+                    <field name="project_id" default_focus="1"
+                           context="{'project_id':'project_id'}"
+                           domain="[('category_id','=',category_id),('state','=','draft')]"/>
+
+                    <field name="sector"/>
+                    <field name="procurement_directorate" optional="show"/>
+                    <field name="budget_type"/>
+                    <field name="budget_type_is_optional" optional="show"/>
+                    <field name="donor_id"/>
+                    <field name="project_description"/>
+                    <field name="category_id" invisible="0" optional="show"/>
+                    <field name="procurement_rawish" optional="show"/>
+                    <field name="procurement_rawish_other" optional="show"/>
+                    <field name="contract_type"/>
+                    <field name="planned_project_type"/>
+                    <field name="inner_resource_preferred" optional="show"/>
+                    <field name="contract_number"/>
+                    <field name="budget_amount"/>
+                    <field name="procurement_process_start_date"/>
+                    <field name="project_eligibility_evaluation_date" optional="show"/>
+                    <field name="project_announcement_date" optional="show"/>
+                    <field name="project_offer_opening_date" optional="show"/>
+                    <field name="project_offer_evaluation_last_date" optional="show"/>
+                    <field name="project_reporting_date" optional="show"/>
+                    <field name="project_award_date" optional="show"/>
+                    <field name="project_commission_date" optional="show"/>
+                    <field name="contract_sign_date" optional="show"/>
+                    <field name="project_duration"/>
+                    <field name="project_end_date"/>
+                    <field name="project_technical_documents_date" optional="show"/>
+
+                    <field name="project_state"
+                           optional="show"
+                           widget="badge"
+
+
+                    />
+                    <!--     decoration-success="[('project_state','in','announce,offer-opening,offer-testing,contract,payment
+                           ')]"-->
+                </tree>
+            </field>
+        </record>
+
+        <!--        PMIS Project Search view-->
+
+        <!--        <record id="view_pmis_project_search" model="ir.ui.view">-->
+        <!--            <field name="name">pmis.project.search</field>-->
+        <!--            <field name="model">pmis.project</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <search>-->
+        <!--                    <field name="name_en" filter_domain="['|', ('name_en','ilike',self),-->
+        <!--                             ('name_pa','ilike',self),('name_dr','ilike',self),('project_number','ilike',self),('date_recieved','ilike',self)]"/>-->
+        <!--                    <separator/>-->
+        <!--                    &lt;!&ndash;                            <filter&ndash;&gt;-->
+        <!--                    &lt;!&ndash;                                    name="filter_product"&ndash;&gt;-->
+        <!--                    &lt;!&ndash;                                    string="Product Projects "&ndash;&gt;-->
+        <!--                    &lt;!&ndash;                                    domain="[('category_id.name' ,'=', 'Products')]"&ndash;&gt;-->
+        <!--                    &lt;!&ndash;                            />&ndash;&gt;-->
+
+        <!--                    <group expand="1" string="Group By">-->
+        <!--                        <filter-->
+        <!--                                name="category_id"-->
+        <!--                                string="Procurement Type"-->
+        <!--                                context="{'group_by':'category_id'}"-->
+        <!--                        />-->
+        <!--                    </group>-->
+        <!--                    <separator/>-->
+        <!--                    <group expand="1" string="Group By">-->
+        <!--                        <filter-->
+        <!--                                name="budget_code"-->
+        <!--                                string="Budget Code"-->
+        <!--                                context="{'group_by':'budget_code'}"-->
+        <!--                        />-->
+        <!--                    </group>-->
+
+        <!--                    <separator/>-->
+        <!--                    <group expand="1" string="Group By">-->
+        <!--                        <filter-->
+        <!--                                name="directorates_id"-->
+        <!--                                string="Departments"-->
+        <!--                                context="{'group_by':'directorates_id'}"-->
+        <!--                        />-->
+        <!--                    </group>-->
+
+        <!--                    <group expand="1" string="Group By">-->
+        <!--                        <filter-->
+        <!--                                name="project_state"-->
+        <!--                                string="Project Status"-->
+        <!--                                context="{'group_by':'project_state'}"-->
+        <!--                        />-->
+        <!--                    </group>-->
+
+        <!--                    <searchpanel>-->
+        <!--                        <field name="category_id" select="multi" enable_counters="1"/>-->
+        <!--                    </searchpanel>-->
+        <!--                </search>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+
+        <!--        &lt;!&ndash;  PMIS Projec Action&ndash;&gt;-->
+        <record id="pmis_plan_action" model="ir.actions.act_window">
+            <field name="name">PMIS Plan Action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.project.plan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Plan a project now...
+                </p>
+            </field>
+        </record>
+
+        <!--    PMIS new Project Menu-->
+        <!--        <menuitem-->
+        <!--                id="pmis_plan_menu_new"-->
+        <!--                name="Plan"-->
+        <!--                action="pmis_plan_action"-->
+        <!--                parent="pmis_plan_menu"-->
+        <!--                sequence="0"/>-->
+
+
+    </data>
+</odoo>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+            id="pmis_root_menu"
+            web_icon="account,static/description/icon.png"
+            name="PMIS"
+            sequence="0"
+            groups="base.group_user,egp_procurement.pmis_admin,egp_procurement.pmis_archi,egp_procurement.pmis_head,egp_procurement.pmis_Consultative_expert,egp_procurement.Products_Non_consultative_expert,egp_procurement.pmis_purchase_managers_less_20000,egp_procurement.pmis_purchase_managers_less_5000000,egp_procurement.Head_of_Plan_and_Contract"
+    />
+    <menuitem
+            id="pmis_purchoon_purchase_root"
+            name="Purchoon Purchase"
+            parent="pmis_root_menu"
+            sequence="1"
+            groups="egp_procurement.pmis_admin,egp_procurement.pmis_purchase_managers_less_20000,egp_procurement.pmis_purchase_managers_less_5000000,egp_procurement.pmis_head"
+
+    />
+    <menuitem
+            id="pmis_vendor_root_menu"
+            name="Vendors"
+            parent="pmis_root_menu"
+
+            groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract"
+            sequence="2"/>
+
+    <menuitem
+            id="pmis_project_menu"
+            name="Project"
+            parent="pmis_root_menu"
+            sequence="3"
+            groups="egp_procurement.pmis_admin,egp_procurement.pmis_archi,egp_procurement.pmis_head,egp_procurement.pmis_Consultative_expert,egp_procurement.Products_Non_consultative_expert,egp_procurement.Head_of_Plan_and_Contract"
+    />
+
+    <menuitem
+            id="pmis_plan_menu"
+            name="Plan"
+            parent="pmis_root_menu"
+            sequence="4"
+            groups="egp_procurement.pmis_admin,egp_procurement.Head_of_Plan_and_Contract,egp_procurement.pmis_archi,egp_procurement.pmis_Consultative_expert,egp_procurement.Products_Non_consultative_expert,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract"
+
+    />
+
+
+    <menuitem id="pmis_bidding_root"
+              name="Product,Non Consultative and Construction Bidding"
+              parent="pmis_root_menu"
+              sequence="5"
+              groups="egp_procurement.pmis_admin,egp_procurement.Products_Non_consultative_expert,egp_procurement.pmis_archi,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract"
+    />
+    <menuitem id="pmis_bidding_consult_root"
+              name="Consultative Bidding"
+              parent="pmis_root_menu"
+              groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract,egp_procurement.pmis_Consultative_expert"
+
+              sequence="6"/>
+    <menuitem
+            id="pmis_accounting_root"
+            name="Accounting"
+            parent="pmis_root_menu"
+            groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract,egp_procurement.pmis_purchase_managers_less_20000,egp_procurement.pmis_purchase_managers_less_5000000"
+            sequence="9"/>
+
+    <menuitem id="pmis_contractt_management_root"
+              name="Contract Management"
+              parent="pmis_root_menu"
+              sequence="8"
+              groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract,egp_procurement.pmis_plan_archi_expert,egp_procurement.pmis_Plan_product_expert"
+    />
+    -->
+
+
+</odoo>

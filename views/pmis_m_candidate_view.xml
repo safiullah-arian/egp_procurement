@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View for PmisCandidateProposal -->
+    <record id="view_pmis_candidate_proposal_tree" model="ir.ui.view">
+        <field name="name">pmis.candidate.proposal.tree</field>
+        <field name="model">pmis.candidate.proposal</field>
+        <field name="arch" type="xml">
+            <tree string="Candidate Proposals">
+                <field name="shortlist_id"/>
+                <field name="category_id"/>
+                <field name="note"/>
+                <!-- Add other fields you want to display in the tree view -->
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for PmisCandidateProposal -->
+    <record id="view_pmis_candidate_proposal_form" model="ir.ui.view">
+        <field name="name">pmis.candidate.proposal.form</field>
+        <field name="model">pmis.candidate.proposal</field>
+        <field name="arch" type="xml">
+            <form string="Candidate Proposal">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="shortlist_id"/>
+                            <field name="category_id"/>
+                            <field name="note"/>
+                        </group>
+                        <group>
+                            <field name="project_name" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="Proposal" string="Proposal">
+                            <field name="candidate_application_ids">
+                                <tree >
+                                    <field name="available_offer_ids"  invisible="1"/>
+                                    <field name="candidate_shortlist_id"  invisible="1"/>
+                                    <field name="candidate_id"/>
+                                    <field name="candidate_name" invisible="1"/>
+<!--                                    <field name="is_applcated"/>-->
+                                    <field name="proposal_text"/>
+                                    <field name="proposal"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="available_offer_ids"  invisible="1"/>
+                                        <field name="candidate_shortlist_id"  invisible="1"/>
+                                        <field name="candidate_id"/>
+                                        <field name="candidate_name" invisible="1"/>
+<!--                                        <field name="is_applcated"/>-->
+                                        <field name="proposal_text"/>
+                                        <field name="proposal"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_pmis_candidate_proposal_search" model="ir.ui.view">
+        <field name="name">pmis.candidate.proposal.search</field>
+        <field name="model">pmis.candidate.proposal</field>
+        <field name="arch" type="xml">
+            <search string="Search Candidate Proposals">
+                <field name="shortlist_id" string="Shortlist"/>
+                <field name="category_id" string="Category"/>
+                <group expand="0" string="Group By">
+                    <filter name="category_id" string="Category" context="{'group_by':'category_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action for PmisCandidateProposal -->
+    <record id="action_pmis_candidate_proposal" model="ir.actions.act_window">
+        <field name="name">Candidate Proposals</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.candidate.proposal</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_pmis_candidate_proposal_tree"/>
+        <field name="search_view_id" ref="view_pmis_candidate_proposal_search"/>
+    </record>
+
+    <!-- Menu for PmisCandidateProposal -->
+    <menuitem
+            id="menu_pmis_candidate_proposal"
+            name="Candidate Proposals (Shortlist)"
+            parent="pmis_bidding_consult_root"
+            action="action_pmis_candidate_proposal"
+            groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract,egp_procurement.pmis_Consultative_expert"
+            sequence="4"/>
+
+</odoo>

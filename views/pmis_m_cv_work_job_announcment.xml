@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_pmis_job_announcement_tree" model="ir.ui.view">
+        <field name="name">pmis.job.announcement.tree</field>
+        <field name="model">pmis.job.announcement</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="job_title_id"/>
+                <field name="category_job_id"/>
+                <!-- Add other fields as needed -->
+            </tree>
+        </field>
+    </record>
+    <record id="view_pmis_job_announcement_search" model="ir.ui.view">
+        <field name="name">pmis.job.announcement.search</field>
+        <field name="model">pmis.job.announcement</field>
+        <field name="arch" type="xml">
+            <search string="Search Job Announcements">
+                <field name="job_title_id" string="Job Title"/>
+                <field name="category_job_id" string="Category"/>
+                <field name="note" string="Description"/>
+
+                <filter name="category_job_id" string="Category" context="{'group_by': 'category_job_id'}"/>
+            </search>
+        </field>
+</record>
+
+
+    <!-- Form View for PmisJobAnnouncement -->
+    <record id="view_pmis_job_announcement_form" model="ir.ui.view">
+        <field name="name">pmis.job.announcement.form</field>
+        <field name="model">pmis.job.announcement</field>
+        <field name="arch" type="xml">
+            <form string="Job Announcement">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="job_title_id"/>
+                            <field name="note"/>
+                        </group>
+                        <group>
+                            <field name="category_job_id"/>
+                            <field name="project_name" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Job Applications">
+                            <field name="job_application_ids" widget="one2many_list">
+                                <tree>
+                                    <field name="candidate_name"/>
+                                    <field name="email"/>
+                                    <field name="phone"/>
+                                    <field name="experience"/>
+                                    <field name="proposal_text"/>
+                                    <field name="cv_attachment"/>
+                                    <field name="proposal_attachment"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="candidate_name"/>
+                                        <field name="email"/>
+                                        <field name="phone"/>
+                                        <field name="experience"/>
+                                        <field name="proposal_text"/>
+                                        <field name="cv_attachment" widget="binary"/>
+                                        <field name="proposal_attachment" widget="binary"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+     <record id="action_pmis_job_announcement" model="ir.actions.act_window">
+        <field name="name">Job Applications Received</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.job.announcement</field>
+
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                create new announcement
+            </p>
+        </field>
+        <field name="search_view_id" ref="view_pmis_job_announcement_search"/>
+
+    </record>
+
+    <!-- Menu for PmisJobAnnouncement -->
+
+
+    <menuitem id="menu_pmis_job_announcement"
+              name="Job Applications Received"
+              parent="pmis_bidding_consult_root"
+              action="action_pmis_job_announcement"
+              sequence="2"/>
+</odoo>

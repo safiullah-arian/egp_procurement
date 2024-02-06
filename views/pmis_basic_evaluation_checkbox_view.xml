@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Define the view for the form -->
+    <record id="view_basic_evaluation_checkbox_form" model="ir.ui.view">
+        <field name="name">basic.evaluation.checkbox.form</field>
+        <field name="model">basic.evaluation.checkbox</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="is_packet_stamped"/>
+                            <field name="is_license_valid"/>
+                            <field name="is_offer_filled_completely"/>
+                            <field name="is_agent_letter_signed"/>
+                            <field name="tadel_changes"/>
+                        </group>
+                        <group>
+                            <field name="discount"/>
+                            <field name="is_offer_stamped"/>
+                            <field name="total_price"/>
+                            <field name="offer_currency_type"/>
+                            <field name="is_sample_submitted"/>
+
+
+                            <!-- Add more fields here -->
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Define the view for the tree -->
+    <record id="view_basic_evaluation_checkbox_tree" model="ir.ui.view">
+        <field name="name">basic.evaluation.checkbox.tree</field>
+        <field name="model">basic.evaluation.checkbox</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="is_packet_stamped"/>
+                <field name="is_license_valid"/>
+                <field name="is_offer_filled_completely"/>
+                <field name="is_agent_letter_signed"/>
+                <field name="tadel_changes"/>
+                <field name="discount"/>
+                <field name="is_offer_stamped"/>
+                <field name="total_price"/>
+                <field name="offer_currency_type"/>
+                <field name="is_sample_submitted"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <!-- Define the action to link views -->
+    <record id="action_basic_evaluation_checkbox" model="ir.actions.act_window">
+        <field name="name">Basic Evaluation Checkbox</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">basic.evaluation.checkbox</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+</odoo>

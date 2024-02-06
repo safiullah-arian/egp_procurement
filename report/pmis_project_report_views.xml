@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    project report-->
+
+    <record id="action_pmis_project_report" model="ir.actions.report">
+        <field name="name">Project report</field>
+        <field name="model">pmis.project</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_procurement.project_report_template</field>
+        <field name="report_file">egp_procurement.project_report_template</field>
+        <field name="print_report_name">'Project_report'</field>
+        <field name="binding_type">report</field>
+        <field name="binding_model_id" ref="model_pmis_project"/>
+        <field name="paperformat_id" ref="egp_procurement.pmis_vertical_paper_format"/>
+    </record>
+
+
+    <template id="project_report_template">
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <style>
+                    .page {
+                        direction: ltr !important;
+                    }
+                </style>
+                    <div class="page">
+                        <!--                        report header-->
+                        <div class="row">
+
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+                                <img style="float:left;" src="egp_procurement/static/description/images/emirate.png"
+                                     height="130"
+                                     width="150"/>
+                            </div>
+
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+
+                                <p style="margin-top:40px;">وزارت مخابرات وتکنالوژی معلوماتی</p>
+                                <p>ریاست تدارکات</p>
+                                <p>امریت تارکات</p>
+                                <p>تفصیلات پروژه تدارکاتی</p>
+
+                            </div>
+
+                            <div class="oe_structure col-4 text-center text-nowrap ">
+                                <img src="egp_procurement/static/description/images/mcit.png" height="130"
+                                     style="float:right;"
+                                     width="150"/>
+                            </div>
+                        </div>
+                        <table class="table table-bordered page">
+                            <tr style="text-align:right;">
+                                <td colspan="4">
+                                    <br>
+                                        <t t-esc="doc.project_number"/>
+                                    </br>
+                                </td>
+                                <th colspan="4">شماره پروژه</th>
+
+                            </tr>
+
+                            <tr style="text-align:right;">
+                                <td colspan="4">
+                                    <t t-esc="doc.name"/>
+
+                                </td>
+                                <th colspan="4">نام پروژه(انګلیسی)</th>
+
+                            </tr>
+
+                            <tr style="text-align:right;">
+
+                                <td colspan="4">
+
+
+                                    <t t-esc="doc.name_pa"/>
+
+                                </td>
+                                <th colspan="4">نام پروژه (پشتو)</th>
+                            </tr>
+                            <tr style="text-align:right;">
+                                <td colspan="4">
+                                    <t t-esc="doc.name_dr"/>
+                                </td>
+                                <th colspan="4">نام پروژه (دری)</th>
+
+                            </tr>
+
+                            <tr style="text-align:center;">
+                                <th colspan="2">کود بودجوی</th>
+                                <th colspan="2">تاریخ ثبت</th>
+                                <th colspan="2">قیمت تخمینی</th>
+                                <th colspan="2">حالت پروژه</th>
+                            </tr>
+                            <tr style="text-align:center;">
+                                <td colspan="2">
+                                    <t t-esc="doc.budget_code"/>
+                                </td>
+                                <td colspan="2">
+                                    <t t-esc="doc.date_recieved"/>
+                                </td>
+                                <td colspan="2">
+                                    <t t-esc="doc.estimated_cost"/>
+                                </td>
+                                <td colspan="2">
+                                    <t t-esc="doc.state"/>
+                                </td>
+                            </tr>
+                            <tr style="text-align:right;">
+                                <th colspan="6">یاداشت</th>
+                                <th colspan="2">نوع تدارکات</th>
+
+                            </tr>
+
+
+                            <tr style="text-align:right;">
+                                <td colspan="6">
+                                    <t t-esc="doc.note"/>
+                                </td>
+                                <td colspan="2">
+                                    <t t-esc="doc.category_id.name"/>
+                                </td>
+
+                            </tr>
+                            <t t-if="doc.products_ids">
+                                <tr style="text-align:center;">
+                                    <td colspan="8"><b>پروژه اجناس وخدمات غیرمشورتی</b></td>
+                                </tr>
+
+                                <tr>
+                                    <th colspan="3">تشریحات</th>
+
+                                    <th>تعداد</th>
+                                    <th>واحد</th>
+                                    <th colspan="2">نام جنس(خدمت)</th>
+                                    <th>شماره</th>
+
+                                </tr>
+
+                                <t t-set="index" t-value="0"/>
+                                <t t-foreach="doc.products_ids" t-as="product">
+                                    <tr style="text-align:right">
+                                        <td colspan="3">
+                                            <t t-esc="product.description"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="product.qty"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="product.product_id.unit"/>
+                                        </td>
+                                        <td colspan="2">
+                                            <t t-esc="product.product_id.name"/>
+                                        </td>
+                                        <td>
+                                            <t t-set="index" t-value="index+1"/>
+                                            <t t-esc="index"/>
+                                        </td>
+                                    </tr>
+                                </t>
+
+                            </t>
+                            <!--                            construction project-->
+                            <t t-if="doc.section_ids">
+
+                                <tr>
+                                    <table class="table table-sm o_main_table table-bordered">
+                                        <tr style="text-align:center;">
+                                            <td colspan="8">پروژه ساختمنای</td>
+                                        </tr>
+                                        <t t-foreach="doc.section_ids" t-as="section">
+                                            <tr style="text-align:left;">
+                                                <td colspan="5">
+                                                    <t t-esc="section.name"/>
+                                                </td>
+                                                <th colspan="3">تفصیلات کار</th>
+
+                                            </tr>
+                                            <tr>
+                                                <th colspan="2">یاداشت</th>
+                                                <th>فیات</th>
+                                                <th>واحد</th>
+                                                <th>مقدار</th>
+                                                <th colspan="2">کار</th>
+                                                <th>شماره</th>
+                                            </tr>
+                                            <t t-set="index" t-value="0"/>
+                                            <t t-foreach="section.services_ids" t-as="service">
+                                                <tr style="text-align:right">
+                                                    <td colspan="2">
+                                                        <t t-esc="service.note"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="service.unit_price"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="service.unit_measure"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="service.work_amount"/>
+                                                    </td>
+                                                    <td colspan="2">
+                                                        <t t-esc="service.work_description"/>
+                                                    </td>
+                                                    <td colspan="1">
+                                                        <t t-set="index" t-value="index+1"/>
+                                                        <t t-esc="index"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </t>
+
+                                    </table>
+
+
+                                </tr>
+                            </t>
+                            <!--                            Consultative project-->
+                            <t t-if="doc.hiring_ids">
+                                <tr style="text-align:center;">
+                                    <td colspan="8">پروژه ساختمانی (تقرر)</td>
+                                </tr>
+
+                                <tr>
+                                    <th colspan="2">یاداشت</th>
+                                    <th>تعداد بست ها</th>
+                                    <th>تجربه کاری</th>
+                                    <th>نوعیت تقرر</th>
+                                    <th colspan="2">عنوان بست</th>
+                                    <th>شماره</th>
+                                </tr>
+
+
+                                <t t-set="index" t-value="0"/>
+                                <t t-foreach="doc.hiring_ids" t-as="hiring">
+                                    <tr style="text-align:right">
+                                        <td colspan="2">
+                                            <t t-esc="hiring.note"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="hiring.number_employees"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="hiring.candidiate_experience"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="hiring.hiring_type"/>
+                                        </td>
+                                        <td colspan="2">
+                                            <t t-esc="hiring.position_name"/>
+                                        </td>
+                                        <td colspan="1">
+                                            <t t-set="index" t-value="index+1"/>
+                                            <t t-esc="index"/>
+                                        </td>
+                                    </tr>
+                                </t>
+
+                            </t>
+                            <tr style="text-align:right">
+                                <td colspan="8">
+                                     <t t-esc="doc.comments"/>
+                                    نظریات
+
+                                </td>
+                            </tr>
+
+
+                        </table>
+
+                    </div>
+
+
+                </t>
+
+            </t>
+        </t>
+    </template>
+
+</odoo>

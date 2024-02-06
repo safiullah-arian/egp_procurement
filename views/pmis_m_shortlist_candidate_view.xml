@@ -1,0 +1,50 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<odoo>-->
+<!--    &lt;!&ndash; Tree View for PmisShortlistedCandidates &ndash;&gt;-->
+<!--    <record id="view_pmis_shortlisted_candidates_tree" model="ir.ui.view">-->
+<!--        <field name="name">pmis.shortlisted.candidates.tree</field>-->
+<!--        <field name="model">pmis.shortlisted.candidates</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <tree string="Shortlisted Candidates">-->
+<!--                <field name="shortlist_id"/>-->
+<!--                <field name="candidate_id"/>-->
+<!--                &lt;!&ndash; Add other fields you want to display in the tree view &ndash;&gt;-->
+<!--            </tree>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    &lt;!&ndash; Form View for PmisShortlistedCandidates &ndash;&gt;-->
+<!--    <record id="view_pmis_shortlisted_candidates_form" model="ir.ui.view">-->
+<!--        <field name="name">pmis.shortlisted.candidates.form</field>-->
+<!--        <field name="model">pmis.shortlisted.candidates</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <form string="Shortlisted Candidates">-->
+<!--               -->
+<!--                <sheet>-->
+<!--                    <group>-->
+<!--                        <field name="shortlist_id"/>-->
+<!--                        <field name="candidate_id"/>-->
+<!--                        &lt;!&ndash; Add other fields you want to display in the form view &ndash;&gt;-->
+<!--                    </group>-->
+<!--                </sheet>-->
+<!--            </form>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    &lt;!&ndash; Action for PmisShortlistedCandidates &ndash;&gt;-->
+<!--    <record id="action_pmis_shortlisted_candidates" model="ir.actions.act_window">-->
+<!--        <field name="name">Shortlisted Candidates</field>-->
+<!--        <field name="type">ir.actions.act_window</field>-->
+<!--        <field name="res_model">pmis.shortlisted.candidates</field>-->
+<!--        <field name="view_mode">tree,form</field>-->
+<!--        <field name="view_id" ref="view_pmis_shortlisted_candidates_tree"/>-->
+<!--    </record>-->
+
+<!--    &lt;!&ndash; Menu for PmisShortlistedCandidates &ndash;&gt;-->
+<!--&lt;!&ndash;    <menuitem&ndash;&gt;-->
+<!--&lt;!&ndash;        id="menu_pmis_shortlisted_candidates"&ndash;&gt;-->
+<!--&lt;!&ndash;        name="Shortlisted Candidates"&ndash;&gt;-->
+<!--&lt;!&ndash;        parent="pmis_bidding_consult_root"&ndash;&gt;-->
+<!--&lt;!&ndash;        action="action_pmis_shortlisted_candidates"/>&ndash;&gt;-->
+
+<!--</odoo>-->

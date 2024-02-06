@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--         PMIS Project form view-->
+        <record id="view_pmis_construction_services_form" model="ir.ui.view">
+            <field name="name">pmis.construction.services.form</field>
+            <field name="model">pmis.construction.services</field>
+            <field name="arch" type="xml">
+                <form>
+
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="work_description"/>
+                                <field name="unit_measure"/>
+                                <field name="work_amount"/>
+
+                            </group>
+
+                            <group>
+
+                                <field name="unit_price"/>
+                                <field name="note"/>
+
+
+                            </group>
+                        </group>
+
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!--PMIS Project Tree view-->
+
+        <record id="view_pmis_construction_services_tree" model="ir.ui.view">
+            <field name="name">pmis.construction.services.tree</field>
+            <field name="model">pmis.construction.services</field>
+            <field name="arch" type="xml">
+                <tree
+                        sample="1"
+                        multi_edit="1"
+                >
+                    <field name="work_description"/>
+                    <field name="unit_measure"/>
+                    <field name="work_amount"/>
+
+                    <field name="unit_price"/>
+                    <field name="note"/>
+
+                </tree>
+            </field>
+        </record>
+        <!--  PMIS Projec Action-->
+        <record id="pmis_construction_project" model="ir.actions.act_window">
+            <field name="name">PMIS Construction Project</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.construction.services</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    create new project
+                </p>
+            </field>
+        </record>
+
+        <!--    PMIS new Project Menu-->
+        <!--        <menuitem-->
+        <!--                id="pmis_plan_menu_new"-->
+        <!--                name="Plan"-->
+        <!--                action="pmis_plan_action"-->
+        <!--                parent="pmis_bidding_root"-->
+        <!--                sequence="0"/>-->
+
+
+    </data>
+</odoo>

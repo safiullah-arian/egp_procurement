@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_pmis_product_price_form" model="ir.ui.view">
+        <field name="name">pmis.product.price.form</field>
+        <field name="model">pmis.product.price</field>
+        <field name="arch" type="xml">
+            <form string="Product Price">
+                <sheet>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="name"/>
+                        <field name="unit"/>
+                        <field name="qty"/>
+                        <field name="price"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_pmis_product_price_tree" model="ir.ui.view">
+        <field name="name">pmis.product.price.tree</field>
+        <field name="model">pmis.product.price</field>
+        <field name="arch" type="xml">
+            <tree string="Product Prices">
+                <field name="product_id"/>
+                <field name="name"/>
+                <field name="unit"/>
+                <field name="qty"/>
+                <field name="price"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action to Open Product Prices -->
+    <record id="action_pmis_product_price" model="ir.actions.act_window">
+        <field name="name">Product Prices</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.product.price</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

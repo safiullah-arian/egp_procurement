@@ -1,0 +1,9 @@
+    .table {
+          width: 100%;
+          border: 1px solid blue;
+
+      }
+    .total {
+        background-color: blue;
+        text-align:right;
+     }

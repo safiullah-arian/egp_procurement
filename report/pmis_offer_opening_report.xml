@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <openerp>
+        <data>
+
+
+            <record id="action_pmis_offer_opening_report" model="ir.actions.report">
+                <field name="name">Offer Gushai Report</field>
+                <field name="model">pmis.offerghoshai</field>
+                <field name="report_type">qweb-pdf</field>
+                <field name="report_name">egp_procurement.offer_opening_report_template</field>
+                <field name="report_file">egp_procurement.offer_opening_report_template</field>
+                <field name="print_report_name">'Offer Opening Report'</field>
+                <field name="binding_type">report</field>
+                <field name="binding_model_id" ref="model_pmis_offerghoshai"/>
+                <field name="paperformat_id" ref="egp_procurement.paper_format_action_pmis_quotation"/>
+            </record>
+
+
+            <template id="offer_opening_report_template">
+                <t t-call="web.html_container">
+                    <t t-foreach="docs" t-as="doc">
+                        <t t-call="web.external_layout">
+                            <div class="page">
+                                <!--                        report header-->
+                                <div class="row">
+                                    <div class="oe_structure col-4 text-center text-nowrap ">
+                                        <img style="float:left;"
+                                             src="egp_procurement/static/description/images/emirate.png"
+                                             height="130"
+                                             width="150"/>
+                                    </div>
+                                    <div class="oe_structure col-4 text-center text-nowrap ">
+
+                                        <h4>
+                                            <sup>(۱)</sup>
+                                            جدول حاضری اشتراک کننده ګان در جلسه آفرګشایی
+                                        </h4>
+
+                                    </div>
+                                    <div class="oe_structure col-4 text-center text-nowrap ">
+                                        <img src="egp_procurement/static/description/images/mcit.png" height="130"
+                                             style="float:right;"
+                                             width="150"/>
+                                    </div>
+                                </div>
+                                <div style="text-align:right;">
+                                    <br/>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name"/>
+                                        :
+                                        پروژه خریداری
+                                    </h5>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_submission_project_id.announced_project_id.planned_project_id.contract_number"/>
+                                        :
+                                        شماره داوطلبی
+                                    </h5>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_submission_project_id.announced_project_id.planned_project_id.procurement_directorate"/>
+                                        :
+                                        وزرات/اداره مربوطه
+                                    </h5>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_ghoshai_date"/>:
+                                        تاریخ
+                                    </h5>
+                                </div>
+
+                                <table class="table table-bordered page">
+                                    <tr>
+
+                                        <th>امضاء</th>
+                                        <th>آیمیل ادرس</th>
+                                        <th>شماره تماس</th>
+                                        <th>آدرس فعلی شرکت</th>
+                                        <th>شماره جواز(شرکت)</th>
+                                        <th>اداره مربوط/نام مکمل شرکت</th>
+                                        <th>وظیفه</th>
+                                        <th>نام وتخلص</th>
+                                        <th>شماره</th>
+                                    </tr>
+                                    <tr style="text-align:center;">
+                                        <td>(ط)</td>
+                                        <td>(ح)</td>
+                                        <td>(ز)</td>
+                                        <td>(و)</td>
+                                        <td>(هـ)</td>
+                                        <td>(د)</td>
+                                        <td>(ج)</td>
+                                        <td>(ب)</td>
+                                        <td>(الف)</td>
+                                    </tr>
+                                    <t t-set="index" t-value="1"/>
+                                    <t t-foreach="doc.offerghoshai_agent_ids" t-as="offergushai_agent">
+                                        <tr style="text-align:right;">
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                <span t-esc="offergushai_agent.email"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="offergushai_agent.phone"/>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <span t-esc="offergushai_agent.department_id.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="offergushai_agent.position_title"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="offergushai_agent.name"/>
+                                            </td>
+                                            <td>
+                                                <t t-set="index" t-value="index+1"/>
+                                                <t t-esc="index"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <!--                            vendor agents-->
+                                    <t t-foreach="doc.basic_evaluation_ids" t-as="offer">
+                                        <t t-foreach="offer.Agent_ids" t-as="vendor_agent">
+                                            <tr style="text-align:right;">
+                                                <td>
+
+                                                </td>
+                                                <td>
+                                                    <span t-esc="vendor_agent.email"/>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="vendor_agent.phone"/>
+                                                </td>
+                                                <td>
+                                                    St.
+                                                    <span t-esc="offer.vendor_id.street"/>
+                                                    <br></br>
+                                                    City,
+                                                    <span t-esc="offer.vendor_id.city"/>
+                                                    <br></br>
+                                                    Country,
+                                                    <span t-esc="offer.vendor_id.country_id.name"/>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="offer.vendor_id.license_number"/>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="offer.vendor_id.name"/>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="vendor_agent.position_title"/>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="vendor_agent.name"/>
+                                                </td>
+                                                <td>
+                                                    <t t-set="index" t-value="index+1"/>
+                                                    <t t-esc="index"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+
+                                </table>
+                                <p style="text-align:right;">
+                                    شهرت تمام اشتراک کننده ګان به شمول اغضای هیئت آفرګشایی درج این فورمه میګردد
+                                    <sup>(1)</sup>
+                                </p>
+                                <br></br>
+                                <p style="text-align:right;">
+                                    این فورمه در جلسه آفرګشایی پس از خانه پری و امضای هیئت آفرګشایی چسب شفاف (اسکاشتیپ)
+                                    زده می شود طږریکه مندرجات آن محفوظ بماند
+                                    <sup>(2)</sup>
+
+                                </p>
+                                <br></br>
+                            </div>
+                            <div style="page-break-before: always;"></div>
+                            <!--            for #2 offer opening-->
+                            <div class="page2">
+                                <div class="row">
+                                    <div class="oe_structure col-4 text-center text-nowrap ">
+                                        <img style="float:left;"
+                                             src="egp_procurement/static/description/images/emirate.png"
+                                             height="130"
+                                             width="150"/>
+                                    </div>
+                                    <div class="oe_structure col-4 text-center text-nowrap ">
+
+                                        <h4>
+
+                                            فورمه شماره (۲) تسلیمی وګشایش آفرها
+                                        </h4>
+
+                                    </div>
+                                    <div class="oe_structure col-4 text-center text-nowrap ">
+                                        <img src="egp_procurement/static/description/images/mcit.png" height="130"
+                                             style="float:right;"
+                                             width="150"/>
+                                    </div>
+                                </div>
+                                <div style="text-align:right;">
+                                    <br/>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name"/>
+                                        :
+                                        پروژه خریداری
+                                    </h5>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_submission_project_id.announced_project_id.planned_project_id.contract_number"/>
+                                        :
+                                        شماره داوطلبی
+                                    </h5>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_submission_project_id.announced_project_id.planned_project_id.procurement_directorate"/>
+                                        :
+                                        وزرات/اداره مربوطه
+                                    </h5>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_ghoshai_date"/>:
+                                        تاریخ
+                                    </h5>
+                                </div>
+
+                                <table class="table table-bordered page">
+                                    <tr>
+                                        <th>امضای داوطلب</th>
+                                        <th>سمپل/نمونه تسلیم داده شده(بلی/نخیر)</th>
+                                        <th>نوع اسعار</th>
+                                        <th>محموع قیمت آفر خوانده شده (به ارقام وحروف)</th>
+                                        <th>فورمه تسلیمی آفر خانه پری مهر و امضاء شده؟</th>
+                                        <th>هر ګونه تخفیف یا تعدیل ارایه پشنهاد شده</th>
+                                        <th>هر ګونه تعویض،انصراف یا تعدیل ارائه شده</th>
+                                        <th>آیا صلاحیت نامه امضاء ضمیمه شده است؟(بلی/نخیر)</th>
+                                        <th>جدول قیمت های آفر مکمل خانه پری شده؟(بلی/نخیر)</th>
+                                        <th>جواز معبر شرکت موجود است؟(بلی/نخیر)</th>
+                                        <th>ایا پاکت آفر مهر وسربسته است؟(بلی/نخیر)</th>
+                                        <th>داوطلب</th>
+                                        <th>شماره</th>
+                                    </tr>
+                                    <tr style="text-align:center;">
+                                        <td>(م)</td>
+                                        <td>(ل)</td>
+                                        <td>(ک)</td>
+                                        <td>(ی)</td>
+                                        <td>(ط)</td>
+                                        <td>(ح)</td>
+                                        <td>(ز)</td>
+                                        <td>(و)</td>
+                                        <td>(هـ)</td>
+                                        <td>(د)</td>
+                                        <td>(ج)</td>
+                                        <td>(ب)</td>
+                                        <td>(الف)</td>
+                                    </tr>
+                                    <t t-set="index" t-value="1"/>
+
+
+                                    <t t-foreach="doc.basic_evaluation_ids" t-as="offer_basic_evaluation">
+                                        <t t-foreach="offer_basic_evaluation.basic_evaluation_checkbox_ids"
+                                           t-as="check_box">
+                                            <tr style="text-align:center;">
+
+                                                <td>
+
+                                                </td>
+                                                <td>
+                                                    <t t-if="check_box.is_sample_submitted">
+                                                        <span t-esc="check_box.is_sample_submitted"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        False
+                                                    </t>
+
+                                                </td>
+                                                <td>
+                                                    <span t-esc="check_box.offer_currency_type"/>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="check_box.total_price"/>
+                                                </td>
+                                                <td>
+                                                    <t t-if="check_box.is_offer_stamped">
+                                                        <span t-esc="check_box.is_offer_stamped"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        False
+                                                    </t>
+
+                                                </td>
+                                                <td>
+                                                    <t t-if="check_box.discount">
+                                                        <span t-esc="check_box.discount"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        False
+                                                    </t>
+
+                                                </td>
+                                                <td>
+                                                    <t t-if="check_box.tadel_changes">
+                                                        <span t-esc="check_box.tadel_changes"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        False
+                                                    </t>
+
+                                                </td>
+                                                <td>
+                                                    <t t-if="check_box.is_agent_letter_signed">
+                                                        <span t-esc="check_box.is_agent_letter_signed"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        False
+                                                    </t>
+
+                                                </td>
+                                                <td>
+                                                    <t t-if="check_box.is_offer_filled_completely">
+                                                        <span t-esc="check_box.is_offer_filled_completely"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        False
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <t t-if="check_box.is_license_valid">
+                                                        <span t-esc="check_box.is_license_valid"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        False
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <t t-if="check_box.is_packet_stamped">
+                                                        <span t-esc="check_box.is_packet_stamped"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        False
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="offer_basic_evaluation.vendor_id.name"/>
+
+                                                </td>
+                                                <td>
+                                                    <t t-set="index" t-value="index+1"/>
+                                                    <t t-esc="index"/>
+                                                </td>
+                                            </tr>
+
+                                        </t>
+
+                                    </t>
+
+
+                                </table>
+                                <p style="text-align:right;">
+                                    <strong>شهرت وامضای هیئت آفرګشایی</strong>
+                                </p>
+                                <div class="row" style="text-align:center;">
+                                    <t t-foreach="doc.offerghoshai_agent_ids" t-as="offergushai_agent">
+                                        <div class="col-4">
+                                            نام وامضای هیئت
+                                            <b>
+                                                <span t-esc="offergushai_agent.name"/>
+                                            </b>
+
+                                        </div>
+                                    </t>
+                                </div>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <div style="text-align:right;">
+                                    <p>
+                                        این فورمه در جلسه آفرګشایی پس از خانه پری و امضای هیئت آفرګشایی چسب شفاف
+                                        (اسکاشتیپ)
+                                        زده می شود طږریکه مندرجات آن محفوظ بماند
+                                        <sup>(۱)</sup>
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="page-break-before: always;"></div>
+                            <!--        form #3 offer opening-->
+                            <div class="page3">
+                                <div class="row">
+                                    <div class="oe_structure col-4 text-center text-nowrap ">
+                                        <img style="float:left;"
+                                             src="egp_procurement/static/description/images/emirate.png"
+                                             height="130"
+                                             width="150"/>
+                                    </div>
+                                    <div class="oe_structure col-4 text-center text-nowrap ">
+
+                                        <h4>
+                                            <sup>(۱)</sup>
+                                            فورمه شماره (۳) تسلیمی وګشایش آفرها
+
+
+                                        </h4>
+
+                                    </div>
+                                    <div class="oe_structure col-4 text-center text-nowrap ">
+                                        <img src="egp_procurement/static/description/images/mcit.png" height="130"
+                                             style="float:right;"
+                                             width="150"/>
+                                    </div>
+                                </div>
+                                <div style="text-align:right;">
+                                    <br/>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name"/>
+                                        :
+                                        پروژه خریداری
+                                    </h5>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_submission_project_id.announced_project_id.planned_project_id.contract_number"/>
+                                        :
+                                        شماره داوطلبی
+                                    </h5>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_submission_project_id.announced_project_id.planned_project_id.procurement_directorate"/>
+                                        :
+                                        وزرات/اداره مربوطه
+                                    </h5>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_ghoshai_date"/>:
+                                        تاریخ
+                                    </h5>
+                                </div>
+
+                                <table class="table table-bordered page">
+                                    <tr>
+                                        <th>امضای داوطلب</th>
+                                        <th>ذکر قراردادهای سالانه</th>
+                                        <th>ذکر تجربه مشابه</th>
+                                        <th>ذکر دارایی مالی(مانند صورت حساب بانکی و..)</th>
+                                        <th>تضمین آفر</th>
+                                        <th>فورم معلوماتی داوطلب خانه پری مهر وامضا ګردیده (بلی/نخیر)</th>
+                                        <th>داوطلب</th>
+                                        <th>شماهر</th>
+
+                                    </tr>
+                                    <tr>
+                                        <td>(ح)</td>
+                                        <td>(ز)</td>
+                                        <td>(و)</td>
+                                        <td>(هـ)</td>
+                                        <td>(د)</td>
+                                        <td>(ج)</td>
+                                        <td>(ب)</td>
+                                        <td>(الف)</td>
+                                    </tr>
+                                    <t t-set="index" t-value="1"/>
+                                    <t t-foreach="doc.basic_evaluation_ids" t-as="basic_evaluation">
+                                        <tr>
+
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                <t t-foreach="basic_evaluation.vendor_transaction_ids"
+                                                   t-as="transaction">
+                                                    Year:
+                                                    <span t-esc="transaction.experience_years"/>
+                                                    <br></br>
+                                                    Contracts Quantity:
+                                                    <span t-esc="transaction.number_of_transactions"/>
+                                                    <br></br>
+                                                    Contracts Amount:
+                                                    <span t-esc="transaction.transactions_amount"/>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="basic_evaluation.vendor_experience_ids" t-as="experience">
+                                                    Project:
+                                                    <span t-esc="experience.project_name"/>
+                                                    <br></br>
+                                                    Reference:
+                                                    <span t-esc="experience.reference_name"/>
+                                                    <br></br>
+                                                    Amount:
+                                                    <span t-esc="experience.project_amount"/>
+                                                    <br></br>
+                                                    Start Date:
+                                                    <span t-esc="experience.project_start_date"/>
+                                                    <br></br>
+                                                    Finish Date:
+                                                    <span t-esc="experience.project_finish_date"/>
+
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="basic_evaluation.vendor_assets_ids" t-as="asset">
+                                                    Reference:
+                                                    <span t-esc="asset.bank_id.name"/>
+                                                    <br></br>
+                                                    Amount:
+                                                    <span t-esc="asset.amount"/>
+                                                    <br></br>
+                                                    Balance Date:
+                                                    <span t-esc="asset.balance_date"/>
+                                                    <br></br>
+
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="basic_evaluation.guarantee_ids" t-as="guarantee">
+                                                    Bank:
+                                                    <span t-esc="guarantee.bank_id.name"/>
+                                                    <br></br>
+                                                    Amount:
+                                                    <span t-esc="guarantee.amount"/>
+                                                    <br></br>
+                                                    Expiry Date:
+                                                    <span t-esc="guarantee.expiry_date"/>
+                                                    <br></br>
+
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-if="basic_evaluation.is_information_form_signed">
+                                                    <span t-esc="basic_evaluation.is_information_form_signed"/>
+                                                </t>
+                                                <t t-else="">
+                                                    False
+                                                </t>
+
+                                            </td>
+                                            <td>
+                                                <span t-esc="basic_evaluation.vendor_id.name"/>
+                                            </td>
+                                            <td>
+                                                <t t-set="index" t-value="index+1"/>
+                                                <t t-esc="index"/>
+                                            </td>
+
+                                        </tr>
+                                    </t>
+
+                                </table>
+
+                                <br></br>
+                                <div style="text-align:right;">
+                                    <p>
+                                        این فورمه در جلسه آفرګشایی پس از خانه پری و امضای هیئت آفرګشایی چسب شفاف
+                                        (اسکاشتیپ)
+                                        زده می شود طږریکه مندرجات آن محفوظ بماند
+                                        <sup>(۱)</sup>
+
+                                    </p>
+                                </div>
+                                <br></br>
+                            </div>
+                            <div style="page-break-before: always;"></div>
+                            <!--        offer opening meeting note-->
+                            <div class="page4">
+
+                                <div class="row">
+                                    <div class="oe_structure col-4 text-center text-nowrap ">
+                                        <img style="float:left;"
+                                             src="egp_procurement/static/description/images/emirate.png"
+                                             height="130"
+                                             width="150"/>
+                                    </div>
+                                    <div class="oe_structure col-4 text-center text-nowrap ">
+
+                                        <h4>
+                                            <sup>(۱)</sup>
+                                            فورمه شماره (۴) تسلیمی وګشایش آفرها
+                                        </h4>
+
+                                    </div>
+                                    <div class="oe_structure col-4 text-center text-nowrap ">
+                                        <img src="egp_procurement/static/description/images/mcit.png" height="130"
+                                             style="float:right;"
+                                             width="150"/>
+                                    </div>
+                                </div>
+                                <div style="text-align:right;">
+                                    <br/>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name"/>
+                                        :
+                                        پروژه خریداری
+                                    </h5>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_submission_project_id.announced_project_id.planned_project_id.contract_number"/>
+                                        :
+                                        شماره داوطلبی
+                                    </h5>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_submission_project_id.announced_project_id.planned_project_id.procurement_directorate"/>
+                                        :
+                                        وزرات/اداره مربوطه
+                                    </h5>
+                                    <h5>
+
+                                        <t t-esc="doc.offer_ghoshai_date"/>:
+                                        تاریخ
+                                    </h5>
+                                </div>
+
+                                <div class="main" style="text-align:right">
+                                    <p>
+                                        (
+                                        <b>
+                                            <t t-esc="doc.day_name"/>
+                                        </b>
+                                        )
+                                        روز
+                                        (
+                                        <b>
+                                            <t t-esc="doc.offer_ghoshai_date"/>
+                                        </b>
+                                        )
+                                        مورخ
+                                        (
+                                        <b>
+                                            <t t-esc="doc.meeting_address"/>
+                                        </b>
+                                        )
+                                        در
+
+                                        وزارت مخابرت وتکنالوژی معلوماتی در حضور اعضای هیئت آفرګشایی با اشتراک تعداد
+                                        (
+                                        <b>
+                                            <t t-esc="doc.number_offers"/>
+                                        </b>
+                                        )
+                                        داوطلب/شرکت برګزار ګدید
+                                        <br></br>
+                                        در این جلسه تعداد
+                                        (
+                                        <b>
+                                            <t t-esc="doc.present_offers"/>
+                                        </b>
+                                        )
+                                        نماینده ګان داوطلبان حاضر وبه تعداد
+                                        (
+                                        <b>
+                                            <t t-esc="doc.number_offers - doc.present_offers"/>
+                                        </b>
+                                        )
+                                        نماینده ګان آفرهای تحویل داده شده غیر حاضر بوده، به تعداد
+                                        (
+                                        <b>
+                                            <t t-esc="doc.sealed_offers"/>
+                                        </b>
+                                        )
+                                        آفر طور سربسته دریافت ګردیده که از آن جمله تعداد
+                                        (
+                                        <b>
+                                            <t t-esc="doc.tadel_changes"/>
+                                        </b>
+                                        )
+                                        آفر انصراف نموده، به تعداد
+                                        ()
+                                        آفر تعدیلات داشته وبه تعداد
+                                        (
+                                        <b>
+                                            <t t-esc="doc.discount"/>
+                                        </b>
+                                        )
+                                        آفر تخفیف غیر مشروط ارائه نموده است. وهمجنین در این جلسه تعداد
+                                        ()
+                                        آفر ناوقت رسیده که بدون ګشایش مسترد ګردید
+                                        <br>
+                                        </br>
+                                        وتمام فورمه های مربوط به آفرګشایی (شماره (۱)،(۲) و (۳)) در حضور داوطلبان وهیئت
+                                        آفرګشایی خانه پردی وتوسط حاضرین در مجلس امضا ګردیده است
+                                        <br></br>
+                                        در این جلسه، جدول قیمت های ارائه شده در افرها و فورمه های مربوطه آفرګشایی(شماره
+                                        (۱)،(۲)، و(۳)) پس از امضا وخانه پری به طور کامل جسب شفاف (اسکاشتیپ) زده شده است
+                                        این جلسه به ساعت
+                                        (
+                                        <b>
+                                            <t t-esc="doc.start_hour1"/>
+                                        </b>
+                                        )
+                                        شروع و به ساعت
+                                        (
+                                        <b>
+                                            <t t-esc="doc.finish_hour1"/>
+                                        </b>
+                                        )
+                                        خاتمه یافته ورویداد جلسه توسط حاضرین در مجلس امضاء ګردید، ای فورم رویداد جلسه
+                                        نیز پس از خانه پری وامضای حاضرین ، درمجلس چسب شفاف (اسکاشتیپ) زده شد
+
+
+                                    </p>
+                                </div>
+
+                                <p style="text-align:right;">
+
+                                    <b>الف</b>
+                                    نام وامضای نمیاینده های داوطلبان حاضر
+
+                                </p>
+                                <div class="row">
+                                    <t t-foreach="doc.basic_evaluation_ids" t-as="basic_evaluation">
+                                        <t t-foreach="basic_evaluation.Agent_ids" t-as="vendor_agent">
+                                            <div class="col-4" style="text-align:center;">
+
+                                                <b>
+                                                    <span t-esc="vendor_agent.name"/>
+                                                </b>
+                                                :
+                                                نام وامضاء
+                                            </div>
+                                        </t>
+                                    </t>
+                                </div>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+
+                                <p style="text-align:right;">
+
+                                    <b>ب</b>
+                                    نام وامضای هیئت آفرګشایی
+
+                                </p>
+                                <div class="row">
+                                    <t t-foreach="doc.offerghoshai_agent_ids" t-as="offergushai_agent">
+                                        <div class="col-4" style="text-align:center;">
+                                            <b>
+                                                <span t-esc="offergushai_agent.name"/>
+                                            </b>
+                                            :
+                                            نام وامضاء
+
+                                        </div>
+                                    </t>
+                                </div>
+
+
+                            </div>
+
+
+                        </t>
+
+
+                    </t>
+                </t>
+
+            </template>
+
+        </data>
+
+    </openerp>
+</odoo>

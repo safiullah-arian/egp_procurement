@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View for PmisConsultativeBasicEvaluation -->
+    <record id="view_pmis_consultative_basic_evaluation_form" model="ir.ui.view">
+        <field name="name">pmis.consultative.basic.evaluation.form</field>
+        <field name="model">pmis.consultative.basic.evaluation</field>
+        <field name="arch" type="xml">
+            <form string="Consultative Basic Evaluation">
+                <field name="available_offer_ids"  invisible="1"/>
+                <sheet>
+                    <group>
+                        <field name="basic_evaluation_id" readonly="1"/>
+                        <!--                        <field name="shortlist_project_id"/>-->
+                        <field name="shortlist_project_offer_id"/>
+                        <field name="candidate_name" invisible="1"/>
+                        <field name="note"/>
+                    </group>
+                    <notebook>
+                        <page string="Consultative Agent">
+                            <field name="Agent_consult_ids">
+                                <tree editable="bottom">
+                                    <field name="role"/>
+                                    <field name="name"/>
+                                    <field name="position_title"/>
+                                    <field name="phone"/>
+                                    <field name="email"/>
+                                    <field name="department_id" optional="hide"
+                                           attrs="{'invisible':[('role','not in',('purchase_manager','offer_opening_manager','interpretive_panel'))]}"
+                                    />
+                                    <field name="vendors_id" optional="hide"
+                                           attrs="{'invisible':[('role','!=','vendor_agent')]}"
+                                           invisible="context.get('hide_vendor')"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="role"/>
+                                        <field name="name"/>
+                                        <field name="position_title"/>
+                                        <field name="phone"/>
+                                        <field name="email"/>
+                                        <field name="department_id"/>
+                                        <field name="vendors_id"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Checkbox List">
+                            <field name="consult_basic_evaluation_checkbox_ids">
+                                <tree>
+                                    <field name="is_packet_stamped"/>
+                                    <field name="is_license_valid"/>
+                                    <field name="is_offer_filled_completely"/>
+                                    <field name="is_agent_letter_signed"/>
+                                    <field name="tadel_changes"/>
+                                    <field name="discount"/>
+                                    <field name="is_offer_stamped"/>
+                                    <field name="total_price"/>
+                                    <field name="offer_currency_type"/>
+                                    <field name="is_sample_submitted"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="is_packet_stamped"/>
+                                            <field name="is_license_valid"/>
+                                            <field name="is_offer_filled_completely"/>
+                                            <field name="is_agent_letter_signed"/>
+                                            <field name="tadel_changes"/>
+                                        </group>
+                                        <group>
+                                            <field name="discount"/>
+                                            <field name="is_offer_stamped"/>
+                                            <field name="total_price"/>
+                                            <field name="offer_currency_type"/>
+                                            <field name="is_sample_submitted"/>
+
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Guarantee">
+                            <field name="consult_guarantee_ids">
+                                <!--                                <tree>-->
+                                <!--                                    <field name="name"/>-->
+                                <!--                                    <field name="amount"/>-->
+                                <!--                                </tree>-->
+                                <!--                                <form>-->
+                                <!--                                    <group>-->
+                                <!--                                        <field name="name"/>-->
+                                <!--                                        <field name="amount"/>-->
+                                <!--                                    </group>-->
+                                <!--                                </form>-->
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for PmisConsultativeBasicEvaluation -->
+    <record id="view_pmis_consultative_basic_evaluation_tree" model="ir.ui.view">
+        <field name="name">pmis.consultative.basic.evaluation.tree</field>
+        <field name="model">pmis.consultative.basic.evaluation</field>
+        <field name="arch" type="xml">
+            <tree string="Consultative Basic Evaluation">
+                <!--                <field name="shortlist_project_id"/>-->
+                <field name="basic_evaluation_id"/>
+                <field name="shortlist_project_offer_id"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for PmisConsultativeBasicEvaluation -->
+    <record id="action_pmis_consultative_basic_evaluation" model="ir.actions.act_window">
+        <field name="name">Consultative Basic Evaluation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.consultative.basic.evaluation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_pmis_consultative_basic_evaluation_tree"/>
+    </record>
+
+    <!-- Menu for PmisConsultativeBasicEvaluation -->
+    <!--    <menuitem-->
+    <!--            id="menu_pmis_consultative_basic_evaluation"-->
+    <!--            name="Consultative Basic Evaluation"-->
+    <!--            parent="pmis_bidding_consult_root"-->
+    <!--            action="action_pmis_consultative_basic_evaluation"/>-->
+</odoo>

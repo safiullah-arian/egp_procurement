@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--    PMIS Plan Template Action -->
+        <record id="pmis_plan_template_action_product" model="ir.actions.act_window">
+            <field name="name">Goods Plan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.plan.template</field>
+            <field name="view_mode">tree,form</field>
+            <!--            <field name="context">{'default_category':'product','default_budget_code':'0' }</field>-->
+            <field name="domain">[('category_id' , '=', 'Products And Non Consultative')]</field>
+            <field name="context">{'default_category_id':1 }</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create now...
+                </p>
+            </field>
+        </record>
+        <record id="pmis_plan_template_action_consultative" model="ir.actions.act_window">
+            <field name="name">Consultative Plan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.plan.template</field>
+            <field name="domain">[('category_id' , '=', 'Consultative')]</field>
+            <field name="context">{'default_category_id': 2}</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create now...
+                </p>
+            </field>
+        </record>
+        <record id="pmis_plan_template_action_architecture" model="ir.actions.act_window">
+            <field name="name">Construction Plan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.plan.template</field>
+            <field name="domain">[('category_id' , '=', 'Construction')]</field>
+            <field name="context">{'default_category_id': 3}</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+
+                </p>
+            </field>
+        </record>
+        <!--        PMIS Plan Template form view-->
+        <record id="view_pmis_plan_template_form" model="ir.ui.view">
+            <field name="name">pmis.plan.template.form</field>
+            <field name="model">pmis.plan.template</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="procurement_directorate"/>
+                            <field name="category_id" readonly="0"/>
+                        </group>
+                        <group>
+                            <field name="financial_year"/>
+                            <field name="tadel_id"/>
+                        </group>
+                        <label for="project_plan_ids" string="Projects"/>
+                        <field name="project_plan_ids"/>
+
+                    </sheet>
+                </form>
+            </field>
+
+        </record>
+
+        <!--PMIS Plan Template Tree view-->
+
+        <record id="view_pmis_plan_template_tree" model="ir.ui.view">
+            <field name="name">pmis.plan.template.tree</field>
+            <field name="model">pmis.plan.template</field>
+            <field name="arch" type="xml">
+                <tree>
+
+                    <field name="procurement_directorate"/>
+                    <field name="financial_year"/>
+                    <field name="tadel_id"/>
+                    <field name="project_plan_ids" widget="one2many"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <!--        PMIS Project Search view-->
+
+        <!--        <record id="view_pmis_project_search" model="ir.ui.view">-->
+        <!--            <field name="name">pmis.project.search</field>-->
+        <!--            <field name="model">pmis.project</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <search>-->
+        <!--                    <field name="name_en" filter_domain="['|', ('name_en','ilike',self),-->
+        <!--                             ('name_pa','ilike',self),('name_dr','ilike',self),('project_number','ilike',self),('date_recieved','ilike',self)]"/>-->
+        <!--                    <separator/>-->
+        <!--                    &lt;!&ndash;                            <filter&ndash;&gt;-->
+        <!--                    &lt;!&ndash;                                    name="filter_product"&ndash;&gt;-->
+        <!--                    &lt;!&ndash;                                    string="Product Projects "&ndash;&gt;-->
+        <!--                    &lt;!&ndash;                                    domain="[('category_id.name' ,'=', 'Products')]"&ndash;&gt;-->
+        <!--                    &lt;!&ndash;                            />&ndash;&gt;-->
+
+        <!--                    <group expand="1" string="Group By">-->
+        <!--                        <filter-->
+        <!--                                name="category_id"-->
+        <!--                                string="Procurement Type"-->
+        <!--                                context="{'group_by':'category_id'}"-->
+        <!--                        />-->
+        <!--                    </group>-->
+        <!--                    <separator/>-->
+        <!--                    <group expand="1" string="Group By">-->
+        <!--                        <filter-->
+        <!--                                name="budget_code"-->
+        <!--                                string="Budget Code"-->
+        <!--                                context="{'group_by':'budget_code'}"-->
+        <!--                        />-->
+        <!--                    </group>-->
+
+        <!--                    <separator/>-->
+        <!--                    <group expand="1" string="Group By">-->
+        <!--                        <filter-->
+        <!--                                name="directorates_id"-->
+        <!--                                string="Departments"-->
+        <!--                                context="{'group_by':'directorates_id'}"-->
+        <!--                        />-->
+        <!--                    </group>-->
+
+        <!--                    <group expand="1" string="Group By">-->
+        <!--                        <filter-->
+        <!--                                name="project_state"-->
+        <!--                                string="Project Status"-->
+        <!--                                context="{'group_by':'project_state'}"-->
+        <!--                        />-->
+        <!--                    </group>-->
+
+        <!--                    <searchpanel>-->
+        <!--                        <field name="category_id" select="multi" enable_counters="1"/>-->
+        <!--                    </searchpanel>-->
+        <!--                </search>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+
+        <!--    PMIS new Project Menu-->
+        <menuitem
+                id="pmis_plan_template_product"
+                name="Products And Non Consultative Plan"
+                action="pmis_plan_template_action_product"
+                parent="pmis_plan_menu"
+                groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract,egp_procurement.Products_Non_consultative_expert"
+
+                sequence="0"
+        />
+
+        <menuitem
+                id="pmis_plan_template_consultative"
+                name="Consultative Services Plan"
+                action="pmis_plan_template_action_consultative"
+                groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract,egp_procurement.pmis_Consultative_expert"
+                parent="pmis_plan_menu"
+                sequence="1"/>
+
+
+        <menuitem
+                id="pmis_plan_template_architecture"
+                name="Construction Plan"
+                action="pmis_plan_template_action_architecture"
+                groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract,egp_procurement.pmis_archi"
+                parent="pmis_plan_menu"
+                sequence="2"/>
+
+
+    </data>
+</odoo>

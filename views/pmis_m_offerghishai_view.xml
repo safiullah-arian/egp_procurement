@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View for PmisConsultativeOfferGhoshai -->
+    <record id="view_pmis_consultative_offerghoshai_form" model="ir.ui.view">
+        <field name="name">pmis.consultative.offerghoshai.form</field>
+        <field name="model">pmis.consultative.offerghoshai</field>
+        <field name="arch" type="xml">
+            <form string="Consultative Offer Ghoshai">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="offerghoshai_type"/>
+                            <field name="offerghoshai_shortlist_project_id" readonly="1"/>
+                            <field name="meeting_address"/>
+                            <field name="offerghoshi_date"/>
+                        </group>
+                        <group>
+                            <field name="start_hour" widget="time"/>
+                            <field name="end_hour" widget="time"/>
+                            <field name="note"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Technical and Financial Panel">
+                            <field name="consultative_offerghoshai_agent_ids">
+                                <tree editable="bottom">
+                                    <field name="role"/>
+                                    <field name="name"/>
+                                    <field name="position_title"/>
+                                    <field name="phone"/>
+                                    <field name="email"/>
+                                    <field name="department_id"
+                                           attrs="{'invisible':[('role','not in',('purchase_manager','offer_opening_manager','interpretive_panel'))]}"
+                                    />
+                                    <field name="vendors_id" optional="hide"
+                                           attrs="{'invisible':[('role','!=','vendor_agent')]}"
+                                           invisible="context.get('hide_vendor')"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="role"/>
+                                        <field name="name"/>
+                                        <field name="position_title"/>
+                                        <field name="phone"/>
+                                        <field name="email"/>
+                                        <field name="department_id"/>
+                                        <field name="vendors_id"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Basic Evaluation Info">
+                            <field name="basic_evaluation_ids">
+                                <!--                                <tree>-->
+                                <!--                                    <field name="shortlist_project_offer_id"/>-->
+                                <!--                                    <field name="shortlist_project_id"/>-->
+
+                                <!--                                </tree>-->
+                                <!--                                <form>-->
+                                <!--                                    <group>-->
+                                <!--                                        <field name="shortlist_project_offer_id"/>-->
+                                <!--                                        <field name="shortlist_project_id"/>-->
+
+                                <!--                                    </group>-->
+                                <!--                                </form>-->
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for PmisConsultativeOfferGhoshai -->
+    <record id="view_pmis_consultative_offerghoshai_tree" model="ir.ui.view">
+        <field name="name">pmis.consultative.offerghoshai.tree</field>
+        <field name="model">pmis.consultative.offerghoshai</field>
+        <field name="arch" type="xml">
+            <tree string="Consultative Offer Ghoshai">
+                <field name="offerghoshai_type"/>
+                <field name="offerghoshai_shortlist_project_id"/>
+                <field name="offerghoshi_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for PmisConsultativeOfferGhoshai -->
+    <record id="action_pmis_consultative_offerghoshai" model="ir.actions.act_window">
+        <field name="name">Consultative Offer Ghoshai</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmis.consultative.offerghoshai</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_pmis_consultative_offerghoshai_tree"/>
+    </record>
+
+    <!-- Menu for PmisConsultativeOfferGhoshai -->
+<!--    <menuitem-->
+<!--            id="menu_pmis_consultative_offerghoshai"-->
+<!--            name="Consultative Offer Ghoshai"-->
+<!--            parent="pmis_bidding_consult_root"-->
+<!--            action="action_pmis_consultative_offerghoshai"/>-->
+</odoo>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- Main view for PmisOfferGhoshai -->
+        <record id="view_pmis_offerghoshai_form" model="ir.ui.view">
+            <field name="name">pmis.offerghoshai.form</field>
+            <field name="model">pmis.offerghoshai</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group name="main">
+                            <group>
+
+                                <field name="project_name" invisible="1"/>
+                                <field name="offer_submission_project_id" widget="selection"/>
+                                <field name="project_number"/>
+                                <field name="offer_ghoshai_date"/>
+                                <field name="category_id"/>
+                            </group>
+                            <group>
+                                <field name="meeting_address"/>
+                                <field name="start_hour"/>
+                                <field name="end_hour"/>
+                                <field name="note"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Offer's Basic Evaluation" name="basic evaluation">
+                                <field name="basic_evaluation_ids">
+                                </field>
+                            </page>
+                            <page string="Board Members" name="Board Members">
+                                <field name="offerghoshai_agent_ids">
+                                    <tree editable="bottom">
+
+                                        <field name="name"/>
+                                        <field name="position_title"/>
+                                        <field name="phone"/>
+                                        <field name="email"/>
+                                        <field name="department_id"
+
+                                        />
+                                        <!--                                          attrs="{'invisible':[('role','not in',('purchase_manager','offer_opening_manager','interpretive_panel'))]}"-->
+
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="position_title"/>
+                                            <field name="phone"/>
+                                            <field name="email"/>
+                                            <field name="department_id"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for PmisOfferGhoshai -->
+        <record id="view_pmis_offerghoshai_tree" model="ir.ui.view">
+            <field name="name">pmis.offerghoshai.tree</field>
+            <field name="model">pmis.offerghoshai</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="offer_submission_project_id"/>
+                    <field name="project_number"/>
+                    <field name="offer_ghoshai_date"/>
+                    <!--                    <field name="meeting_type"/>-->
+                    <field name="note"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_pmis_offerghoshai_search" model="ir.ui.view">
+            <field name="name">pmis.offerghoshai.search</field>
+            <field name="model">pmis.offerghoshai</field>
+            <field name="arch" type="xml">
+                <search string="Search Pmis Offer Ghoshai">
+                    <field name="project_number" string="Project Number"/>
+                    <field name="offer_ghoshai_date" string="Offer Ghoshai Date"/>
+                    <field name="meeting_address" string="Meeting Address"/>
+                    <filter name="category_id" string="Category" context="{'group_by': 'category_id'}"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action for PmisOfferGhoshai -->
+        <record id="action_pmis_offerghoshai" model="ir.actions.act_window">
+            <field name="name">Offer Ghoshai</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.offerghoshai</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_filter_child': 1}</field>
+            <field name="view_id" ref="view_pmis_offerghoshai_tree"/>
+            <field name="search_view_id" ref="egp_procurement.view_pmis_offerghoshai_search"/>
+        </record>
+
+        <!-- Menu item for PmisOfferGhoshai -->
+        <menuitem
+                id="menu_pmis_offerghoshai"
+                name="Offer Ghoshai"
+                parent="pmis_bidding_root"
+                action="action_pmis_offerghoshai"
+                sequence="3"/>
+    </data>
+</odoo>

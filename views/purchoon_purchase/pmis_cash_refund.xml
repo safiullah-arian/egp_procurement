@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--         PMIS Project form view-->
+        <record id="view_pmis_cash_refund_form" model="ir.ui.view">
+            <field name="name">pmis.cash.refund.form</field>
+            <field name="model">pmis.cash.refund</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="refunt_to"/>
+                            <field name="cash_reception_id" widget="selection"/>
+                            <field name="cash_reception_id_index" invisible="1"/>
+                            <field name="amount"/>
+                            <field name="date"/>
+                            <field name="attachment"/>
+                        </group>
+
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+
+                </form>
+            </field>
+        </record>
+
+        <!--PMIS purchase Tree view-->
+        <record id="view_pmis_cash_refund_tree" model="ir.ui.view">
+            <field name="name">pmis.cash.refund.tree</field>
+            <field name="model">pmis.cash.refund</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="cash_reception_id"/>
+                    <field name="cash_reception_id_index" invisible="1"/>
+                    <field name="amount"/>
+                    <field name="date"/>
+                    <field name="refunt_to"/>
+                    <field name="attachment"/>
+                </tree>
+            </field>
+        </record>
+        <record id="pmis_cash_refund_action" model="ir.actions.act_window">
+            <field name="name">Cash Refund</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.cash.refund</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    create new Cash Refund
+                </p>
+            </field>
+        </record>
+        <menuitem
+                id="pmis_cash_refund_menu"
+                name="Cash Refund"
+                action="pmis_cash_refund_action"
+                parent="pmis_accounting_root"
+                sequence="2"/>
+
+    </data>
+
+</odoo>

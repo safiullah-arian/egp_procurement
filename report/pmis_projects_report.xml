@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    project report-->
+    <record id="action_pmis_projects_report" model="ir.actions.report">
+        <field name="name">Projects Report</field>
+        <field name="model">pmis.project</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">egp_procurement.projects_report_template</field>
+        <field name="report_file">egp_procurement.projects_report_template</field>
+        <field name="print_report_name">'Project_report'</field>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="egp_procurement.paper_format_action_pmis_quotation"/>
+    </record>
+
+
+    <template id="projects_report_template">
+        <t t-call="web.html_container">
+
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <!--                        report header-->
+                    <div class="row">
+
+                        <div class="oe_structure col-4 text-center text-nowrap ">
+                            <img style="float:left;" src="egp_procurement/static/description/images/emirate.png"
+                                 height="130"
+                                 width="150"/>
+                        </div>
+
+                        <div class="oe_structure col-4 text-center text-nowrap ">
+
+                            <h4>
+                                وزارت مخابرات وتکانالوژی معلوماتی
+                            </h4>
+                            <br/>
+                            <h4>
+                                ریاست تدارکات
+                            </h4>
+                            <h4>
+                                امریت تسهیل قراردادها وپلانګذاری/مدیریت عمومی پلانګذاری وګزارش دهی
+                            </h4>
+                            <h4>
+                                <span t-esc="datas['category_name']"/>
+                                لست پروژه های
+
+
+                            </h4>
+
+                        </div>
+
+                        <div class="oe_structure col-4 text-center text-nowrap ">
+                            <img src="egp_procurement/static/description/images/mcit.png" height="130"
+                                 style="float:right;"
+                                 width="150"/>
+                        </div>
+                    </div>
+
+                    <br/>
+                    <div class="row">
+                        <div class="col-6" style="text-align:right">
+                            تاریخ ختم:
+                            <span t-esc="datas['report_from']"/>
+
+                        </div>
+                        <div class="col-6"  style="text-align:right">
+                            تاریخ شروع:
+                            <span t-esc="datas['report_up_to']"/>
+                        </div>
+
+
+                    </div>
+                    <br/>
+                    <table class="table table-bordered page">
+                        <tr>
+                            <th colspan="2">ملاحظه/نظارت از اجرای قرارداد</th>
+                            <th colspan="5">مرحله اجرای قرارداد</th>
+                            <th colspan="10">مرحله داوطلبی</th>
+                            <th colspan="5">تشریحات پروژه</th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">ملاحظات/نظارت ار اجرات قراردادی</th>
+                            <th>تکمیل پروژه</th>
+                            <th>پروسه پرداخت</th>
+                            <th>بروسه تشریح</th>
+                            <th>میعاد قرارداد</th>
+                            <th>مدیریت قرارداد</th>
+                            <th>تصمیم اعطای قرارداد</th>
+                            <th>علان داوطلب برنده</th>
+                            <th>ترتیب،تایئد ویا رد ګزارش</th>
+                            <th>ارزیابی آفرها</th>
+                            <th>تفصیلات آفرها</th>
+                            <th>آفرګشایی</th>
+                            <th>دریافت آفرها</th>
+                            <th>اعلان داوطلبی</th>
+                            <th>ترتیب شرطنامه</th>
+                            <th>دریافت بسته تدارکاتی</th>
+                            <th>مبلغ قرارداد</th>
+                            <th>نوع بودجه</th>
+                            <th>شعبه نیازمند</th>
+                            <th>نام پروژه</th>
+                            <th>شماره</th>
+                        </tr>
+                        <t t-set="index" t-value="1"/>
+                        <!--                        draft projects-->
+                        <t t-foreach="datas['draft_projects']" t-as="draft">
+                            <tr>
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <span t-esc="draft.date_recieved"/>
+                                </td>
+                                <td>
+                                    Est. Cost
+                                    <span t-esc="draft.estimated_cost"/>
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <span t-esc="draft.directorates_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="draft.name"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="draft.name_pa"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="draft.name_dr"/>
+                                </td>
+                                <td>
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <!--                        plan projects-->
+                        <t t-foreach="datas['plan_projects']" t-as="plan">
+                            <tr>
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                </td>
+                                <td>
+                                    <span t-esc="plan.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="plan.project_id.date_recieved"/>
+                                </td>
+                                <td>
+                                    <span t-esc="plan.budget_amount"/>
+                                </td>
+                                <td>
+                                    <span t-esc="plan.budget_type"/>
+                                </td>
+                                <td>
+                                    <span t-esc="plan.project_id.directorates_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="plan.project_id.name"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="plan.project_id.name_pa"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="plan.project_id.name_dr"/>
+                                </td>
+                                <td>
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+
+                            </tr>
+                        </t>
+                        <!--                        announced projects-->
+                        <t t-foreach="datas['announced_projects']" t-as="announce">
+                            <tr>
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <span t-esc="announce.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="announce.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="announce.planned_project_id.project_id.date_recieved"/>
+                                </td>
+                                <td>
+                                    <span t-esc="announce.planned_project_id.budget_amount"/>
+                                </td>
+                                <td>
+                                    <span t-esc="announce.planned_project_id.budget_type"/>
+                                </td>
+                                <td>
+                                    <span t-esc="announce.planned_project_id.project_id.directorates_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="announce.planned_project_id.project_id.name"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="announce.planned_project_id.project_id.name_pa"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="announce.planned_project_id.project_id.name_dr"/>
+                                </td>
+                                <td>
+
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <!--                    offer receiving projects-->
+                        <t t-foreach="datas['offer_receiving_projects']" t-as="offer_receiving">
+                            <tr>
+
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                </td>
+                                <td>
+                                    <span t-esc="offer_receiving.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="offer_receiving.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="offer_receiving.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="offer_receiving.announced_project_id.planned_project_id.project_id.date_recieved"/>
+                                </td>
+                                <td>
+                                    <span t-esc="offer_receiving.announced_project_id.planned_project_id.budget_amount"/>
+                                </td>
+                                <td>
+                                    <span t-esc="offer_receiving.announced_project_id.planned_project_id.budget_type"/>
+                                </td>
+                                <td>
+                                    <span t-esc="offer_receiving.announced_project_id.planned_project_id.project_id.directorates_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="offer_receiving.announced_project_id.planned_project_id.project_id.name"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="offer_receiving.announced_project_id.planned_project_id.project_id.name_pa"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="offer_receiving.announced_project_id.planned_project_id.project_id.name_dr"/>
+                                </td>
+                                <td>
+
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+
+
+                                <!---->
+
+                            </tr>
+                        </t>
+                        <!--offer opening projects-->
+                        <t t-foreach="datas['offer_opening_projects']" t-as="opening">
+                            <tr>
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <span t-esc="opening.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="opening.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="opening.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="opening.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="opening.offer_submission_project_id.announced_project_id.planned_project_id.project_id.date_recieved"/>
+                                </td>
+                                <td>
+                                    <span t-esc="opening.offer_submission_project_id.announced_project_id.planned_project_id.budget_amount"/>
+                                </td>
+                                <td>
+                                    <span t-esc="opening.offer_submission_project_id.announced_project_id.planned_project_id.budget_type"/>
+                                </td>
+                                <td>
+                                    <span t-esc="opening.offer_submission_project_id.announced_project_id.planned_project_id.project_id.directorates_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="opening.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="opening.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_pa"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="opening.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_dr"/>
+                                </td>
+                                <td>
+
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+
+                            </tr>
+                        </t>
+                        <!--                        offer details-->
+                        <t t-foreach="datas['offer_details_projects']" t-as="detail">
+                            <tr>
+
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <span t-esc="detail.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="detail.offer_ghoshai_project_id.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="detail.offer_ghoshai_project_id.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="detail.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="detail.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="detail.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.date_recieved"/>
+                                </td>
+                                <td>
+                                    <span t-esc="detail.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.budget_amount"/>
+                                </td>
+                                <td>
+                                    <span t-esc="detail.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.budget_type"/>
+                                </td>
+                                <td>
+                                    <span t-esc="detail.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.directorates_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="detail.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="detail.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_pa"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="detail.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_dr"/>
+                                </td>
+                                <td>
+
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+
+                            </tr>
+                        </t>
+                        <!--                        offer evaluation-->
+
+                        <t t-foreach="datas['offer_evaluation_projects']" t-as="evaluation">
+                            <tr>
+
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <span t-esc="evaluation.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="evaluation.offer_details_id.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="evaluation.offer_details_id.offer_ghoshai_project_id.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="evaluation.offer_details_id.offer_ghoshai_project_id.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="evaluation.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="evaluation.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="evaluation.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.date_recieved"/>
+                                </td>
+                                <td>
+                                    <span t-esc="evaluation.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.budget_amount"/>
+                                </td>
+                                <td>
+                                    <span t-esc="evaluation.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.budget_type"/>
+                                </td>
+                                <td>
+                                    <span t-esc="evaluation.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.directorates_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="evaluation.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="evaluation.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_pa"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="evaluation.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_dr"/>
+                                </td>
+                                <td>
+
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <!--                        candidate winned projects-->
+
+                        <t t-foreach="datas['candidate_winning_projects']" t-as="candidate_winning">
+                            <tr>
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <span t-esc="candidate_winning.create_date"/>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <span t-esc="candidate_winning.evaluation_Project_id.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="candidate_winning.evaluation_Project_id.offer_details_id.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="candidate_winning.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="candidate_winning.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="candidate_winning.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="candidate_winning.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="candidate_winning.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.date_recieved"/>
+                                </td>
+                                <td>
+                                    <span t-esc="candidate_winning.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.budget_amount"/>
+                                </td>
+                                <td>
+                                    <span t-esc="candidate_winning.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.budget_type"/>
+                                </td>
+                                <td>
+                                    <span t-esc="candidate_winning.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.directorates_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="candidate_winning.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="candidate_winning.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_pa"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="candidate_winning.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_dr"/>
+                                </td>
+                                <td>
+
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+
+                            </tr>
+                        </t>
+                        <!--                        contract decision-->
+                        <t t-foreach="datas['contract_decision_projects']" t-as="contract_decision">
+                            <tr>
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <span t-esc="contract_decision.create_date"/>
+                                </td>
+                                <td></td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <span t-esc="contract_decision.evaluated_project_id.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract_decision.evaluated_project_id.evaluation_Project_id.offer_details_id.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract_decision.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract_decision.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract_decision.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract_decision.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract_decision.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.date_recieved"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract_decision.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.budget_amount"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract_decision.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.budget_type"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract_decision.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.directorates_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract_decision.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="contract_decision.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_pa"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="contract_decision.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_dr"/>
+                                </td>
+                                <td>
+
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+
+
+                            </tr>
+                        </t>
+                        <!--                        &lt;!&ndash;                        contract management projects&ndash;&gt;-->
+                        <t t-foreach="datas['contract_management_projects']" t-as="contract">
+                            <tr>
+
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <span t-esc="contract.remaining_duration"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract.start_date"/>
+                                    <span t-esc="contract.end_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract.winner_id.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract.winner_id.evaluated_project_id.create_date"/>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <span t-esc="contract.winner_id.evaluated_project_id.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.date_recieved"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.budget_amount"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.budget_type"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.directorates_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="contract.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="contract.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_pa"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="contract.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_dr"/>
+                                </td>
+                                <td>
+
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+
+                            </tr>
+                        </t>
+                        <!--                        delivery descriptio-->
+                        <t t-foreach="datas['delivery_description_projects']" t-as="delivery">
+                            <tr>
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <span t-esc="delivery.delivery_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.remaining_duration"/>
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.start_date"/>
+                                    <span t-esc="delivery.contract_project_id.end_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.winner_id.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.winner_id.evaluated_project_id.create_date"/>
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.winner_id.evaluated_project_id.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.date_recieved"/>
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.budget_amount"/>
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.budget_type"/>
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.directorates_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="delivery.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="delivery.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_pa"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="delivery.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_dr"/>
+                                </td>
+                                <td>
+
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <!--                        payment projects-->
+                        <t t-foreach="datas['payment_projects']" t-as="payment">
+                            <tr>
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td>
+                                    <span t-esc="payment.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.delivery_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.remaining_duration"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.start_date"/>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.end_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.evaluated_project_id.create_date"/>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.evaluated_project_id.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.create_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_ghoshai_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.pro_announcement_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.date_recieved"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.budget_amount"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.budget_type"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.directorates_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_pa"/>
+                                    /
+                                    <br></br>
+                                    <span t-esc="payment.delivery_project_id.contract_project_id.winner_id.evaluated_project_id.evaluation_Project_id.offer_details_id.offer_ghoshai_project_id.offer_submission_project_id.announced_project_id.planned_project_id.project_id.name_dr"/>
+                                </td>
+                                <td>
+                                    <t t-set="index" t-value="index+1"/>
+                                    <t t-esc="index"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

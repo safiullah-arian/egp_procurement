@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Form view -->
+    <record id="view_bidding_winner_form" model="ir.ui.view">
+        <field name="name">bidding.winner.form</field>
+        <field name="model">bidding.winner</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="available_offer_ids" invisible="1"/>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_name" invisible="1"/>
+                            <field name="evaluated_project_id" widget="selection"/>
+                            <field name="project_name_id"/>
+                            <field name="project_id"/>
+                            <field name="winning_offer_id"/>
+                        </group>
+                        <group>
+                            <field name="offer_state" invisible="1"/>
+                            <field name="is_contract_signed"/>
+                            <field name="contract_signed_date"
+                                   invisible="is_contract_signed == False"/>
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="Offer Acceptance">
+                            <field name="offer_acceptance_ids">
+                                <tree>
+                                    <field name="offer_acceptance_no"/>
+                                    <field name="offer_acceptance_date"/>
+                                    <field name="contact_price"/>
+                                    <field name="contact_time"/>
+                                    <field name="contact_place"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="Contract Agreement" invisible="not is_contract_signed ">
+                            <field name="contract_agreement_ids">
+                                <tree editeble="bottom">
+                                    <field name="contract_agree_date"/>
+                                    <field name="department_name"/>
+                                    <field name="contract_start_date"/>
+                                    <field name="contract_expiry_date"/>
+                                    <field name="department_representative"/>
+                                    <field name="department_representative_job"/>
+                                    <field name="supplier_representative_name"/>
+                                    <field name="supplier_representative_job"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="contract_agree_date"/>
+                                            <field name="department_name"/>
+                                            <field name="department_representative"/>
+                                            <field name="department_representative_job"/>
+
+                                        </group>
+                                        <group>
+                                            <field name="contract_start_date"/>
+                                            <field name="contract_expiry_date"/>
+                                            <field name="supplier_representative_name"/>
+                                            <field name="supplier_representative_job"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page name="Offer Guarantee" string="Offer Guarantee"
+                              invisible="is_contract_signed == False">
+                            <field name="winner_guarantee_ids">
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view -->
+    <record id="view_bidding_winner_tree" model="ir.ui.view">
+        <field name="name">bidding.winner.tree</field>
+        <field name="model">bidding.winner</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="evaluated_project_id"/>
+                <field name="winning_offer_id"/>
+                <field name="is_contract_signed"/>
+                <field name="contract_signed_date"  invisible="is_contract_signed == False" />
+
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search view for BiddingWinner model -->
+    <record id="view_bidding_winner_search" model="ir.ui.view">
+        <field name="name">bidding.winner.search</field>
+        <field name="model">bidding.winner</field>
+        <field name="arch" type="xml">
+            <search string="Search Bidding Winners">
+                <field name="evaluated_project_id" string="Evaluated Project"/>
+                <field name="project_id" string="Project Number"/>
+                <field name="is_contract_signed" string="Contract Signed"/>
+
+                <filter name="is_contract_signed" string="Contract Signed" context="{'group_by':'is_contract_signed'}"/>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_bidding_winner" model="ir.actions.act_window">
+        <field name="name">Bidding Winners</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bidding.winner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_bidding_winner_search"/>
+    </record>
+
+    <!-- Menu -->
+    <menuitem
+            id="menu_bidding_winner"
+            name="Bidding Winners"
+            parent="pmis_bidding_root"
+            action="action_bidding_winner"
+            sequence="7"/>
+</odoo>
+
+

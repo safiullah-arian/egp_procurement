@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--         PMIS Project form view-->
+        <record id="view_pmis_quotation_form" model="ir.ui.view">
+            <field name="name">pmis.quotation.form</field>
+            <field name="model">pmis.quotation</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+
+                        <group>
+                            <field name="purchase_project_id"/>
+                            <field name="cheap_quotation_amount"/>
+                        </group>
+
+
+                        <notebook>
+                            <page name="quotation_lines" string="Quotation Lines">
+                                <field name="quotation_lines"/>
+                            </page>
+                            <page name="vendor_agent" string="Board Members">
+                                <field name="agent_ids">
+                                    <tree editable="bottom">
+
+                                        <field name="name"/>
+                                        <field name="position_title"/>
+                                        <field name="phone"/>
+                                        <field name="email"/>
+                                        <field name="department_id"
+
+                                        />
+
+                                    </tree>
+                                    <form>
+                                        <group>
+
+                                            <field name="name"/>
+                                            <field name="position_title"/>
+                                            <field name="phone"/>
+                                            <field name="email"/>
+                                            <field name="department_id"/>
+
+                                        </group>
+                                    </form>
+
+                                </field>
+                            </page>
+                            <page name="document_page" string="Documents">
+                                <field name="documents_ids">
+                                    <tree editable="bottom">
+                                        <field name="number"/>
+                                        <field name="subject"/>
+                                        <field name="type_id"/>
+                                        <field name="directorates_id"/>
+                                        <field name="note"/>
+                                        <field name="attachment"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="number"/>
+                                            <field name="subject"/>
+                                            <field name="type_id"/>
+                                            <field name="directorates_id"/>
+                                            <field name="note"/>
+                                            <field name="attachment"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+
+                        </notebook>
+                    </sheet>
+
+
+                </form>
+            </field>
+        </record>
+
+        <!--PMIS purchase Tree view-->
+
+        <record id="view_pmis_quotation_tree" model="ir.ui.view">
+            <field name="name">pmis.quotation.tree</field>
+            <field name="model">pmis.quotation</field>
+            <field name="arch" type="xml">
+                <tree>
+
+                    <field name="purchase_project_id"/>
+                    <field name="quotation_lines" widget="one2many"/>
+
+                </tree>
+            </field>
+        </record>
+        <!--    search view-->
+        <!--        <record id="view_pmis_purchase_quotation_search" model="ir.ui.view">-->
+        <!--            <field name="name">pmis.purchase.quotation.search</field>-->
+        <!--            <field name="model">pmis.purchase.quotation</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <search>-->
+        <!--                    <group expand="1" string="Group By">-->
+        <!--                        <filter-->
+        <!--                                name="group_by_purchase_id"-->
+        <!--                                string="Purchase Name"-->
+        <!--                                context="{'group_by':'purchase_id'}"-->
+        <!--                        />-->
+        <!--                    </group>-->
+        <!--                </search>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+
+        <record id="pmis_quotation_action" model="ir.actions.act_window">
+            <field name="name">Purchase Quotation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.quotation</field>
+            <!--              <field name="context">{'search_default_group_by_purchase_id':1}</field>-->
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    create new purchase quotation
+                </p>
+            </field>
+        </record>
+        <menuitem
+                id="pmis_quotation_menu"
+                name="Purchase Quotation"
+                action="pmis_quotation_action"
+                parent="pmis_purchoon_purchase_root"
+                groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract,egp_procurement.pmis_purchase_managers_less_5000000"/>
+        sequence="3"/>
+    </data>
+</odoo>

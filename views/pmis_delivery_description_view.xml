@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <!-- Form View -->
+        <record id="view_pmis_delivery_description_form" model="ir.ui.view">
+            <field name="name">pmis.delivery.description.form</field>
+            <field name="model">pmis.delivery.description</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="contract_project_id" widget="selection"/>
+                                <field name="project_name" invisible="1"/>
+                                <field name="contract_project_name_id"/>
+                                <field name="delivery_date"/>
+                                <field name="warehouse"/>
+                            </group>
+                            <group>
+                                <field name="vendor_id"/>
+                                <field name="Offer_number"/>
+                                <field name="category_id"/>
+                                <field name="notes"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="services Details" string="Services details" invisible="category_id != 3">
+                                <field name="delivery_services_ids">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="work_description"/>
+                                        <field name="unit_measure"/>
+                                        <field name="qty"/>
+                                        <field name="is_service_delivery"/>
+                                        <field name="details"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="work_description"/>
+                                            <field name="unit_measure"/>
+                                            <field name="qty"/>
+                                            <field name="is_service_delivery"/>
+                                            <field name="details"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Products Details" name="products details" invisible="category_id == 3">
+                                <field name="delivery_product_ids">
+                                    <tree editable="bottom">
+                                        <field name="product_description_id"/>
+                                        <field name="unit" optional="hide"/>
+                                        <field name="description" optional="show"/>
+                                        <field name="qty"/>
+                                        <field name="is_delivery"/>
+                                        <field name="details"/>
+
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="product_description_id"/>
+                                            <field name="unit"/>
+                                            <field name="description"/>
+                                            <field name="qty"/>
+                                            <field name="is_delivery"/>
+                                            <field name="details"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Interpretive Panel" name="Interpretive Panel">
+                                <field name="vendor_agent_ids">
+                                    <tree editable="bottom">
+                                        <field name="role"/>
+                                        <field name="name"/>
+                                        <field name="position_title"/>
+                                        <field name="phone"/>
+                                        <field name="email"/>
+                                        <field name="department_id"
+                                             invisible="role not in ('purchase_manager', 'offer_opening_manager', 'interpretive_panel')"
+                                        />
+                                        <field name="vendors_id" optional="hide"
+                                               invisible="role != 'vendor_agent' or context.get('hide_vendor', False)"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="role"/>
+                                            <field name="name"/>
+                                            <field name="position_title"/>
+                                            <field name="phone"/>
+                                            <field name="email"/>
+                                            <field name="department_id"/>
+                                            <field name="vendors_id"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+
+
+                            <page string="Document" name="Document">
+                                <field name="document_ids">
+                                    <tree editable="bottom">
+                                        <field name="number"/>
+                                        <field name="subject"/>
+                                        <field name="type_id"/>
+                                        <field name="note"/>
+                                        <field name="attachment"/>
+
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="number"/>
+                                            <field name="subject"/>
+                                            <field name="type_id"/>
+                                            <field name="note"/>
+                                            <field name="attachment"/>
+                                        </group>
+                                    </form>
+
+                                </field>
+                            </page>
+                            <page string="Invoice" name="Invoice">
+                                <field name="invoice_ids">
+                                    <tree editable="bottom">
+                                        <field name="invoice_number"/>
+                                        <field name="invoice_date"/>
+                                        <field name="invoice_amount"/>
+                                        <field name="payment_terms"/>
+                                        <field name="invoice_scan"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="invoice_number"/>
+                                            <field name="invoice_date"/>
+                                            <field name="invoice_amount"/>
+                                            <field name="payment_terms"/>
+                                            <field name="invoice_scan"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page name="M7" string="M7" invisible="category_id == 3">
+                                <field name="m7_ids">
+                                    <tree editable="bottom">
+                                        <field name="No"/>
+                                        <field name="date"/>
+                                        <field name="office"/>
+                                        <field name="address"/>
+                                        <field name="company"/>
+                                        <field name="order_no"/>
+                                        <field name="total_price"/>
+                                        <field name="trustee"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="No"/>
+                                            <field name="date"/>
+                                            <field name="office"/>
+                                            <field name="address"/>
+                                            <field name="company"/>
+                                            <field name="order_no"/>
+                                            <field name="total_price"/>
+                                            <field name="trustee"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View -->
+        <record id="view_pmis_delivery_description_tree" model="ir.ui.view">
+            <field name="name">pmis.delivery.description.tree</field>
+            <field name="model">pmis.delivery.description</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="contract_project_id"/>
+                    <field name="delivery_date"/>
+                    <field name="vendor_id"/>
+                    <field name="Offer_number"/>
+                    <field name="warehouse"/>
+                    <!--                    <field name="product_id"/>-->
+                    <!--                    <field name="quantity"/>-->
+                    <!--                    <field name="unit_of_measure"/>-->
+                </tree>
+            </field>
+        </record>
+        <record id="view_pmis_delivery_description_search" model="ir.ui.view">
+            <field name="name">pmis.delivery.description.search</field>
+            <field name="model">pmis.delivery.description</field>
+            <field name="arch" type="xml">
+                <search string="Search Pmis Delivery Description">
+                    <!-- Fields available for global search -->
+                    <field name="contract_project_id"/>
+                    <field name="Offer_number"/>
+                    <field name="delivery_date"/>
+                    <field name="vendor_id"/>
+                    <field name="category_id"/>
+
+                    <!-- Filters -->
+                    <filter name="warehouse" string="IT Store" domain="[('warehouse', '=', 'it')]"/>
+                    <filter name="warehouse" string="Goods Store" domain="[('warehouse', '=', 'goods')]"/>
+                    <filter name="warehouse" string="Construction Store" domain="[('warehouse', '=', 'construction')]"/>
+
+                    <!-- Group by options -->
+                    <group expand="0" string="Group By">
+                        <filter name="warehouse" string="Places in Warehouse" context="{'group_by': 'warehouse'}"/>
+                        <filter name="category_id" string="Category" context="{'group_by': 'category_id'}"/>
+                    </group>
+                </search>
+            </field>
+</record>
+
+        <!-- Action -->
+        <record id="action_delivery_description" model="ir.actions.act_window">
+            <field name="name">Delivery Description</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.delivery.description</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_pmis_delivery_description_search"/>
+        </record>
+
+        <!-- Menu -->
+        <menuitem id="menu_pmis_delivery_description"
+                  name="Description and Delivery"
+                  parent="pmis_contractt_management_root"
+                  action="action_delivery_description"
+                  sequence="2"/>
+    </data>
+</odoo>

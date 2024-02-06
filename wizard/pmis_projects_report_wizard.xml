@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <!--         PMIS Project Report Wizard form view-->
+        <record id="view_pmis_project_pdf_report_form" model="ir.ui.view">
+            <field name="name">pmis.project.pdf.report.form</field>
+            <field name="model">pmis.project.pdf.report</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+
+                            <field name="category_id"/>
+<!--                            <field name="state"/>-->
+                            <field name="report_from"/>
+                            <field name="report_up_to"/>
+                        </group>
+                    </sheet>
+
+                    <footer>
+                        <button name="action_print_report" string="Print Report" class="btn btn-primary" type="object"/>
+                        <button string="Cancel" class="btn btn-danger" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="pmis_project_pdf_report_action" model="ir.actions.act_window">
+            <field name="name">Projects Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.project.pdf.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+                id="pmis_project_pdf_report_menu"
+                name="Projects Report"
+                action="pmis_project_pdf_report_action"
+                parent="pmis_project_menu"
+                groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract,egp_procurement.Products_Non_consultative_expert,egp_procurement.pmis_Consultative_expert,egp_procurement.pmis_archi"/>
+                sequence="2"/>
+
+    </data>
+
+</odoo>

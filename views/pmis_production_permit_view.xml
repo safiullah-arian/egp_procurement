@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View -->
+        <record id="view_production_permit_form" model="ir.ui.view">
+            <field name="name">production.permit.form</field>
+            <field name="model">production.permit</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="product_description_id"/>
+                                <field name="producer_name"/>
+                                <field name="manufacturer_address"/>
+                                <field name="manufacturer_representative"/>
+                                <field name="representative_job"/>
+                                <field name="date"/>
+                                <field name="note"/>
+                            </group>
+                        </group>
+
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View -->
+        <record id="view_production_permit_tree" model="ir.ui.view">
+            <field name="name">production.permit.tree</field>
+            <field name="model">production.permit</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="product_description_id"/>
+                    <field name="producer_name"/>
+
+                    <field name="date"/>
+                    <!--                    <field name="ref"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search View -->
+        <record id="view_production_permit_search" model="ir.ui.view">
+            <field name="name">production.permit.search</field>
+            <field name="model">production.permit</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="producer_name" string="Producer's Name"/>
+                    <field name="manufacturer_representative" string="Manufacturer's Representative"/>
+                    <field name="date" string="Date"/>
+                </search>
+            </field>
+        </record>
+
+
+        <!-- Action for Tree View -->
+        <record id="action_production_permit_tree" model="ir.actions.act_window">
+            <field name="name">Production Permits</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">production.permit</field>
+            <field name="context">{'search_default_filter_child':1}</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_production_permit_tree"/>
+        </record>
+
+
+        <!-- Menu -->
+        <!--        <menuitem-->
+        <!--                id="menu_production_permit"-->
+        <!--                name="Production Permits"-->
+        <!--                parent="pmis_bidding_root"-->
+        <!--                action="action_production_permit_tree"-->
+        <!--                sequence="19"/>-->
+    </data>
+</odoo>
+

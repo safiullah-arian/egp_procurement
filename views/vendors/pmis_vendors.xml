@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- PMIS vendors form view-->
+        <record id="view_pmis_vendors_form" model="ir.ui.view">
+            <field name="name">pmis.vendors.form</field>
+            <field name="model">pmis.vendors</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <!--                                <field name="vendor_type" widget="radio" options="{'horizontal': True}"/>-->
+                                <field name="name"/>
+                                <label for="street" string="Address"/>
+                                <div class="o_address_format" name="address">
+                                    <field name="street" placeholder="street" class="o_address_street"/>
+                                    <field name="city" placeholder="city" class="o_address_city"/>
+                                    <field name="country_id" placeholder="country" class="o_address_country"/>
+                                </div>
+
+                            </group>
+                            <group>
+                                <field name="reg_number"/>
+                                <field name="license_type"/>
+                                <field name="license_number"/>
+                                <field name="license_start_date"/>
+                                <field name="license_finish_date"/>
+
+
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <!--                                Vendor Agent page Tree and Form-->
+                            <page string="Vendor Agent" name="Agent">
+                                <field name="agent_ids">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="position_title"/>
+                                        <field name="phone"/>
+                                        <field name="email"/>
+                                    </tree>
+                                    <form>
+                                        <field name="name"/>
+                                        <field name="position_title"/>
+                                        <field name="phone"/>
+                                        <field name="email"/>
+                                    </form>
+                                </field>
+                            </page>
+
+                            <!--                            Document page Tree and Form-->
+                            <page name="document_page" string="Documents">
+                                <field name="documents_ids">
+                                    <tree editable="bottom">
+                                        <field name="number"/>
+                                        <field name="subject"/>
+                                        <field name="type_id"/>
+                                        <field name="directorates_id"/>
+                                        <field name="note"/>
+                                        <field name="attachment"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="number"/>
+                                            <field name="subject"/>
+                                            <field name="type_id"/>
+                                            <field name="directorates_id"/>
+                                            <field name="note"/>
+                                            <field name="attachment"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- PMIS vendors tree view-->
+        <record id="view_pmis_vendors_tree" model="ir.ui.view">
+            <field name="name">pmis.vendors.tree</field>
+            <field name="model">pmis.vendors</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="street"/>
+                    <field name="city"/>
+                    <field name="country_id"/>
+                    <field name="reg_number"/>
+                    <field name="license_type"/>
+                    <field name="license_number"/>
+                    <field name="license_start_date"/>
+                    <field name="license_finish_date"/>
+                    <field name="status"/>
+
+                </tree>
+            </field>
+        </record>
+        <!--      PMIS vendor action -->
+        <record id="pmis_vendors_action" model="ir.actions.act_window">
+            <field name="name">PMIS Vendors</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pmis.vendors</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create new Vendors
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+                id="pmis_vendors_menu"
+                name="Vendors"
+                action="pmis_vendors_action"
+                parent="pmis_vendor_root_menu"
+                groups="egp_procurement.pmis_admin,egp_procurement.pmis_head,egp_procurement.Head_of_Plan_and_Contract"
+                sequence="1"/>
+
+
+    </data>
+</odoo>
